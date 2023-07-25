@@ -1,5 +1,6 @@
 import styles from "./Card.module.scss"
-
+ import { AiFillHeart } from 'react-icons/Ai'
+ import { useState } from "react";
 
 const Card = () => {
 
@@ -103,6 +104,7 @@ const Card = () => {
 
     return(
         <>
+        
                 <div className={styles.Card}>
                     <div className={styles.bgCard}>
                         <img className={styles.bgImage} src="https://image.tmdb.org/t/p/w300/hZkgoQYus5vegHoetLkCJzb17zJ.jpg" alt="" />
@@ -113,7 +115,7 @@ const Card = () => {
                     <div className={styles.text}>
                         <div className={styles.card_title}>
                                 <h3 className={styles.text_title}>{mock.original_title}</h3>
-                                <p>❤️</p>
+                                <p className={styles.heart}><AiFillHeart /></p>
                         </div>
                         <div className={styles.info}>
                             <div className="year">
