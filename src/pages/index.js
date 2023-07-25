@@ -7,14 +7,11 @@ import Hero from "../components/hero/Hero";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import Navbar from "@/components/Navbar";
 
+import { GET } from "@/utils/HTTP";
 
-import { GET } from "@/utils/HTTP"
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home({trending, pippo}) {
-
-  console.log(trending)
-  console.log(pippo)
+export default function Home({ trending, pippo }) {
+  console.log(trending);
+  console.log(pippo);
 
   return (
     <>
@@ -32,26 +29,14 @@ export default function Home({trending, pippo}) {
   );
 }
 
-
-
-
-
-
-
-
-
-
 export async function getServerSideProps() {
+  const trending = await GET("trending/movie/", "day");
+  const pippo = await GET("search/", "movie", "", "barbie");
 
-  const trending = await GET("trending/movie/", "day")
-  const pippo = await GET("search/", "movie", "", "barbie")
-
-
-  return  {
-    props:{
+  return {
+    props: {
       trending,
-      pippo
-    }
-  }
-
+      pippo,
+    },
+  };
 }
