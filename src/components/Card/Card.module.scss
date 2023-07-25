@@ -1,18 +1,20 @@
 .Card{
     @include dimensions(300px, 169px, 0);
     transition: all 0.25s ease-in-out;
-    // border: 1px solid;
     overflow: hidden;
     border-radius: 8px;
     background-color: var($color-primary);
-    margin: 100px auto;
+    min-width: 300px;
     color: white;
     cursor: pointer;
+    z-index: 1;
     
  
     &:hover{
         overflow: visible;
-        transform: scale(1.14);
+        transform: scale(1.1);
+        z-index: 300;
+    
 
         .bgImage{
             border-radius: 8px 8px 0px 0px ;
@@ -85,6 +87,10 @@
             @include flexbox-hrz(15px);
         }
         
+        .overview{
+            font-weight: 300;
+            font-size: $par-xs;
+        }
     }
 
 
@@ -92,7 +98,9 @@
 
 
     
-      
+    .heart{
+        color: red;
+    }
  
 }
 
