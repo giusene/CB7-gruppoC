@@ -35,4 +35,4 @@ yarn-error.log*
 next-env.d.ts
 
 #utils
-/utils/sizes.js
+sizes.js
