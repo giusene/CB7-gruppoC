@@ -4,10 +4,17 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 
 
+import { GET } from "@/utils/HTTP"
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({trending, pippo}) {
+
+  console.log(trending)
+  console.log(pippo)
+
   return (
     <>
       <Head>
@@ -21,4 +28,28 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+
+
+
+
+
+
+
+
+
+export async function getServerSideProps() {
+
+  const trending = await GET("trending/movie/", "day")
+  const pippo = await GET("search/", "movie", "", "barbie")
+
+
+  return  {
+    props:{
+      trending,
+      pippo
+    }
+  }
+
 }

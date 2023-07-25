@@ -1,0 +1,11 @@
+
+.Cards{
+    @include flexbox-hrz(30px);
+    padding: $padding-md;
+    
+    height: 300px;   
+    overflow-x: scroll; 
+    
+}
+
+
