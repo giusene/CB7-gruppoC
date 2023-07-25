@@ -1,0 +1,16 @@
+.Footer {
+  @include flexbox-hrz(10px);
+  background-color: $color-primary;
+  padding: 20px;
+
+  a {
+    text-decoration-line: none;
+    color: $color-secondary;
+    cursor: pointer;
+  }
+
+  img {
+    border-right: solid $color-secondary 2px;
+    padding: 10px;
+  }
+}
