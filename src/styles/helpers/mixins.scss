@@ -31,3 +31,11 @@
 @mixin target($color) {
   border: 2px solid $color;
 }
+
+@mixin button($borderRadius, $backgroundColor) {
+  border-radius: $borderRadius;
+  background-color: $backgroundColor;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
