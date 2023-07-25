@@ -1,0 +1,53 @@
+.Navbar {
+  @include flexbox-hrz-space-between();
+  height: 80px;
+  padding: 20px;
+  background-color: $color-primary;
+
+  .logoImg {
+    display: none;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  input {
+    width: 300px;
+    height: 30px;
+    padding-left: 10px;
+    background-color: transparent;
+    color: $color-secondary;
+    border: solid 1px $color-secondary;
+    border-radius: 20px;
+    outline: none;
+  }
+
+  button {
+    @include button(10px, $color-secondary);
+    padding: 10px;
+
+    &:hover {
+      box-shadow: $elevation-small;
+    }
+  }
+
+  @include xs() {
+    input {
+      max-width: 120px;
+    }
+
+    .logoImg {
+      display: flex;
+    }
+
+    .logoFull {
+      display: none;
+    }
+
+    button {
+      max-width: 100px;
+      height: 50px;
+    }
+  }
+}
