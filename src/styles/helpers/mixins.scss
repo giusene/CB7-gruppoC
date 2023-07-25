@@ -1,7 +1,5 @@
 @mixin flexbox-hrz($gap) {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
   gap: $gap;
 }
@@ -30,4 +28,16 @@
 
 @mixin target($color) {
   border: 2px solid $color;
+}
+
+@mixin dimensions($w, $h, $p) {
+  width: $w;
+  height: $h;
+  padding: $p;
+}
+
+@mixin flexColumn($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
 }
