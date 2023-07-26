@@ -1,25 +1,15 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.scss";
-import Hero from "../components/hero/Hero";
-
 import { GET } from "@/utils/HTTP";
-
-
-
-import { GET } from "@/utils/HTTP"
-
+import Hero from "../components/hero/Hero";
 import Cards from "@/components/Cards/Cards";
+import styles from "@/styles/Home.module.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({trending, pippo}) {
-
+export default function Home({ trending, pippo }) {
   // console.log(trending)
   // console.log(pippo)
-
-
 
   return (
     <>
@@ -31,22 +21,12 @@ export default function Home({trending, pippo}) {
       </Head>
 
       <main>
-        <Cards data={trending}/>
-        <Cards data={trending}/>
-       
-        
-      </main> 
-
+        <Cards data={trending} />
+        <Cards data={trending} />
+      </main>
     </>
   );
 }
-
-
-
-
-
-
-
 
 export async function getServerSideProps() {
   const trending = await GET("trending/movie/", "day");
