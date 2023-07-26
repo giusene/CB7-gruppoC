@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Hero.module.scss";
 import Link from "next/link";
 import { BsFillPlayFill } from "react-icons/bs";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/Ai";
 
 const elencoFilm = [
   {
@@ -25,15 +25,18 @@ const Hero = () => {
         <div
           className={styles.heroBackground}
           style={{ backgroundImage: `url(${elencoFilm[0].img})` }}
+          key={Date.now()}
         >
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>{film.titolo}</h1>
             <div className={styles.heroGeneral}>
               <p className={styles.heroRating}>
-                <p className={styles.heroRatingIcon}>
+                <span className={styles.heroRatingIcon}>
                   <AiFillStar />
-                </p>
-                {film.rating} / {film.reviews}
+                </span>
+                <span>
+                  {film.rating} / {film.reviews}
+                </span>
               </p>
               <p className={styles.heroLenght}>{film.durata}</p>
               <p className={styles.heroGenre}>{film.genere}</p>
