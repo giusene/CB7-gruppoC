@@ -4,12 +4,15 @@ export const mainReducer = (state, action) => {
     case "SET_USER_LOGGED":
       return {
         ...state,
-        id: action.payload.localId,
-        isLogged: true,
-        firstName: action.payload.firstName,
-        lastName: action.payload.lastName,
-        email: action.payload.email,
-        userImg: action.payload.userImg,
+        user: {
+          ...state.user,
+          isLogged: true,
+          id: action.payload.localId,
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
+          email: action.payload.email,
+          userImg: action.payload.userImg,
+        },
       };
     // ...
     default:
