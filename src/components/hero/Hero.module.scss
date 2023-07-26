@@ -1,0 +1,257 @@
+// // @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital@1&display=swap");
+
+// .heroBackground {
+//   background-size: cover;
+//   background-position: center;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// .heroContent {
+//   text-align: left;
+//   width: 650px;
+//   height: 320px;
+//   position: absolute;
+//   bottom: 50px;
+//   left: 60px;
+//   padding: 20px;
+//   background-color: transparent;
+//   font-family: "Bebas Neue", sans-serif;
+// }
+
+// .heroTitle {
+//   font-size: 54px;
+//   font-weight: bold;
+//   color: #fff;
+//   margin-bottom: 20px;
+//   color: #000;
+// }
+
+// .heroTrama {
+//   font-size: 16px;
+//   color: #000;
+//   margin-bottom: 40px;
+// }
+
+// .heroGeneral {
+//   display: flex;
+// }
+
+// .heroGeneral p {
+//   display: inline;
+//   margin: 0px 10px 10px 0px;
+//   padding: 5px;
+// }
+
+// .heroRatingIcon {
+//   display: flex;
+//   align-items: center;
+//   color: #f1c40f;
+//   margin-bottom: 10px;
+// }
+
+// .heroRating svg {
+//   margin-right: 5px;
+// }
+
+// .heroPlay {
+//   display: flex;
+//   justify-content: center;
+//   width: 160px;
+//   background-color: #1e57ff;
+//   color: #e0e4ed;
+//   padding: 12px 20px;
+//   border: 1px solid #1e57ff;
+//   border-radius: 8px;
+//   font-size: 14px;
+//   margin-right: 20px;
+//   font-family: "Bebas Neue", sans-serif;
+//   align-self: center;
+//   cursor: pointer;
+// }
+
+// .heroPlayIcon {
+//   display: inline;
+//   margin-right: 5px;
+// }
+
+// .heroPlay:hover {
+//   opacity: 1;
+//   background-color: #063ad5;
+//   border: 1px solid #063ad5;
+//   color: #fff;
+// }
+
+// .heroTrailer {
+//   width: 160px;
+//   background-color: #323844;
+//   color: #e0e4ed;
+//   padding: 12px 20px;
+//   border: 1px solid #323844;
+//   border-radius: 8px;
+//   font-size: 14px;
+//   margin-right: 20px;
+//   font-family: "Bebas Neue", sans-serif;
+//   cursor: pointer;
+// }
+
+// .heroTrailer:hover {
+//   opacity: 1;
+//   background-color: #444;
+//   border: 1px solid #444;
+//   color: #fff;
+// }
+
+// @mixin xs() {
+//   @media only screen and (min-width: $mobile) and (max-width: #{$tablet - 1}) {
+//     @content;
+//   }
+// }
+
+// @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital@1&display=swap");
+
+$mobile: 768px;
+$tablet: 1024px;
+
+@mixin xs() {
+  @media only screen and (max-width: #{$tablet - 1}) {
+    @content;
+  }
+}
+
+@mixin sm() {
+  @media only screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+.heroBackground {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.heroContent {
+  text-align: left;
+  width: 90%;
+  max-width: 650px;
+  height: auto;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  padding: 20px;
+  background-color: transparent;
+  font-family: "Bebas Neue", sans-serif;
+
+  @include sm() {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+  }
+}
+
+.heroTitle {
+  font-size: 3em;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.heroTrama {
+  font-size: 1em;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.heroGeneral {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.heroGeneral p {
+  display: inline;
+  margin: 0 10px 10px 0;
+  padding: 5px;
+}
+
+.heroRatingIcon {
+  display: flex;
+  align-items: center;
+  color: #f1c40f;
+  margin-bottom: 10px;
+}
+
+.heroRating svg {
+  margin-right: 5px;
+}
+
+.heroPlayContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  @include xs() {
+    flex-direction: column;
+  }
+}
+
+.heroPlay {
+  width: 100%;
+  max-width: 160px;
+  background-color: #1e57ff;
+  color: #e0e4ed;
+  padding: 12px 20px;
+  border: 1px solid #1e57ff;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-right: 20px;
+  font-family: "Bebas Neue", sans-serif;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.3s;
+
+  &:hover {
+    opacity: 1;
+    background-color: #063ad5;
+    border: 1px solid #063ad5;
+    color: #fff;
+  }
+}
+
+.heroPlayIcon {
+  display: inline;
+  margin-right: 5px;
+}
+
+.heroTrailer {
+  width: 100%;
+  max-width: 160px;
+  background-color: #323844;
+  color: #e0e4ed;
+  padding: 12px 20px;
+  border: 1px solid #323844;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: "Bebas Neue", sans-serif;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.3s;
+
+  &:hover {
+    opacity: 1;
+    background-color: #444;
+    border: 1px solid #444;
+    color: #fff;
+  }
+}
