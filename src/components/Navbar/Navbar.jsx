@@ -1,10 +1,11 @@
 // import react
-import { useContext } from "react";
+import { useContext, useState } from "react";
+
+// import next
+import { Router, useRouter } from "next/router";
 
 // import state
 import { MainContext } from "@/store";
-
-import styles from "./Navbar.module.scss";
 
 // import Google auth
 import { auth, provider, db } from "@/plugins/firebase";
@@ -22,8 +23,27 @@ import {
   getDoc,
 } from "firebase/firestore";
 
+// import font
+import { Eagle_Lake } from "next/font/google";
+
+// import style
+import styles from "./Navbar.module.scss";
+
 const Navbar = () => {
   const { state, dispatch } = useContext(MainContext);
+  
+  const [userInput, setUserInput] = useState("");
+
+  const router = useRouter();
+  
+  const onChangeValue = (e) => setUserInput(e.target.value);
+  
+  const onSubmitRoute = (e) => {
+    e.preventDefault();
+    router.pathname.includes("search")
+      ? router.push(userInput)
+      : router.push(`search/${userInput}`);
+  };
 
   const signIn = async () => {
     await signInWithPopup(auth, provider)
@@ -57,14 +77,30 @@ const Navbar = () => {
       });
   };
 
+  const onClickHomePage = () => router.push("/");
+
   return (
     <ul className={styles.Navbar}>
       <img
         className={styles.logoFull}
         src="https://img.logoipsum.com/297.svg"
+        onClick={onClickHomePage}
       />
-      <img className={styles.logoImg} src="https://img.logoipsum.com/296.svg" />
-      <input className={styles.input} type="text" placeholder="Search..." />
+      <img
+        className={styles.logoImg}
+        src="https://img.logoipsum.com/296.svg"
+        onClick={onClickHomePage}
+      />
+
+      <form onSubmit={onSubmitRoute}>
+        <input
+          onChange={(e) => onChangeValue(e)}
+          className={styles.input}
+          type="text"
+          placeholder="Search..."
+        />
+      </form>
+
       {state.user.isLogged ? (
         <p>{state.user.firstName}</p>
       ) : (
