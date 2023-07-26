@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import Hero from "../components/hero/Hero";
-
 import { GET } from "@/utils/HTTP";
 
 export default function Home({ trending, pippo }) {
@@ -18,7 +17,7 @@ export default function Home({ trending, pippo }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Hero />
+      <Hero trending={trending} />
     </>
   );
 }
