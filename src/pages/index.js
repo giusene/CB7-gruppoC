@@ -24,9 +24,7 @@ export default function Home({trending, pippo}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Cards data={trending}/>
-        <Cards data={trending}/>
-       
+        
         
       </main> 
     </>
