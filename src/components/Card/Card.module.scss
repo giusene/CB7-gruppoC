@@ -100,11 +100,51 @@
             font-weight: 300;
             font-size: $par-xs;
         }
+
     }
+  }
 
+  .bgCard {
+    @include dimensions(100%, 169px, 0);
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+  }
 
-   
+  .bgImage {
+    border-radius: 8px;
+  }
 
+  .black {
+    @include dimensions(100%, 100%, 0);
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    padding: 5px 10px;
+    // background-color: rgba(0, 0, 0, 0.676);
+    border-radius: 8px 0px 0px 0px;
+    transition: all 0.35s ease-in-out;
+
+    background: linear-gradient(
+      359deg,
+      rgba(0, 0, 0, 1) 1%,
+      rgba(255, 255, 255, 0) 43%
+    );
+
+    &_parag {
+      @include dimensions(100%, 100%, 5px 10px);
+      display: flex;
+      align-items: end;
+      justify-content: end;
+      transition: all 0.35s ease-in-out;
+    }
+  }
+
+  .text {
+    background-color: $color-primary;
+    border-radius: 0px 0px 8px 8px;
+    padding: $padding-card;
+    @include flexColumn(10px);
 
     
     .heart{
@@ -124,4 +164,17 @@
 }
 
 
+    .info {
+      @include flexbox-hrz(15px);
+    }
 
+    .overview {
+      font-weight: 300;
+      font-size: $par-xs;
+    }
+  }
+
+  .heart {
+    color: red;
+  }
+}

@@ -7,6 +7,7 @@ import Hero from "../components/hero/Hero";
 import { GET } from "@/utils/HTTP";
 
 
+
 import { GET } from "@/utils/HTTP"
 
 import Cards from "@/components/Cards/Cards";
@@ -17,6 +18,7 @@ export default function Home({trending, pippo}) {
 
   // console.log(trending)
   // console.log(pippo)
+
 
 
   return (
