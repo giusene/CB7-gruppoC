@@ -1,106 +1,41 @@
-.Card{
-    @include dimensions(300px, 169px, 0);
-    transition: all 0.25s ease-in-out;
-    overflow: hidden;
-    border-radius: 8px;
-    background-color: var($color-primary);
-    min-width: 300px;
-    color: white;
-    cursor: pointer;
-    z-index: 1;
-    
+.Card {
+  @include dimensions(300px, 169px, 0);
+  transition: all 0.25s ease-in-out;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var($color-primary);
+  min-width: 300px;
+  color: white;
+  cursor: pointer;
+  z-index: 1;
+
+  position: relative;
+
+  &:hover {
+    // overflow: visible;
+    transform: scale(1.1);
+    z-index: 300;
     position: relative;
- 
-    &:hover{
-        // overflow: visible;
-        transform: scale(1.1);
-        z-index: 300;
-        position: relative;
 
-        .text{
-            bottom: 0;
-        }
-    
-
-        // .bgImage{
-        //     border-radius: 8px 8px 0px 0px ;
-        //     }
-            
-        //     .bgCard{
-        //         border-radius: 8px 8px 0px 0px;
-        //     }
-        
-            // .black{
-            //     right: -100%;
-                
-            // }
-
-
-            .black_parag{
-                transform: translateX(100%);
-            }
-
-            
-    }
-   
-    .bgCard{
-        @include dimensions(100%,169px, 0);
-        overflow: hidden;
-        position: relative;
-        border-radius: 8px;
-        
+    .text {
+      bottom: 0;
     }
 
-    .bgImage{
-        border-radius: 8px;
-        }
+    // .bgImage{
+    //     border-radius: 8px 8px 0px 0px ;
+    //     }
 
+    //     .bgCard{
+    //         border-radius: 8px 8px 0px 0px;
+    //     }
 
-    .black{
-        @include dimensions(100%, 100%, 0);
-        position: absolute;
-        bottom: 0px; 
-        right: 0px;
-        padding: 5px 10px;
-        border-radius: 8px 0px 0px 0px;
-        transition: all 0.35s ease-in-out;
-        background: linear-gradient(359deg, rgba(0,0,0,1) 1%, rgba(255,255,255,0) 43%);
-    
+    // .black{
+    //     right: -100%;
 
-        &_parag{
-            @include dimensions(100%, 100%, 5px 10px);
-            display: flex;
-            align-items: end;
-            justify-content: end;
-            transition: all 0.35s ease-in-out;
-        }
-    
-    }
+    // }
 
-    .text{
-        @include dimensions(300px, 169px, 0);
-        background-color: rgba(15, 15, 15, 0.38);
-        border-radius: 8px ;
-        padding: $padding-card;
-        @include flexColumn(10px);
-        position: absolute;
-        bottom: -100%;
-        left: 0;
-        transition: all 0.35s ease-in-out;
-
-        .card_title{
-            @include flexbox-hrz-space-between();
-        }
-
-        .info{
-            @include flexbox-hrz(15px);
-        }
-        
-        .overview{
-            font-weight: 300;
-            font-size: $par-xs;
-        }
-
+    .black_parag {
+      transform: translateX(100%);
     }
   }
 
@@ -121,10 +56,8 @@
     bottom: 0px;
     right: 0px;
     padding: 5px 10px;
-    // background-color: rgba(0, 0, 0, 0.676);
     border-radius: 8px 0px 0px 0px;
     transition: all 0.35s ease-in-out;
-
     background: linear-gradient(
       359deg,
       rgba(0, 0, 0, 1) 1%,
@@ -141,28 +74,19 @@
   }
 
   .text {
-    background-color: $color-primary;
-    border-radius: 0px 0px 8px 8px;
+    @include dimensions(300px, 169px, 0);
+    background-color: rgba(15, 15, 15, 0.38);
+    border-radius: 8px;
     padding: $padding-card;
     @include flexColumn(10px);
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    transition: all 0.35s ease-in-out;
 
-    
-    .heart{
-        color: $color-heart;
-        
-        
-        &_icon:hover{
-            color: $color-heart-hover;
-        }
-
-        &_icon{
-            font-size: $heart-icons;
-            
-        }
+    .card_title {
+      @include flexbox-hrz-space-between();
     }
-    
-}
-
 
     .info {
       @include flexbox-hrz(15px);
@@ -173,8 +97,72 @@
       font-size: $par-xs;
     }
   }
+}
+
+.bgCard {
+  @include dimensions(100%, 169px, 0);
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+}
+
+.bgImage {
+  border-radius: 8px;
+}
+
+.black {
+  @include dimensions(100%, 100%, 0);
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 5px 10px;
+  // background-color: rgba(0, 0, 0, 0.676);
+  border-radius: 8px 0px 0px 0px;
+  transition: all 0.35s ease-in-out;
+
+  background: linear-gradient(
+    359deg,
+    rgba(0, 0, 0, 1) 1%,
+    rgba(255, 255, 255, 0) 43%
+  );
+
+  &_parag {
+    @include dimensions(100%, 100%, 5px 10px);
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    transition: all 0.35s ease-in-out;
+  }
+}
+
+.text {
+  background-color: $color-primary;
+  border-radius: 0px 0px 8px 8px;
+  padding: $padding-card;
+  @include flexColumn(10px);
 
   .heart {
-    color: red;
+    color: $color-heart;
+
+    &_icon:hover {
+      color: $color-heart-hover;
+    }
+
+    &_icon {
+      font-size: $heart-icons;
+    }
   }
+}
+
+.info {
+  @include flexbox-hrz(15px);
+}
+
+.overview {
+  font-weight: 300;
+  font-size: $par-xs;
+}
+
+.heart {
+  color: red;
 }
