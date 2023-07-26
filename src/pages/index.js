@@ -6,9 +6,18 @@ import Hero from "../components/hero/Hero";
 
 import { GET } from "@/utils/HTTP";
 
-export default function Home({ trending, pippo }) {
-  console.log(trending);
-  console.log(pippo);
+
+import { GET } from "@/utils/HTTP"
+
+import Cards from "@/components/Cards/Cards";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function Home({trending, pippo}) {
+
+  // console.log(trending)
+  // console.log(pippo)
+
 
   return (
     <>
@@ -18,10 +27,24 @@ export default function Home({ trending, pippo }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Hero />
+
+      <main>
+        <Cards data={trending}/>
+        <Cards data={trending}/>
+       
+        
+      </main> 
+
     </>
   );
 }
+
+
+
+
+
+
+
 
 export async function getServerSideProps() {
   const trending = await GET("trending/movie/", "day");
