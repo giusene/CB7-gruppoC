@@ -1,13 +1,18 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.scss";
+import { GET } from "@/utils/HTTP";
 import Hero from "../components/hero/Hero";
+
 import { GET } from "@/utils/HTTP";
 
+import Cards from "@/components/Cards/Cards";
+import styles from "@/styles/Home.module.scss";
+
+const inter = Inter({ subsets: ["latin"] });
+
 export default function Home({ trending, pippo }) {
-  console.log(trending);
-  console.log(pippo);
+  // console.log(trending)
+  // console.log(pippo)
 
   return (
     <>
@@ -17,7 +22,14 @@ export default function Home({ trending, pippo }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Hero trending={trending} />
+
+      <main>
+        <Cards data={trending} />
+        <Cards data={trending} />
+      </main>
+
     </>
   );
 }

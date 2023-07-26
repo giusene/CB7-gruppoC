@@ -4,6 +4,10 @@
   padding: 20px;
   background-color: $color-primary;
 
+  .logoFull {
+    cursor: pointer;
+  }
+
   .logoImg {
     display: none;
   }
