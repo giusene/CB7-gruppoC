@@ -12,8 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({trending, pippo}) {
 
-  // console.log(trending)
-  // console.log(pippo)
+ 
 
   return (
     <>
