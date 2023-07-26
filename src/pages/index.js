@@ -1,18 +1,15 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import { GET } from "@/utils/HTTP";
-import Hero from "../components/hero/Hero";
-
-import { GET } from "@/utils/HTTP";
-
 import Cards from "@/components/Cards/Cards";
 import styles from "@/styles/Home.module.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ trending, pippo }) {
-  // console.log(trending)
-  // console.log(pippo)
+
+ 
+
 
   return (
     <>
@@ -36,12 +33,10 @@ export default function Home({ trending, pippo }) {
 
 export async function getServerSideProps() {
   const trending = await GET("trending/movie/", "day");
-  const pippo = await GET("search/", "movie", "", "barbie");
 
   return {
     props: {
       trending,
-      pippo,
     },
   };
 }
