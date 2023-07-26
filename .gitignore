@@ -35,4 +35,5 @@ yarn-error.log*
 next-env.d.ts
 
 #utils
-/src/utils/sizes.js
+**/utils/sizes.js
+**/utils/genres.js
