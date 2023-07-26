@@ -2,7 +2,7 @@
 import { useContext, useState } from "react";
 
 // import next
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 // import state
 import { MainContext } from "@/store";
@@ -12,32 +12,20 @@ import { auth, provider, db } from "@/plugins/firebase";
 import { signInWithPopup } from "firebase/auth";
 
 // import db
-import {
-  collection,
-  addDoc,
-  setDoc,
-  getDocs,
-  query,
-  where,
-  doc,
-  getDoc,
-} from "firebase/firestore";
-
-// import font
-import { Eagle_Lake } from "next/font/google";
+import { setDoc, doc } from "firebase/firestore";
 
 // import style
 import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
   const { state, dispatch } = useContext(MainContext);
-  
+
   const [userInput, setUserInput] = useState("");
 
   const router = useRouter();
-  
+
   const onChangeValue = (e) => setUserInput(e.target.value);
-  
+
   const onSubmitRoute = (e) => {
     e.preventDefault();
     router.pathname.includes("search")
