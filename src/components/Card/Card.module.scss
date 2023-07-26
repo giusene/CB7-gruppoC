@@ -9,20 +9,26 @@
     cursor: pointer;
     z-index: 1;
     
+    position: relative;
  
     &:hover{
-        overflow: visible;
+        // overflow: visible;
         transform: scale(1.1);
         z-index: 300;
+        position: relative;
+
+        .text{
+            bottom: 0;
+        }
     
 
-        .bgImage{
-            border-radius: 8px 8px 0px 0px ;
-            }
+        // .bgImage{
+        //     border-radius: 8px 8px 0px 0px ;
+        //     }
             
-            .bgCard{
-                border-radius: 8px 8px 0px 0px;
-            }
+        //     .bgCard{
+        //         border-radius: 8px 8px 0px 0px;
+        //     }
         
             // .black{
             //     right: -100%;
@@ -56,10 +62,8 @@
         bottom: 0px; 
         right: 0px;
         padding: 5px 10px;
-        // background-color: rgba(0, 0, 0, 0.676);
         border-radius: 8px 0px 0px 0px;
         transition: all 0.35s ease-in-out;
-        
         background: linear-gradient(359deg, rgba(0,0,0,1) 1%, rgba(255,255,255,0) 43%);
     
 
@@ -74,10 +78,15 @@
     }
 
     .text{
-        background-color: $color-primary;
-        border-radius: 0px 0px  8px 8px;
+        @include dimensions(300px, 169px, 0);
+        background-color: rgba(15, 15, 15, 0.38);
+        border-radius: 8px ;
         padding: $padding-card;
         @include flexColumn(10px);
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        transition: all 0.35s ease-in-out;
 
         .card_title{
             @include flexbox-hrz-space-between();
@@ -99,9 +108,19 @@
 
     
     .heart{
-        color: red;
+        color: $color-heart;
+        
+        
+        &_icon:hover{
+            color: $color-heart-hover;
+        }
+
+        &_icon{
+            font-size: $heart-icons;
+            
+        }
     }
- 
+    
 }
 
 

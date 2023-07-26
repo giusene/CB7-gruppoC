@@ -6,14 +6,14 @@ import styles from "@/styles/Home.module.scss";
 
 import { GET } from "@/utils/HTTP"
 
-
+import Cards from "@/components/Cards/Cards";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({trending, pippo}) {
 
-  console.log(trending)
-  console.log(pippo)
+  // console.log(trending)
+  // console.log(pippo)
 
   return (
     <>
@@ -24,14 +24,14 @@ export default function Home({trending, pippo}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <Cards data={trending}/>
+        <Cards data={trending}/>
+       
         
-      </main>
+      </main> 
     </>
   );
 }
-
-
-
 
 
 
