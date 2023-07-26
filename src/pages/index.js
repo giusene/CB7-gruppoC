@@ -7,8 +7,8 @@ import Hero from "../components/hero/Hero";
 import { GET } from "@/utils/HTTP";
 
 export default function Home({ trending, pippo }) {
-  console.log(trending);
-  console.log(pippo);
+  // console.log(trending);
+  // console.log(pippo);
 
   return (
     <>

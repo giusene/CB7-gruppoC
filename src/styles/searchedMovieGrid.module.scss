@@ -1,0 +1,16 @@
+.searchResult {
+  @include flexbox-hrz(30px);
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2%;
+}
+
+.searchTitle {
+  margin: 2% 30%;
+  border-radius: 20px;
+  background-color: $color-secondary;
+  color: $color-primary;
+  font-size: $title;
+  text-align: center;
+  box-shadow: $elevation-medium;
+}
