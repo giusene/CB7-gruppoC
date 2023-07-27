@@ -11,17 +11,13 @@ const Hero = ({ trending }) => {
   const [nextMovie, setNextMovie] = useState(0);
   const movie = useRef();
 
-  const autoSlide = () => setTimeout(onClickNextMovie, 5000);
-
   const onClickNextMovie = () => {
-    nextMovie === 5 ? setNextMovie(0) : setNextMovie((prev) => prev + 1);
+    nextMovie === 4 ? setNextMovie(0) : setNextMovie((prev) => prev + 1);
   };
 
   const onClickPrevMovie = () => {
-    nextMovie === 0 ? setNextMovie(5) : setNextMovie((prev) => prev - 1);
+    nextMovie === 0 ? setNextMovie(4) : setNextMovie((prev) => prev - 1);
   };
-
-  autoSlide();
 
   return (
     <section className={styles.hero} ref={movie}>
