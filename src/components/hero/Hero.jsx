@@ -11,15 +11,15 @@ const Hero = ({ trending }) => {
   const [nextMovie, setNextMovie] = useState(0);
 
   useEffect(() => {
-    setTimeout(onClickNextMovie, 5000);
+    setTimeout(onClickNextMovie, 6000);
   }, [nextMovie]);
 
   const onClickNextMovie = () => {
-    nextMovie === 5 ? setNextMovie(0) : setNextMovie((prev) => prev + 1);
+    nextMovie === 4 ? setNextMovie(0) : setNextMovie(nextMovie + 1);
   };
 
   const onClickPrevMovie = () => {
-    nextMovie === 0 ? setNextMovie(4) : setNextMovie((prev) => prev - 1);
+    nextMovie === 0 ? setNextMovie(4) : setNextMovie(nextMovie - 1);
   };
 
   return (
