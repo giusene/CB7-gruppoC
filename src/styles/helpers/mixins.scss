@@ -19,6 +19,12 @@
   align-items: center;
 }
 
+@mixin flexbox-hrz-space-around() {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 @mixin flexbox-vrt-space-between() {
   display: flex;
   flex-direction: column;

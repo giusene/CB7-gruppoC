@@ -10,19 +10,89 @@
   z-index: 1;
   position: relative;
 
-  &:hover {
-    transform: scale(1.1);
-    z-index: 300;
-    position: relative;
 
-    .text {
-      bottom: 0;
-    }
-
-    .black_parag {
-      transform: translateX(100%);
+  //DESKTOP
+  @include lg{
+    &:hover {
+      transform: scale(1.1);
+      z-index: 300;
+      position: relative;
+  
+      .text {
+        bottom: 0;
+      }
+  
+      .black_parag {
+        transform: translateX(100%);
+      }
     }
   }
+  // END DESKTOP
+
+  //LAPTOP
+  @include xl{
+    &:hover {
+      transform: scale(1.1);
+      z-index: 300;
+      position: relative;
+  
+      .text {
+        bottom: 0;
+      }
+  
+      .black_parag {
+        transform: translateX(100%);
+      }
+    }
+  }
+  //END LAPTOP
+
+
+  // -----   TABLET  ----------
+    @include md{
+      .Card{
+        position: relative;
+      }
+        
+      .overlay{
+        
+        transform: translateY(-100%);
+      }
+    
+      .noTitle{
+        transform: translateX(100%);
+      }
+
+
+    
+    }
+    //-----  END TABLET  ----------
+
+
+
+
+    //-----   MOBILE  ----------
+    @include xs{
+      
+      .Card{
+        position: relative;
+      }
+
+
+      .overlay{
+        transform: translateY(-100%);
+      }
+
+      .noTitle{
+        transform: translateX(100%);
+        
+      }
+    }
+    
+    //-----  END MOBILE  ----------
+
+ 
+
 
   .bgCard {
     @include dimensions(100%, 169px, 0);
@@ -60,15 +130,17 @@
 
   .text {
     @include dimensions(300px, 169px, 0);
-    background-color: rgba(15, 15, 15, 0.38);
+    background-color: rgba(15, 15, 15, 0.5);
     border-radius: 8px;
     padding: $padding-card;
     @include flexColumn(10px);
     position: absolute;
-    bottom: -100%;
+    bottom: 0; // -100%
     left: 0;
     transition: all 0.35s ease-in-out;
 
+    border-radius: 0px 0px 8px 8px;
+ 
     .card_title {
       @include flexbox-hrz-space-between();
     }
@@ -78,11 +150,19 @@
     }
 
     .overview {
-      font-weight: 300;
+      font-weight: 500;
       font-size: $par-xs;
+    }
+
+    .year{
+      font-weight: 400;
+      font-size: $par-sm;
     }
   }
 }
+
+
+
 
 .bgCard {
   @include dimensions(100%, 169px, 0);
@@ -119,34 +199,14 @@
   }
 }
 
-.text {
-  background-color: $color-primary;
-  border-radius: 0px 0px 8px 8px;
-  padding: $padding-card;
-  @include flexColumn(10px);
 
-  .heart {
-    color: $color-secondary;
 
-    &_icon:hover {
-      color: $color-secondary;
-    }
 
-    &_icon {
-      font-size: $heart-icons;
-    }
+.icons{
+  @include flexbox-hrz-space-around();
+  
+  .heart, .plus, .people{
+    font-size: $subtitle;
   }
-}
 
-.info {
-  @include flexbox-hrz(15px);
-}
-
-.overview {
-  font-weight: 300;
-  font-size: $par-xs;
-}
-
-.heart {
-  color: $color-secondary;
 }
