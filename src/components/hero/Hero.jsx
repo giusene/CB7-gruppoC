@@ -22,6 +22,10 @@ const Hero = ({ trending }) => {
     nextMovie === 0 ? setNextMovie(4) : setNextMovie(nextMovie - 1);
   };
 
+  const roundToDecimal = (number) => {
+    return Math.round(number * 10) / 10;
+  };
+
   return (
     <section className={styles.hero}>
       <button className={styles.nextBtn} onClick={onClickNextMovie}>
@@ -42,7 +46,7 @@ const Hero = ({ trending }) => {
               <AiFillStar />
             </span>
             <span>
-              {trending.results[nextMovie].vote_average} (
+              {roundToDecimal(trending.results[nextMovie].vote_average)} (
               {trending.results[nextMovie].vote_count})
             </span>
           </p>
