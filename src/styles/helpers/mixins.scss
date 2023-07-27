@@ -20,6 +20,12 @@
   align-items: center;
 }
 
+@mixin flexbox-hrz-space-around() {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 @mixin flexbox-vrt-space-between() {
   display: flex;
   flex-direction: column;
@@ -50,3 +56,12 @@
   flex-direction: column;
   gap: $gap;
 }
+
+
+@mixin flexCenter($gap){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap;
+}
+
