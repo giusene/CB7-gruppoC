@@ -1,44 +1,73 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./Hero.module.scss";
-// import Link from "next/link";
-import { GET } from "@/utils/HTTP";
 import { BsFillPlayFill } from "react-icons/bs";
 import { AiFillStar } from "react-icons/Ai";
+import {
+  MdOutlineKeyboardArrowRight,
+  MdOutlineKeyboardArrowLeft,
+} from "react-icons/Md";
 
 const Hero = ({ trending }) => {
+  const [nextMovie, setNextMovie] = useState(0);
+
+  useEffect(() => {
+    setTimeout(onClickNextMovie, 6000);
+  }, [nextMovie]);
+
+  const onClickNextMovie = () => {
+    nextMovie === 4 ? setNextMovie(0) : setNextMovie(nextMovie + 1);
+  };
+
+  const onClickPrevMovie = () => {
+    nextMovie === 0 ? setNextMovie(4) : setNextMovie(nextMovie - 1);
+  };
+
+  const roundToDecimal = (number) => {
+    return Math.round(number * 10) / 10;
+  };
+
   return (
     <section className={styles.hero}>
-      <div className={styles.heroBackground}>
+      <button className={styles.nextBtn} onClick={onClickNextMovie}>
+        <MdOutlineKeyboardArrowRight />
+      </button>
+      <div className={`${styles.heroBackground} ${styles.next}`}>
         <img
-          src={`https://image.tmdb.org/t/p/w1280${trending.results[2].backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/original${trending.results[nextMovie].backdrop_path}`}
         />
       </div>
       <div className={styles.heroContent}>
-        <h1 className={styles.heroTitle}>{trending.results[2].title}</h1>
+        <h1 className={styles.heroTitle}>
+          {trending.results[nextMovie].title}
+        </h1>
         <div className={styles.heroGeneral}>
           <p className={styles.heroRating}>
             <span className={styles.heroRatingIcon}>
               <AiFillStar />
             </span>
             <span>
-              {trending.results[2].vote_average} /
-              {trending.results[2].vote_count}
+              {roundToDecimal(trending.results[nextMovie].vote_average)} (
+              {trending.results[nextMovie].vote_count})
             </span>
           </p>
-          <p className={styles.heroLenght}></p>
-          <p className={styles.heroGenre}></p>
-          <p className={styles.heroDate}>{trending.results[2].release_date}</p>
+          <span className={styles.heroDate}>
+            {trending.results[nextMovie].release_date}
+          </span>
         </div>
-        <p className={styles.heroTrama}>{trending.results[2].overview}</p>
+        <p className={styles.heroTrama}>
+          {trending.results[nextMovie].overview}
+        </p>
 
-        <button className={styles.heroPlay}>
+        <button className={styles.heroTrailer}>
           <p className={styles.heroPlayIcon}>
             <BsFillPlayFill />
           </p>
-          PLAY NOW
+          Watch trailer
         </button>
-        <button className={styles.heroTrailer}>TRAILER</button>
       </div>
+      <button className={styles.prevBtn} onClick={onClickPrevMovie}>
+        <MdOutlineKeyboardArrowLeft />
+      </button>
     </section>
   );
 };

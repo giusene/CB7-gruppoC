@@ -1,0 +1,19 @@
+.Badge {
+  min-width: fit-content;
+  font-size: $par-sm;
+  font-weight: 700;
+  border-radius: $border-radius-4;
+  padding: $padding-sm;
+  @extend %center-content;
+  background-color: $color-secondary;
+  color: $color-primary;
+  cursor: pointer;
+  transition: all 0.35s ease-in-out;
+  scroll-snap-align: start;
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-secondary;
+    border: 2px solid $color-primary-light;
+  }
+}

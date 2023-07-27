@@ -36,4 +36,6 @@ next-env.d.ts
 
 #utils
 **/utils/sizes.js
-**/utils/genres.js
+# **/utils/genres.js
+
+/.vscode

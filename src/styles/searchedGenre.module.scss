@@ -1,0 +1,9 @@
+.title {
+  @extend %title;
+}
+
+.wrapper {
+  padding: 30px $padding-gen;
+  @include flexbox-hrz(30px);
+  flex-wrap: wrap;
+}

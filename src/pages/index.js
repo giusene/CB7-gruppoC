@@ -1,9 +1,11 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import { GET } from "@/utils/HTTP";
+import { genres } from "@/utils/genres";
 import Cards from "@/components/Cards/Cards";
-import styles from "@/styles/Home.module.scss";
 import Hero from "@/components/hero";
+import Badge from "@/components/Badge";
+import styles from "@/styles/Home.module.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function Home({
@@ -22,7 +24,6 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Hero trending={trending} />
       <ul className={styles.categoryList}>
         <li>
@@ -46,8 +47,16 @@ export default function Home({
           <Cards data={movieGenreThriller} />
         </li>
         <li>
-          <h2>TV Movie</h2>
+          <h2>TV Movies</h2>
           <Cards data={movieGenreTVMovie} />
+        </li>
+        <li>
+          <h2>Filter by genre:</h2>
+          <div className={styles.wrapper}>
+            {genres.map((genre) => (
+              <Badge data={genre} key={genre.id} />
+            ))}
+          </div>
         </li>
       </ul>
     </>

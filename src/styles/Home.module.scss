@@ -5,4 +5,17 @@
   h2 {
     @extend %title;
   }
+
+  .wrapper {
+    @include flexbox-hrz(10px);
+    flex-wrap: wrap;
+    padding: $padding-gen;
+
+    @include xs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 20px $padding-gen;
+    }
+  }
 }

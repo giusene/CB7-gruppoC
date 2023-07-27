@@ -1,193 +1,159 @@
-// $mobile: 0px; //xs
-// $tablet: 768px; //md
-// $laptop: 1024px; //lg
-// $desktop: 1440px; //xl
-
-// @mixin xs() {
-//   @media only screen and (min-width: $mobile) and (max-width: #{$tablet - 1}) {
-//     @content;
-//   }
-// }
-
-@mixin sm() {
-  @media only screen and (max-width: $mobile) {
-    @content;
-  }
-}
-
-// @mixin md() {
-//   @media only screen and (min-width: $tablet) and (max-width: #{$laptop - 1}) {
-//     @content;
-//   }
-// }
-// @mixin lg() {
-//   @media only screen and (min-width: $laptop) and (max-width: #{$desktop - 1}) {
-//     @content;
-//   }
-// }
-// @mixin xl() {
-//   @media only screen and (min-width: $desktop) {
-//     @content;
-//   }
-// }
-
 .hero {
+  position: relative;
   max-height: 720px;
 
-  @mixin lg() {
-    @media only screen and (min-width: $laptop) and (max-width: #{$desktop - 1}) {
+  .nextBtn {
+    z-index: 9;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  .prevBtn {
+    z-index: 9;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  .nextBtn svg,
+  .prevBtn svg {
+    fill: $color-secondary;
+    width: 40px;
+    height: 40px;
+  }
+
+  .next {
+    transition: all 1s ease-in-out;
+  }
+
+  .heroBackground {
+    @include flexbox-hrz(10px);
+    justify-content: center;
+    max-height: 720px;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(27, 35, 48, 0.4) 50%,
+        rgba(27, 35, 48, 0.7) 60%,
+        rgba(27, 35, 48, 1) 95%
+      );
+      z-index: 1;
     }
   }
-  @mixin xl() {
-    @media only screen and (min-width: $desktop) {
+
+  .heroBackground img {
+    min-width: 100%;
+    max-height: 720px;
+    object-fit: cover;
+    transition: all 1s ease-in-out;
+  }
+
+  .heroContent {
+    text-align: left;
+    max-width: 40%;
+    height: auto;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    background-color: transparent;
+    z-index: 9;
+
+    @include xs() {
+      transform: translateX(-50%);
+      max-width: 100%;
+      padding: 5px;
+      left: 50%;
+      height: 50%;
     }
   }
-}
 
-.heroBackground {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-.heroBackground img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  @mixin lg() {
-    @media only screen and (min-width: $laptop) and (max-width: #{$desktop - 1}) {
-      // object-fit: cover;
-    }
-  }
-  @mixin xl() {
-    @media only screen and (min-width: $desktop) {
-    }
-  }
-}
-
-.heroContent {
-  text-align: left;
-  width: 90%;
-  max-width: 900px;
-  height: auto;
-  position: absolute;
-  bottom: 5%;
-  left: 5%;
-  padding: 20px;
-  background-color: transparent;
-  font-family: "Bebas Neue", sans-serif;
-  color: #fff;
-
-  @include sm() {
-    transform: translateX(-50%);
-    padding: 10px;
-  }
-}
-
-.heroTitle {
-  font-size: 3em;
-  font-weight: bold;
-  // color: #000;
-  margin-bottom: 20px;
-}
-
-.heroTrama {
-  font-size: 16px;
-  // color: #000;
-  margin-bottom: 20px;
-}
-
-.heroGeneral {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.heroGeneral p span {
-  display: inline;
-  margin: 0 10px 10px 0;
-  padding: 5px;
-}
-
-.heroRatingIcon {
-  display: flex;
-  align-items: center;
-  color: #f1c40f;
-  margin-bottom: 10px;
-}
-
-.heroRating svg {
-  margin-right: 5px;
-}
-
-.heroPlayContainer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-
-  @include xs() {
-    flex-direction: column;
-  }
-}
-
-.heroPlay {
-  width: 100%;
-  max-width: 160px;
-  background-color: #1e57ff;
-  color: #e0e4ed;
-  padding: 12px 20px;
-  border: 1px solid #1e57ff;
-  border-radius: 8px;
-  font-size: 16px;
-  margin-right: 20px;
-  font-family: "Bebas Neue", sans-serif;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    opacity: 1;
-    background-color: #063ad5;
-    border: 1px solid #063ad5;
-    color: #fff;
-  }
-
-  @include xs() {
-    margin-right: 10px;
-  }
-}
-
-.heroPlayIcon {
-  display: inline;
-  margin-right: 5px;
-}
-
-.heroTrailer {
-  width: 100%;
-  max-width: 160px;
-  background-color: #323844;
-  color: #e0e4ed;
-  padding: 12px 20px;
-  border: 1px solid #323844;
-  border-radius: 8px;
-  font-size: 16px;
-  font-family: "Bebas Neue", sans-serif;
-  cursor: pointer;
-  align-self: center;
-  transition: background-color 0.3s;
-
-  &:hover {
-    opacity: 1;
-    background-color: #444;
-    border: 1px solid #444;
-    color: #fff;
-  }
-
-  @include xs() {
+  .heroTitle {
+    font-size: 3em;
+    font-weight: 500;
     margin-bottom: 20px;
+  }
+
+  .heroTrama {
+    margin-bottom: 20px;
+  }
+
+  .heroGeneral {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin: 10px 0;
+  }
+
+  .heroGeneral p {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .heroRatingIcon {
+    @include flexbox-hrz(0);
+  }
+
+  .heroRating svg {
+    fill: #f1c40f;
+    scale: 1.2;
+  }
+
+  .heroPlayContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    @include xs() {
+      flex-direction: column;
+    }
+  }
+
+  .heroTrailer {
+    width: 100%;
+    max-width: 200px;
+    @include flexbox-hrz(10px);
+    background-color: #1e57ff;
+    color: #e0e4ed;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+
+    &:hover {
+      opacity: 1;
+      background-color: #063ad5;
+      color: $color-secondary;
+    }
+
+    &:active {
+      box-shadow: $elevation-medium;
+      scale: 0.99;
+    }
+  }
+
+  .heroPlayIcon {
+    @extend %center-content;
+    scale: 1.5;
   }
 }
