@@ -33,6 +33,7 @@
 
 .hero {
   max-height: 720px;
+  margin-bottom: 20px;
 
   @mixin lg() {
     @media only screen and (min-width: $laptop) and (max-width: #{$desktop - 1}) {
@@ -52,12 +53,28 @@
   margin: 0;
   padding: 0;
   position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      0deg,
+      rgba(27, 35, 48, 0.4) 50%,
+      rgba(0, 0, 0, 0) 60%
+    );
+    z-index: 1;
+  }
 }
 
 .heroBackground img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
 
   @mixin lg() {
     @media only screen and (min-width: $laptop) and (max-width: #{$desktop - 1}) {
@@ -73,19 +90,23 @@
 .heroContent {
   text-align: left;
   width: 90%;
-  max-width: 900px;
+  max-width: 40%;
   height: auto;
   position: absolute;
   bottom: 5%;
   left: 5%;
-  padding: 20px;
+  padding: 10px;
   background-color: transparent;
   font-family: "Bebas Neue", sans-serif;
   color: #fff;
+  z-index: 9;
 
-  @include sm() {
+  @include xs() {
     transform: translateX(-50%);
-    padding: 10px;
+    max-width: 100%;
+    padding: 5px;
+    left: 50%;
+    height: 50%;
   }
 }
 

@@ -10,26 +10,26 @@ const Hero = ({ trending }) => {
     <section className={styles.hero}>
       <div className={styles.heroBackground}>
         <img
-          src={`https://image.tmdb.org/t/p/w1280${trending.results[2].backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/w1280${trending.results[9].backdrop_path}`}
         />
       </div>
       <div className={styles.heroContent}>
-        <h1 className={styles.heroTitle}>{trending.results[2].title}</h1>
+        <h1 className={styles.heroTitle}>{trending.results[0].title}</h1>
         <div className={styles.heroGeneral}>
           <p className={styles.heroRating}>
             <span className={styles.heroRatingIcon}>
               <AiFillStar />
             </span>
             <span>
-              {trending.results[2].vote_average} /
-              {trending.results[2].vote_count}
+              {trending.results[0].vote_average} /
+              {trending.results[0].vote_count}
             </span>
           </p>
           <p className={styles.heroLenght}></p>
           <p className={styles.heroGenre}></p>
-          <p className={styles.heroDate}>{trending.results[2].release_date}</p>
+          <p className={styles.heroDate}>{trending.results[0].release_date}</p>
         </div>
-        <p className={styles.heroTrama}>{trending.results[2].overview}</p>
+        <p className={styles.heroTrama}>{trending.results[0].overview}</p>
 
         <button className={styles.heroPlay}>
           <p className={styles.heroPlayIcon}>
