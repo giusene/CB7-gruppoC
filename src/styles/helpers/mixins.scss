@@ -1,14 +1,15 @@
 @mixin flexbox-hrz($gap) {
   display: flex;
-  align-items: center;
+  justify-content: safe center;
+  align-items: safe center;
   gap: $gap;
 }
 
 @mixin flexbox-vrt($gap) {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: safe center;
+  align-items: safe center;
   gap: $gap;
 }
 
@@ -49,4 +50,3 @@
   flex-direction: column;
   gap: $gap;
 }
-
