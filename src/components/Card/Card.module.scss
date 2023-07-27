@@ -25,6 +25,10 @@
         transform: translateX(100%);
       }
     }
+
+    .close{
+      display: none;
+    }
   }
   // END DESKTOP
 
@@ -43,13 +47,36 @@
         transform: translateX(100%);
       }
     }
+
+    .close{
+      display: none;
+    }
   }
   //END LAPTOP
 
   // -----   TABLET  ----------
-  @include md {
-    .Card {
-      position: relative;
+
+    @include md{
+      .Card{
+        position: relative;
+      }
+        
+      .overlay{
+        z-index: 900;
+        transform: translateY(-100%);
+      }
+    
+      .noTitle{
+        transform: translateX(100%);
+      }
+
+      .close{
+        display: block;
+        
+      }
+
+    
+
     }
 
     .overlay {
@@ -69,9 +96,33 @@
       position: relative;
     }
 
-    .overlay {
-      z-index: 900;
-      transform: translateY(-100%);
+
+    //-----   MOBILE  ----------
+    @include xs{
+      
+      .Card{
+        position: relative;
+      
+      }
+
+
+      .overlay{
+        z-index: 900;
+        transform: translateY(-100%);
+      }
+
+      .noTitle{
+        transform: translateX(100%);
+        
+      }
+
+      .close{
+        display: block;
+        
+        
+      }
+      
+
     }
 
     .noTitle {
@@ -128,10 +179,14 @@
 
     border-radius: 0px 0px 8px 8px;
 
-    .left {
-      @include flexColumn(5px);
-      justify-content: space-between;
-      width: 93%;
+
+    .left{
+      @include flexColumn(10px);
+      
+      width: 90%;
+
+  
+
 
       .card_title {
         @include flexbox-hrz-space-between();
@@ -144,61 +199,86 @@
       .overview {
         font-weight: 500;
         font-size: $par-xs;
-        width: 90%;
+
+        width: 85%;
+      }
+  
+      .date {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 20px;
+
+        .votes{
+          font-weight: 400;
+          font-size: $par-xs;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+
+          .star{
+            fill:$color-star;
+          }
+        }
+        
+        
+        .year{
+          font-weight: 400;
+          font-size: $par-sm;
+        
+        }
       }
 
-      .year {
-        font-weight: 400;
-        font-size: $par-sm;
+      .close_button{
+        
+        .close{
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          font-size: $subtitle;
+          width: 200px;
+          height: 30px;
+          border-radius: 50%;
+          transform: translateX(-50%);
+          
+            }
+
+
       }
+
+
     }
 
-    // .trailer {
-    //   @include flexCenter(0);
-    //   width: 100%;
 
-    //   .button {
-    //     border-radius: 4px;
-    //     background-color: $color-action;
-    //     padding: 5px 7px;
-    //     border: none;
-    //     font-size: $par-xs;
-    //     cursor: pointer;
-    //     z-index: 200;
 
-    //     &:active {
-    //       background-color: $color-action-active;
-    //     }
 
-    //     &:hover {
-    //       background-color: $color-action-hover;
-    //     }
-    //   }
-    // }
+      .icons{
+        @include flexColumn(7px);
+        width: 10%;
+        align-items: center;
+        justify-content: flex-start;
+        z-index: 900;
+        
 
-    .icons {
-      @include flexColumn(15px);
-      width: 10%;
-      align-items: center;
-      justify-content: center;
-      z-index: 900;
+        .action{
+          background-color: $color-secondary;
+          border-radius: 50%;
+          width: $subtitle;
+          height: $subtitle;
+          @include flexCenter(0)
+        }
+        
+        .heart, .plus, .people{
+          font-size: $icons;
+          fill: $color-primary;
+          
+          // &.svg{
+          //   @include flexCenter(0)
+          // }
+        }
+      
 
-      .action {
-        background-color: $color-secondary;
-        border-radius: 50%;
-        width: $subtitle;
-        height: $subtitle;
-        @include flexCenter(0);
-      }
-
-      .heart,
-      .plus,
-      .people {
-        font-size: $icons;
-        fill: $color-primary;
-        // &.svg{
-        //   @include flexCenter(0)
-        // }
       }
     }
   }
