@@ -9,10 +9,9 @@ import {
 
 const Hero = ({ trending }) => {
   const [nextMovie, setNextMovie] = useState(0);
-  const movie = useRef();
 
   useEffect(() => {
-    setTimeout(onClickNextMovie, 1000);
+    setTimeout(onClickNextMovie, 5000);
   }, [nextMovie]);
 
   const onClickNextMovie = () => {
@@ -24,7 +23,7 @@ const Hero = ({ trending }) => {
   };
 
   return (
-    <section className={styles.hero} ref={movie}>
+    <section className={styles.hero}>
       <button className={styles.nextBtn} onClick={onClickNextMovie}>
         <MdOutlineKeyboardArrowRight />
       </button>
