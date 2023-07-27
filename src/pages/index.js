@@ -27,7 +27,7 @@ export default function Home({
       <Hero trending={trending} />
       <ul className={styles.categoryList}>
         <li>
-          <h2>Trending today</h2>
+          <h2>Popular this week</h2>
           <Cards data={trending} />
         </li>
         <li>
@@ -39,7 +39,7 @@ export default function Home({
           <Cards data={movieGenreAnimation} />
         </li>
         <li>
-          <h2>Documentary</h2>
+          <h2>Documentaries</h2>
           <Cards data={movieGenreDocumentary} />
         </li>
         <li>

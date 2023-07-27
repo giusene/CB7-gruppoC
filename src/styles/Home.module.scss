@@ -4,10 +4,13 @@
 
   h2 {
     @extend %title;
+    padding: 0 12px;
+    font-weight: 600;
   }
 
   .wrapper {
     @include flexbox-hrz(10px);
+    margin-top: 10px;
     flex-wrap: wrap;
     padding: $padding-gen;
 
