@@ -27,6 +27,7 @@ const Navbar = () => {
   const onChangeValue = (e) => setUserInput(e.target.value);
 
   const onSubmitRoute = (e) => {
+    setUserInput("");
     e.preventDefault();
     router.pathname.includes("search")
       ? router.push(userInput)
@@ -86,6 +87,7 @@ const Navbar = () => {
           className={styles.input}
           type="text"
           placeholder="Search..."
+          value={userInput}
         />
       </form>
 
