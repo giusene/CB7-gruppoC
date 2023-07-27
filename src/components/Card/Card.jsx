@@ -1,12 +1,11 @@
 import styles from "./Card.module.scss";
-import { AiFillHeart, AiOutlineHeart, AiOutlinePlus } from "react-icons/Ai";
+import { AiOutlinePlus } from "react-icons/Ai";
 import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/Bs";
 import { useState } from "react";
 
 const Card = ({ mock }) => {
-
-  const [overlay, setOverlay] = useState(false)
-  const onOverlay = () => setOverlay(prev => !prev)
+  const [overlay, setOverlay] = useState(false);
+  const onOverlay = () => setOverlay((prev) => !prev);
 
   const [heart, setHeart] = useState(false);
   const changedHeart = () => setHeart((prev) => !prev);
@@ -17,12 +16,6 @@ const Card = ({ mock }) => {
   const [people, setPeople] = useState(false);
   const changePeople = () => setPeople((prev) => !prev);
 
-
-  const prova = ()=> {
-    console.log("eeeeeee")
-  }
-
-
   const minutesInHours = (data) => {
     const hours = Math.floor(data / 60);
     const minutes = data % 60;
@@ -30,11 +23,16 @@ const Card = ({ mock }) => {
     return `${hours}h ${minutes}m`;
   };
 
+  const truncateString = (string, wordsNumber) => {
+    return string.split(" ").splice(0, wordsNumber).join(" ");
+  };
+
+  console.log(mock);
+
   return (
     mock.backdrop_path && (
       <>
-        <div className={styles.Card} >
-
+        <div className={styles.Card}>
           <div className={styles.bgCard} onClick={onOverlay}>
             <img
               className={styles.bgImage}
@@ -42,20 +40,24 @@ const Card = ({ mock }) => {
               alt=""
             />
             <div className={styles.black}>
-              <p className={`${styles.black_parag} ${overlay && styles.noTitle}`}>{mock.title}</p>
+              <p
+                className={`${styles.black_parag} ${overlay && styles.noTitle}`}
+              >
+                {mock.title}
+              </p>
             </div>
           </div>
 
-        
           <div className={`${styles.text} ${overlay && styles.overlay}`}>
-
             <div className={styles.left}>
               <div className={styles.card_title}>
                 <h3 className={styles.text_title}>{mock.title}</h3>
               </div>
               <div className={styles.info}>
-                <div >
-                  <p className={styles.year}>{mock.release_date.slice(0, 4)}</p>
+                <div>
+                  <p className={styles.year}>
+                    {mock.release_date.split("-", 1)}
+                  </p>
                 </div>
                 {mock.runtime && (
                   <div className="duration">{minutesInHours(mock.runtime)}</div>
@@ -63,43 +65,27 @@ const Card = ({ mock }) => {
               </div>
               <div className="card_description">
                 <p className={styles.overview}>
-                  {mock.overview.slice(0, 90) + "..."}
+                  {`${truncateString(mock.overview, 20)} ...`}
                 </p>
-              </div>
-              <div className={styles.trailer}>
-                  <button className={styles.button}>WATCH TRAILER</button>
               </div>
             </div>
 
-
-
-            
-              <div className={styles.icons}>
-                <p className={styles.action} >
-            
-                    <BsFillPlayFill className={styles.heart} />
-                  
-                </p>
-                <p className={styles.action} onClick={() => changePlus()}>
-    
-                    <AiOutlinePlus className={styles.plus} />
-                 
-                </p>
-                <p className={styles.action} onClick={() => changePeople()}>
-                  {people ? (
-                    <BsFillPeopleFill className={styles.people} />
-                  ) : (
-                    <BsPeople className={styles.people} />
-                  )}
-                </p>
-                
-              </div>
-
-            
-
+            <div className={styles.icons}>
+              <p className={styles.action}>
+                <BsFillPlayFill className={styles.heart} />
+              </p>
+              <p className={styles.action} onClick={() => changePlus()}>
+                <AiOutlinePlus className={styles.plus} />
+              </p>
+              <p className={styles.action} onClick={() => changePeople()}>
+                {people ? (
+                  <BsFillPeopleFill className={styles.people} />
+                ) : (
+                  <BsPeople className={styles.people} />
+                )}
+              </p>
+            </div>
           </div>
-
-
         </div>
       </>
     )

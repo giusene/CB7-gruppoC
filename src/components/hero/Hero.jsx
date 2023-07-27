@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Hero.module.scss";
-import { BsFillPlayFill } from "react-icons/bs";
+import { BsFillPlayFill } from "react-icons/Bs";
 import { AiFillStar } from "react-icons/Ai";
 import {
   MdOutlineKeyboardArrowRight,
