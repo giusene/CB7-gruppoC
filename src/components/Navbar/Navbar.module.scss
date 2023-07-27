@@ -37,6 +37,8 @@
   }
 
   .loggedUser {
+    color: $color-secondary;
+
     @include flexbox-hrz-space-between();
     gap: 10px;
     .loggedUser__img {
