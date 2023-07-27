@@ -10,18 +10,17 @@
   z-index: 1;
   position: relative;
 
-
   //DESKTOP
-  @include lg{
+  @include lg {
     &:hover {
       transform: scale(1.1);
       z-index: 100;
       position: relative;
-  
+
       .text {
         bottom: 0;
       }
-  
+
       .black_parag {
         transform: translateX(100%);
       }
@@ -34,16 +33,16 @@
   // END DESKTOP
 
   //LAPTOP
-  @include xl{
+  @include xl {
     &:hover {
       transform: scale(1.1);
       z-index: 100;
       position: relative;
-  
+
       .text {
         bottom: 0;
       }
-  
+
       .black_parag {
         transform: translateX(100%);
       }
@@ -55,8 +54,8 @@
   }
   //END LAPTOP
 
-
   // -----   TABLET  ----------
+
     @include md{
       .Card{
         position: relative;
@@ -77,10 +76,25 @@
       }
 
     
+
     }
-    //-----  END TABLET  ----------
 
+    .overlay {
+      z-index: 900;
+      transform: translateY(-100%);
+    }
 
+    .noTitle {
+      transform: translateX(100%);
+    }
+  }
+  //-----  END TABLET  ----------
+
+  //-----   MOBILE  ----------
+  @include xs {
+    .Card {
+      position: relative;
+    }
 
 
     //-----   MOBILE  ----------
@@ -108,12 +122,15 @@
         
       }
       
+
     }
-    
-    //-----  END MOBILE  ----------
 
- 
+    .noTitle {
+      transform: translateX(100%);
+    }
+  }
 
+  //-----  END MOBILE  ----------
 
   .bgCard {
     @include dimensions(100%, 169px, 0);
@@ -170,18 +187,19 @@
 
   
 
+
       .card_title {
         @include flexbox-hrz-space-between();
       }
-  
-  
+
       .info {
         @include flexbox-hrz(15px);
       }
-  
+
       .overview {
         font-weight: 500;
         font-size: $par-xs;
+
         width: 85%;
       }
   
@@ -226,33 +244,10 @@
           
             }
 
+
       }
 
 
-    }
-  
-    .trailer{
-      @include flexCenter(0);
-      width: 100%;
-      
-      
-      .button{
-        border-radius: 4px;
-        background-color: $color-action;
-        padding: 5px 7px;
-        border: none;
-        font-size: $par-xs;
-        cursor: pointer;
-        z-index: 200;
-  
-        &:active{
-          background-color: $color-action-active;
-        }
-  
-        &:hover{
-          background-color: $color-action-hover;
-        }
-      }
     }
 
 
@@ -283,18 +278,11 @@
           // }
         }
       
+
       }
-
-
- 
-    
+    }
   }
-
-
 }
-
-
-
 
 .bgCard {
   @include dimensions(100%, 169px, 0);
@@ -330,5 +318,3 @@
     transition: all 0.35s ease-in-out;
   }
 }
-
-
