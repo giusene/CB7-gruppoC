@@ -16,23 +16,59 @@
     list-style-type: none;
   }
 
-  input {
-    width: 300px;
-    height: 30px;
-    padding-left: 10px;
-    background-color: transparent;
-    color: $color-secondary;
-    border: solid 1px $color-secondary;
-    border-radius: 20px;
-    outline: none;
+  form {
+    @include target(red);
+    height: 40px;
+    border: solid 2px $color-navbar;
+    border-radius: 16px;
+    @include flexbox-hrz(20px);
+
+    svg {
+      margin-left: 10px;
+      fill: $color-navbar;
+      scale: 1.2;
+    }
+
+    input {
+      width: 300px;
+      height: 30px;
+      background-color: transparent;
+      border: none;
+      color: $color-secondary;
+      outline: none;
+    }
+    ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $color-navbar;
+      opacity: 1; /* Firefox */
+    }
+
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: $color-navbar;
+    }
+
+    ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: $color-navbar;
+    }
   }
 
   button {
-    @include button(10px, $color-secondary);
+    @include button(10px, $color-primary);
     padding: 10px;
+    height: 40px;
+    width: 100px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    border: 1px solid $color-secondary;
 
     &:hover {
       box-shadow: $elevation-small;
+    }
+
+    &:active {
+      scale: 0.99;
     }
   }
 

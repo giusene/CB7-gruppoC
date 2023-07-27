@@ -17,6 +17,8 @@ import { setDoc, doc } from "firebase/firestore";
 // import style
 import styles from "./Navbar.module.scss";
 
+import { BsSearch } from "react-icons/Bs";
+
 const Navbar = () => {
   const { state, dispatch } = useContext(MainContext);
 
@@ -82,6 +84,7 @@ const Navbar = () => {
       />
 
       <form onSubmit={onSubmitRoute}>
+        <BsSearch />
         <input
           onChange={(e) => onChangeValue(e)}
           className={styles.input}
