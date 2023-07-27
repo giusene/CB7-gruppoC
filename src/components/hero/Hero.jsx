@@ -42,13 +42,13 @@ const Hero = ({ trending }) => {
               <AiFillStar />
             </span>
             <span>
-              {trending.results[nextMovie].vote_average} /
-              {trending.results[nextMovie].vote_count}
-            </span>
-            <span className={styles.heroDate}>
-              {trending.results[nextMovie].release_date}
+              {trending.results[nextMovie].vote_average} (
+              {trending.results[nextMovie].vote_count})
             </span>
           </p>
+          <span className={styles.heroDate}>
+            {trending.results[nextMovie].release_date}
+          </span>
         </div>
         <p className={styles.heroTrama}>
           {trending.results[nextMovie].overview}
