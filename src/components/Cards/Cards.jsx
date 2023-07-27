@@ -8,7 +8,7 @@ const Cards = ({ data }) => {
     <>
       <div className={styles.Cards}>
         {data.results.map((mock) => (
-          <Card mock={mock} />
+          <Card mock={mock} key={mock.id} />
         ))}
       </div>
     </>
