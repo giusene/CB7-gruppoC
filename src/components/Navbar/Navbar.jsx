@@ -44,10 +44,10 @@ const Navbar = () => {
           doc(db, "users", userData.localId),
           {
             id: userData.localId,
-            firstName: userData.firstName,
-            lastName: userData.lastName,
-            email: userData.email,
-            userImg: userData.photoUrl,
+            firstName: userData?.firstName || "",
+            lastName: userData?.lastName || "",
+            email: userData?.email || "",
+            userImg: userData?.photoUrl || "",
           },
           { merge: true }
         );
@@ -56,10 +56,10 @@ const Navbar = () => {
           type: "SET_USER_LOGGED",
           payload: {
             id: userData.localId,
-            firstName: userData.firstName,
-            lastName: userData.lastName,
-            email: userData.email,
-            userImg: userData.photoUrl,
+            firstName: userData?.firstName || "",
+            lastName: userData?.lastName || "",
+            email: userData?.email || "",
+            userImg: userData?.photoUrl || "",
           },
         });
       });
