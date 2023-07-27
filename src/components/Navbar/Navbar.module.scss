@@ -36,6 +36,16 @@
     }
   }
 
+  .loggedUser {
+    @include flexbox-hrz-space-between();
+    gap: 10px;
+    .loggedUser__img {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+    }
+  }
+
   @include xs() {
     input {
       max-width: 120px;

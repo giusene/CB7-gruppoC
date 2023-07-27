@@ -90,7 +90,14 @@ const Navbar = () => {
       </form>
 
       {state.user.isLogged ? (
-        <p>{state.user.firstName}</p>
+        <div className={styles.loggedUser}>
+          <img
+            className={styles.loggedUser__img}
+            src={state.user.userImg}
+            alt={state.user.firstName}
+          />
+          <p>{state.user.firstName}</p>
+        </div>
       ) : (
         <button onClick={signIn}>Login</button>
       )}
