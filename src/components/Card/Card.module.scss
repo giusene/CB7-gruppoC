@@ -26,6 +26,10 @@
         transform: translateX(100%);
       }
     }
+
+    .close{
+      display: none;
+    }
   }
   // END DESKTOP
 
@@ -43,6 +47,10 @@
       .black_parag {
         transform: translateX(100%);
       }
+    }
+
+    .close{
+      display: none;
     }
   }
   //END LAPTOP
@@ -63,6 +71,10 @@
         transform: translateX(100%);
       }
 
+      .close{
+        display: block;
+        
+      }
 
     
     }
@@ -76,6 +88,7 @@
       
       .Card{
         position: relative;
+      
       }
 
 
@@ -88,6 +101,13 @@
         transform: translateX(100%);
         
       }
+
+      .close{
+        display: block;
+        
+        
+      }
+      
     }
     
     //-----  END MOBILE  ----------
@@ -144,11 +164,11 @@
 
 
     .left{
-      @include flexColumn(5px);
-      justify-content: space-between;
-      width: 93%;
+      @include flexColumn(10px);
+      
+      width: 90%;
 
-
+  
 
       .card_title {
         @include flexbox-hrz-space-between();
@@ -162,13 +182,53 @@
       .overview {
         font-weight: 500;
         font-size: $par-xs;
-        width: 80%;
+        width: 85%;
       }
   
-      .year{
-        font-weight: 400;
-        font-size: $par-sm;
+      .date {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 20px;
+
+        .votes{
+          font-weight: 400;
+          font-size: $par-xs;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+
+          .star{
+            fill:$color-star;
+          }
+        }
+        
+        
+        .year{
+          font-weight: 400;
+          font-size: $par-sm;
+        
+        }
       }
+
+      .close_button{
+        
+        .close{
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          font-size: $subtitle;
+          width: 200px;
+          height: 30px;
+          border-radius: 50%;
+          transform: translateX(-50%);
+          
+            }
+
+      }
+
+
     }
   
     .trailer{
@@ -200,7 +260,7 @@
 
       .icons{
         @include flexColumn(7px);
-        width: 6%;
+        width: 10%;
         align-items: center;
         justify-content: flex-start;
         z-index: 900;
