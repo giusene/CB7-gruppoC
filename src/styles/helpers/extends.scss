@@ -3,3 +3,11 @@
   justify-content: center;
   align-items: center;
 }
+
+%title {
+  font-size: $title;
+  padding: $padding-sm;
+
+  @include xs() {
+  }
+}

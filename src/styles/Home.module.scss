@@ -1,0 +1,8 @@
+.categoryList {
+  @include flexColumn(20px);
+  margin: 20px 0;
+
+  h2 {
+    @extend %title;
+  }
+}
