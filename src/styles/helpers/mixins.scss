@@ -56,3 +56,9 @@
   gap: $gap;
 }
 
+@mixin flexCenter($gap){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap;
+}
