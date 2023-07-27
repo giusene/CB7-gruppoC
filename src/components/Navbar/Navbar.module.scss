@@ -4,6 +4,10 @@
   padding: 20px;
   background-color: $color-primary;
 
+  .logoFull {
+    cursor: pointer;
+  }
+
   .logoImg {
     display: none;
   }
@@ -29,6 +33,18 @@
 
     &:hover {
       box-shadow: $elevation-small;
+    }
+  }
+
+  .loggedUser {
+    color: $color-secondary;
+
+    @include flexbox-hrz-space-between();
+    gap: 10px;
+    .loggedUser__img {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
     }
   }
 

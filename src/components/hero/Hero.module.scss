@@ -1,110 +1,7 @@
-// // @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital@1&display=swap");
-
-// .heroBackground {
-//   background-size: cover;
-//   background-position: center;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   height: 100vh;
-//   margin: 0;
-//   padding: 0;
-// }
-
-// .heroContent {
-//   text-align: left;
-//   width: 650px;
-//   height: 320px;
-//   position: absolute;
-//   bottom: 50px;
-//   left: 60px;
-//   padding: 20px;
-//   background-color: transparent;
-//   font-family: "Bebas Neue", sans-serif;
-// }
-
-// .heroTitle {
-//   font-size: 54px;
-//   font-weight: bold;
-//   color: #fff;
-//   margin-bottom: 20px;
-//   color: #000;
-// }
-
-// .heroTrama {
-//   font-size: 16px;
-//   color: #000;
-//   margin-bottom: 40px;
-// }
-
-// .heroGeneral {
-//   display: flex;
-// }
-
-// .heroGeneral p {
-//   display: inline;
-//   margin: 0px 10px 10px 0px;
-//   padding: 5px;
-// }
-
-// .heroRatingIcon {
-//   display: flex;
-//   align-items: center;
-//   color: #f1c40f;
-//   margin-bottom: 10px;
-// }
-
-// .heroRating svg {
-//   margin-right: 5px;
-// }
-
-// .heroPlay {
-//   display: flex;
-//   justify-content: center;
-//   width: 160px;
-//   background-color: #1e57ff;
-//   color: #e0e4ed;
-//   padding: 12px 20px;
-//   border: 1px solid #1e57ff;
-//   border-radius: 8px;
-//   font-size: 14px;
-//   margin-right: 20px;
-//   font-family: "Bebas Neue", sans-serif;
-//   align-self: center;
-//   cursor: pointer;
-// }
-
-// .heroPlayIcon {
-//   display: inline;
-//   margin-right: 5px;
-// }
-
-// .heroPlay:hover {
-//   opacity: 1;
-//   background-color: #063ad5;
-//   border: 1px solid #063ad5;
-//   color: #fff;
-// }
-
-// .heroTrailer {
-//   width: 160px;
-//   background-color: #323844;
-//   color: #e0e4ed;
-//   padding: 12px 20px;
-//   border: 1px solid #323844;
-//   border-radius: 8px;
-//   font-size: 14px;
-//   margin-right: 20px;
-//   font-family: "Bebas Neue", sans-serif;
-//   cursor: pointer;
-// }
-
-// .heroTrailer:hover {
-//   opacity: 1;
-//   background-color: #444;
-//   border: 1px solid #444;
-//   color: #fff;
-// }
+// $mobile: 0px; //xs
+// $tablet: 768px; //md
+// $laptop: 1024px; //lg
+// $desktop: 1440px; //xl
 
 // @mixin xs() {
 //   @media only screen and (min-width: $mobile) and (max-width: #{$tablet - 1}) {
@@ -112,38 +9,71 @@
 //   }
 // }
 
-// @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital@1&display=swap");
-
-$mobile: 768px;
-$tablet: 1024px;
-
-@mixin xs() {
-  @media only screen and (max-width: #{$tablet - 1}) {
-    @content;
-  }
-}
-
 @mixin sm() {
   @media only screen and (max-width: $mobile) {
     @content;
   }
 }
 
+// @mixin md() {
+//   @media only screen and (min-width: $tablet) and (max-width: #{$laptop - 1}) {
+//     @content;
+//   }
+// }
+// @mixin lg() {
+//   @media only screen and (min-width: $laptop) and (max-width: #{$desktop - 1}) {
+//     @content;
+//   }
+// }
+// @mixin xl() {
+//   @media only screen and (min-width: $desktop) {
+//     @content;
+//   }
+// }
+
+.hero {
+  max-height: 720px;
+
+  @mixin lg() {
+    @media only screen and (min-width: $laptop) and (max-width: #{$desktop - 1}) {
+    }
+  }
+  @mixin xl() {
+    @media only screen and (min-width: $desktop) {
+    }
+  }
+}
+
 .heroBackground {
-  background-size: cover;
-  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
   margin: 0;
   padding: 0;
+  position: relative;
+}
+
+.heroBackground img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  @mixin lg() {
+    @media only screen and (min-width: $laptop) and (max-width: #{$desktop - 1}) {
+      // object-fit: cover;
+    }
+  }
+  @mixin xl() {
+    @media only screen and (min-width: $desktop) {
+    }
+  }
 }
 
 .heroContent {
   text-align: left;
   width: 90%;
-  max-width: 650px;
+  max-width: 900px;
   height: auto;
   position: absolute;
   bottom: 5%;
@@ -151,10 +81,9 @@ $tablet: 1024px;
   padding: 20px;
   background-color: transparent;
   font-family: "Bebas Neue", sans-serif;
+  color: #fff;
 
   @include sm() {
-    bottom: 20px;
-    left: 50%;
     transform: translateX(-50%);
     padding: 10px;
   }
@@ -163,13 +92,13 @@ $tablet: 1024px;
 .heroTitle {
   font-size: 3em;
   font-weight: bold;
-  color: #000;
+  // color: #000;
   margin-bottom: 20px;
 }
 
 .heroTrama {
-  font-size: 1em;
-  color: #000;
+  font-size: 16px;
+  // color: #000;
   margin-bottom: 20px;
 }
 
@@ -179,7 +108,7 @@ $tablet: 1024px;
   margin-bottom: 20px;
 }
 
-.heroGeneral p {
+.heroGeneral p span {
   display: inline;
   margin: 0 10px 10px 0;
   padding: 5px;
@@ -218,7 +147,6 @@ $tablet: 1024px;
   margin-right: 20px;
   font-family: "Bebas Neue", sans-serif;
   cursor: pointer;
-  align-self: center;
   transition: background-color 0.3s;
 
   &:hover {
@@ -226,6 +154,10 @@ $tablet: 1024px;
     background-color: #063ad5;
     border: 1px solid #063ad5;
     color: #fff;
+  }
+
+  @include xs() {
+    margin-right: 10px;
   }
 }
 
@@ -253,5 +185,9 @@ $tablet: 1024px;
     background-color: #444;
     border: 1px solid #444;
     color: #fff;
+  }
+
+  @include xs() {
+    margin-bottom: 20px;
   }
 }
