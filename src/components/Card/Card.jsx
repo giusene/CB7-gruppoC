@@ -22,11 +22,11 @@ const Card = ({ mock }) => {
     const hours = Math.floor(data / 60);
     const minutes = data % 60;
 
-    const roundToDecim = (number) => {
-      return Math.round(number * 10) / 10;
-    };
-
     return `${hours}h ${minutes}m`;
+  };
+
+  const roundToDecim = (number) => {
+    return Math.round(number * 10) / 10;
   };
 
   const truncateString = (string, wordsNumber) => {
@@ -53,7 +53,6 @@ const Card = ({ mock }) => {
               </p>
             </div>
           </div>
-
           <div className={`${styles.text} ${overlay && styles.overlay}`}>
             <div className={styles.left}>
               <div className={styles.card_title}>
