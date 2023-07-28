@@ -25,15 +25,16 @@ const Card = ({ mock }) => {
     const hours = Math.floor(data / 60);
     const minutes = data % 60;
 
-    const roundToDecim = (number) => {
-      return Math.round(number * 10) / 10
-    }
-
-
-
-
     return `${hours}h ${minutes}m`;
   };
+
+
+
+  const roundToDecim = (number) => {
+    return Math.round(number * 10) / 10
+  }
+
+
 
   const truncateString = (string, wordsNumber) => {
     return string.split(" ").splice(0, wordsNumber).join(" ");
