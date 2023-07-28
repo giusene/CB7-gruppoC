@@ -1,6 +1,7 @@
 import { GET } from "@/utils/HTTP";
 import { useRouter } from "next/router";
 import styles from "@/styles/Movie.module.scss";
+import Comments from "@/components/Comments";
 
 export default function ({ movie }) {
   console.log(movie);
@@ -45,6 +46,7 @@ export default function ({ movie }) {
           </div>
         ))}
       </div>
+      <Comments />
     </div>
   );
 }
