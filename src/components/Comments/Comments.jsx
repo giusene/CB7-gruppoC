@@ -1,7 +1,7 @@
 import styles from "./Comments.module.scss";
 
 const Comments = () => {
-  return <form></form>;
+  return <form>ciao</form>;
 };
 
 export default Comments;
