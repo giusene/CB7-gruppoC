@@ -31,9 +31,7 @@ const Navbar = () => {
   const onSubmitRoute = (e) => {
     setUserInput("");
     e.preventDefault();
-    router.pathname.includes("search")
-      ? router.push(userInput)
-      : router.push(`search/${userInput}`);
+    router.push(`/search/${userInput}`);
   };
 
   const signIn = async () => {

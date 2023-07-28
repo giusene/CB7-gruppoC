@@ -18,20 +18,22 @@ export default function ({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h2 className={styles.subtitle}>All genres</h2>
-      <div className={styles.genreWrapper}>
-        {genres.map((genre) => (
-          <Badge data={genre} key={genre.id} />
-        ))}
-      </div>
-      <div className={styles.lineWrapper}>
-        <hr className={styles.line} />
-      </div>
-      <h1 className={styles.title}>Genre: {genreName}</h1>
-      <div className={styles.wrapper}>
-        {data.results.map((movie) => (
-          <Card mock={movie} key={movie.id} />
-        ))}
+      <div className={styles.genrePage}>
+        <h2 className={styles.subtitle}>All genres</h2>
+        <div className={styles.genreWrapper}>
+          {genres.map((genre) => (
+            <Badge data={genre} key={genre.id} />
+          ))}
+        </div>
+        <div className={styles.lineWrapper}>
+          <hr className={styles.line} />
+        </div>
+        <h1 className={styles.title}>Genre: {genreName}</h1>
+        <div className={styles.wrapper}>
+          {data.results.map((movie) => (
+            <Card mock={movie} key={movie.id} />
+          ))}
+        </div>
       </div>
     </>
   );

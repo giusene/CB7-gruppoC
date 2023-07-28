@@ -1,52 +1,56 @@
-.subtitle {
-  width: 100%;
-  text-align: center;
-  font-size: $subtitle;
-}
+.genrePage {
+  margin-top: 70px;
 
-.title {
-  @extend %title;
-
-  @include xs {
+  .subtitle {
     width: 100%;
     text-align: center;
+    font-size: $subtitle;
   }
 
-  @include md {
+  .title {
+    @extend %title;
+
+    @include xs {
+      width: 100%;
+      text-align: center;
+    }
+
+    @include md {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .genreWrapper {
+    @include flexbox-hrz(10px);
+    margin-top: 10px;
+    flex-wrap: wrap;
+    padding: $padding-gen;
+
+    @include xs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 20px $padding-gen;
+    }
+  }
+
+  .lineWrapper {
     width: 100%;
-    text-align: center;
+    padding: 30px 0;
+
+    .line {
+      width: 80%;
+      height: 2px;
+      border-radius: 50%;
+      color: $color-secondary;
+      margin: 0 auto;
+    }
   }
-}
 
-.genreWrapper {
-  @include flexbox-hrz(10px);
-  margin-top: 10px;
-  flex-wrap: wrap;
-  padding: $padding-gen;
-
-  @include xs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 20px $padding-gen;
+  .wrapper {
+    padding: 30px $padding-gen;
+    @include flexbox-hrz(30px);
+    flex-wrap: wrap;
   }
-}
-
-.lineWrapper {
-  width: 100%;
-  padding: 30px 0;
-
-  .line {
-    width: 80%;
-    height: 2px;
-    border-radius: 50%;
-    color: $color-secondary;
-    margin: 0 auto;
-  }
-}
-
-.wrapper {
-  padding: 30px $padding-gen;
-  @include flexbox-hrz(30px);
-  flex-wrap: wrap;
 }

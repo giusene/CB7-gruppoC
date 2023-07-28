@@ -1,8 +1,14 @@
 .Navbar {
   @include flexbox-hrz-space-between();
-  height: 80px;
+  width: 100%;
+  height: 70px;
   padding: 20px;
-  background-color: $color-primary;
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  z-index: 200;
 
   .logoFull {
     cursor: pointer;
@@ -17,15 +23,14 @@
   }
 
   form {
-    @include target(red);
     height: 40px;
-    border: solid 2px $color-navbar;
+    border: 2px solid $color-secondary-light;
     border-radius: 16px;
     @include flexbox-hrz(20px);
 
     svg {
       margin-left: 10px;
-      fill: $color-navbar;
+      fill: $color-secondary-light;
       scale: 1.2;
     }
 
@@ -39,18 +44,18 @@
     }
     ::placeholder {
       /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: $color-navbar;
+      color: $color-secondary-light;
       opacity: 1; /* Firefox */
     }
 
     :-ms-input-placeholder {
       /* Internet Explorer 10-11 */
-      color: $color-navbar;
+      color: $color-secondary-light;
     }
 
     ::-ms-input-placeholder {
       /* Microsoft Edge */
-      color: $color-navbar;
+      color: $color-secondary-light;
     }
   }
 
