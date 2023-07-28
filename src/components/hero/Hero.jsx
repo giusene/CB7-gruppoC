@@ -9,10 +9,21 @@ import {
 
 const Hero = ({ trending }) => {
   const [nextMovie, setNextMovie] = useState(0);
+  const timerRef = useRef(null);
 
   useEffect(() => {
-    setTimeout(onClickNextMovie, 6000);
+    timerRef.current = setTimeout(onClickNextMovie, 6000);
+
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
   }, [nextMovie]);
+
+  // useEffect(() => {
+  //   setTimeout(onClickNextMovie, 6000);
+  // }, [nextMovie]);
 
   const onClickNextMovie = () => {
     nextMovie === 4 ? setNextMovie(0) : setNextMovie(nextMovie + 1);
