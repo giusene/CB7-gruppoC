@@ -235,9 +235,13 @@
     .action {
       background-color: $color-secondary;
       border-radius: 50%;
-      width: $subtitle;
-      height: $subtitle;
+      width: 26px;
+      height: 26px;
       @include flexCenter(0);
+
+      &:active {
+        background-color: $color-primary;
+      }
     }
 
     .heart,
@@ -245,6 +249,10 @@
     .people {
       font-size: $icons;
       fill: $color-primary;
+
+      &:active {
+        fill: $color-secondary;
+      }
 
       // &.svg{
       //   @include flexCenter(0)
