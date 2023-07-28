@@ -68,7 +68,6 @@ const Hero = ({ trending }) => {
         <p className={styles.heroTrama}>
           {trending.results[nextMovie].overview}
         </p>
-
         <button className={styles.heroTrailer}>
           <p className={styles.heroPlayIcon}>
             <BsFillPlayFill />
