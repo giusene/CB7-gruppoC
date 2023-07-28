@@ -1,4 +1,3 @@
-
 export const mainReducer = (state, action) => {
   switch (action.type) {
     case "SET_USER_LOGGED":
@@ -7,7 +6,7 @@ export const mainReducer = (state, action) => {
         user: {
           ...state.user,
           isLogged: true,
-          id: action.payload.localId,
+          id: action.payload.id,
           firstName: action.payload.firstName,
           lastName: action.payload.lastName,
           email: action.payload.email,
