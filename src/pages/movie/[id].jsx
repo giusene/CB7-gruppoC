@@ -11,8 +11,14 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/Ai";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/Ai";
 import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/Bs";
 import { useState } from "react";
+import SimilarMovies from "@/components/SimilarMovie";
 
-export default function ({ movie, recommended, comments }) {
+
+export default function ({ movie, recommended }) {
+  console.log(movie);
+  console.log(recommended);
+
+
   const [addFilm, setAddFilm] = useState(false);
   const [likeFilm, setLikeFilm] = useState(false);
   const [suggestFilm, setSuggestFilm] = useState(false);
@@ -38,14 +44,12 @@ export default function ({ movie, recommended, comments }) {
         />
         <h1>{movie.title}</h1>
         <p>"{movie.tagline}"</p>
-        <button className={styles.watchTrailer}>
-          <p>
-            <span className={styles.heroPlayIcon}>
-              <BsFillPlayFill />
-            </span>
-            <span>Watch trailer</span>
-          </p>
-        </button>
+        <div className={styles.watchTrailer}>
+          <span className={styles.heroPlayIcon}>
+            <BsFillPlayFill />
+          </span>
+          <span>Watch trailer</span>
+        </div>
       </div>
       <div className={styles.movieInfoContainer}>
         <div className={styles.movieGeneral}>
@@ -121,19 +125,9 @@ export default function ({ movie, recommended, comments }) {
       </div>
       <h2>Similar Movies</h2>
       <div className={styles.similarMovies}>
-        {recommended.results.map(
-          (movie) =>
-            movie.backdrop_path !== null && (
-              <div className={styles.similarMovie}>
-                <div className={styles.similarMovieImg}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w185${movie.backdrop_path}`}
-                  />
-                </div>
-                <h3>{movie.title}</h3>
-              </div>
-            )
-        )}
+        {recommended.results.map((movie) => (
+          <SimilarMovies recommended={movie} />
+        ))}
       </div>
       <Comments id={movie.id} comments={comments} />
     </div>
