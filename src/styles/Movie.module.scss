@@ -1,0 +1,65 @@
+.Movie {
+  .mainContent {
+    position: relative;
+
+    h1 {
+      @extend %mainTitle;
+      position: absolute;
+      left: 5%;
+      bottom: 20%;
+      z-index: 9;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(27, 35, 48, 0.4) 50%,
+        rgba(27, 35, 48, 0.7) 60%,
+        rgba(27, 35, 48, 1) 95%
+      );
+      z-index: 1;
+    }
+  }
+
+  h2 {
+    text-align: center;
+    @extend %title;
+  }
+
+  .people {
+    @include flexbox-hrz(10px);
+    padding: 1%;
+    max-width: 100%;
+
+    .card {
+      @include flexColumn(10px);
+      justify-content: center;
+      align-items: center;
+
+      .movieImg {
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 50%;
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+}
