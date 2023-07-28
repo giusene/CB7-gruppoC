@@ -1,10 +1,18 @@
 .Movie {
+  //general
+
+  h2 {
+    text-align: center;
+    @extend %title;
+    font-weight: 500;
+  }
+
   //hero
   .mainContent {
     position: relative;
 
     h1 {
-      @extend %mainTitle;
+      @extend %title;
       position: absolute;
       left: 30px;
       bottom: 100px;
@@ -44,23 +52,31 @@
       position: absolute;
       right: 20px;
       bottom: 100px;
-      width: 25%;
-      height: 60px;
-      @include flexbox-hrz(5px);
-      padding: 10px;
+      @include flexbox-hrz(2px);
+      justify-content: center;
+      align-items: center;
+      width: 20%;
+      height: 50px;
       background-color: #1e57ff;
       border-radius: 20px;
+      z-index: 10;
+      border: none;
+      text-align: center;
       cursor: pointer;
-      z-index: 999;
 
-      &:hover,
-      &:target {
+      &:hover {
         box-shadow: $elevation-medium;
       }
-    }
-    //end hero
-  }
 
+      @include xs() {
+        left: 40px;
+        bottom: 20px;
+      }
+    }
+  }
+  //end hero
+
+  //movie interactions
   .movieInfoContainer {
     @include flexbox-hrz-space-between();
     padding: $padding-md;
@@ -84,6 +100,7 @@
       }
     }
   }
+  //end movie interactions
 
   //movie info
   .dataContainer {
@@ -98,12 +115,6 @@
       @include flexbox-hrz(30%);
       padding: $padding-md;
       margin: 20px 0;
-
-      @include xs() {
-        p {
-          font-size: 12px;
-        }
-      }
     }
 
     .overview {
@@ -125,10 +136,6 @@
   .peopleContainer {
     @include flexColumn(3px);
     overflow-x: auto;
-
-    @include xs() {
-      flex-wrap: wrap;
-    }
 
     .people {
       @include flexbox-hrz(20px);
@@ -211,11 +218,6 @@
   }
   // end backdrops
 
-  h2 {
-    text-align: center;
-    @extend %title;
-  }
-
   //similar movies
   .similarMovies {
     @include flexbox-hrz(10px);
@@ -225,14 +227,19 @@
     margin-left: 15px;
 
     h3 {
-      min-height: 60px;
+      min-height: 70px;
     }
 
-    .similarMovie img {
+    .noTitle {
+      display: none;
+    }
+
+    img {
       min-width: 100%;
       max-height: 100%;
       scroll-snap-align: start;
       border-radius: 10px;
+      cursor: pointer;
     }
 
     &::-webkit-scrollbar {
