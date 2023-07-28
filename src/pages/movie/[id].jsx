@@ -3,15 +3,21 @@ import { useRouter } from "next/router";
 import styles from "@/styles/Movie.module.scss";
 import { AiFillStar } from "react-icons/Ai";
 import Comments from "@/components/Comments";
+
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "@/plugins/firebase";
+
 import { AiOutlineHeart, AiFillHeart } from "react-icons/Ai";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/Ai";
 import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/Bs";
 import { useState } from "react";
 import SimilarMovies from "@/components/SimilarMovie";
 
+
 export default function ({ movie, recommended }) {
   console.log(movie);
   console.log(recommended);
+
 
   const [addFilm, setAddFilm] = useState(false);
   const [likeFilm, setLikeFilm] = useState(false);
@@ -123,19 +129,29 @@ export default function ({ movie, recommended }) {
           <SimilarMovies recommended={movie} />
         ))}
       </div>
-      <Comments />
+      <Comments id={movie.id} comments={comments} />
     </div>
   );
 }
 
 export async function getServerSideProps(router) {
   const movie = await GET("movie/", `${router.query.id}`);
+
   const recommended = await GET("movie/", `${router.query.id}/recommendations`);
+
+  const docSnap = await getDoc(doc(db, "movies", router.query.id.toString()));
+
+  const comments = [];
+
+  if (docSnap.exists()) {
+    comments.push(docSnap.data().comments);
+  }
 
   return {
     props: {
       movie,
       recommended,
+      comments,
     },
   };
 }
