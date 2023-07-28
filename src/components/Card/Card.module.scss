@@ -26,7 +26,7 @@
       }
     }
 
-    .close{
+    .close {
       display: none;
     }
   }
@@ -48,7 +48,7 @@
       }
     }
 
-    .close{
+    .close {
       display: none;
     }
   }
@@ -56,27 +56,9 @@
 
   // -----   TABLET  ----------
 
-    @include md{
-      .Card{
-        position: relative;
-      }
-        
-      .overlay{
-        z-index: 900;
-        transform: translateY(-100%);
-      }
-    
-      .noTitle{
-        transform: translateX(100%);
-      }
-
-      .close{
-        display: block;
-        
-      }
-
-    
-
+  @include md {
+    .Card {
+      position: relative;
     }
 
     .overlay {
@@ -87,8 +69,28 @@
     .noTitle {
       transform: translateX(100%);
     }
+
+    .close {
+      display: block;
+    }
   }
-  //-----  END TABLET  ----------
+
+  .overlay {
+    z-index: 900;
+    transform: translateY(-100%);
+  }
+
+  .noTitle {
+    transform: translateX(100%);
+  }
+}
+//-----  END TABLET  ----------
+
+//-----   MOBILE  ----------
+@include xs {
+  .Card {
+    position: relative;
+  }
 
   //-----   MOBILE  ----------
   @include xs {
@@ -96,190 +98,157 @@
       position: relative;
     }
 
-
-    //-----   MOBILE  ----------
-    @include xs{
-      
-      .Card{
-        position: relative;
-      
-      }
-
-
-      .overlay{
-        z-index: 900;
-        transform: translateY(-100%);
-      }
-
-      .noTitle{
-        transform: translateX(100%);
-        
-      }
-
-      .close{
-        display: block;
-        
-        
-      }
-      
-
+    .overlay {
+      z-index: 900;
+      transform: translateY(-100%);
     }
 
     .noTitle {
       transform: translateX(100%);
     }
-  }
 
-  //-----  END MOBILE  ----------
-
-  .bgCard {
-    @include dimensions(100%, 169px, 0);
-    overflow: hidden;
-    position: relative;
-    border-radius: 8px;
-  }
-
-  .bgImage {
-    border-radius: 8px;
-  }
-
-  .black {
-    @include dimensions(100%, 100%, 0);
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    padding: 5px 10px;
-    border-radius: 8px 0px 0px 0px;
-    transition: all 0.35s ease-in-out;
-    background: linear-gradient(
-      359deg,
-      rgba(0, 0, 0, 1) 1%,
-      rgba(255, 255, 255, 0) 43%
-    );
-
-    &_parag {
-      @include dimensions(100%, 100%, 5px 10px);
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      transition: all 0.35s ease-in-out;
+    .close {
+      display: block;
     }
   }
 
-  .text {
-    @include dimensions(300px, 169px, 0);
-    background-color: rgba(15, 15, 15, 0.5);
-    border-radius: 8px;
-    padding: $padding-card;
+  .noTitle {
+    transform: translateX(100%);
+  }
+}
+
+//-----  END MOBILE  ----------
+
+.bgCard {
+  @include dimensions(100%, 169px, 0);
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+}
+
+.bgImage {
+  border-radius: 8px;
+}
+
+.black {
+  @include dimensions(100%, 100%, 0);
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 5px 10px;
+  border-radius: 8px 0px 0px 0px;
+  transition: all 0.35s ease-in-out;
+  background: linear-gradient(
+    359deg,
+    rgba(0, 0, 0, 1) 1%,
+    rgba(255, 255, 255, 0) 43%
+  );
+
+  &_parag {
+    @include dimensions(100%, 100%, 5px 10px);
     display: flex;
-    position: absolute;
-    bottom: -100%; // -100%
-    left: 0;
+    align-items: flex-end;
+    justify-content: flex-end;
     transition: all 0.35s ease-in-out;
+  }
+}
 
-    border-radius: 0px 0px 8px 8px;
+.text {
+  @include dimensions(300px, 169px, 0);
+  background-color: rgba(15, 15, 15, 0.5);
+  border-radius: 8px;
+  padding: $padding-card;
+  display: flex;
+  position: absolute;
+  bottom: -100%; // -100%
+  left: 0;
+  transition: all 0.35s ease-in-out;
 
+  border-radius: 0px 0px 8px 8px;
 
-    .left{
-      @include flexColumn(10px);
-      
-      width: 90%;
+  .left {
+    @include flexColumn(10px);
 
-  
+    width: 90%;
 
-
-      .card_title {
-        @include flexbox-hrz-space-between();
-      }
-
-      .info {
-        @include flexbox-hrz(15px);
-      }
-
-      .overview {
-        font-weight: 500;
-        font-size: $par-xs;
-
-        width: 85%;
-      }
-  
-      .date {
-        width: 100%;
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        gap: 20px;
-
-        .votes{
-          font-weight: 400;
-          font-size: $par-xs;
-          display: flex;
-          align-items: center;
-          gap: 5px;
-
-          .star{
-            fill:$color-star;
-          }
-        }
-        
-        
-        .year{
-          font-weight: 400;
-          font-size: $par-sm;
-        
-        }
-      }
-
-      .close_button{
-        
-        .close{
-          position: absolute;
-          bottom: 10px;
-          left: 50%;
-          font-size: $subtitle;
-          width: 200px;
-          height: 30px;
-          border-radius: 50%;
-          transform: translateX(-50%);
-          
-            }
-
-
-      }
-
-
+    .card_title {
+      @include flexbox-hrz-space-between();
     }
 
+    .info {
+      @include flexbox-hrz(15px);
+    }
 
+    .overview {
+      font-weight: 500;
+      font-size: $par-xs;
 
+      width: 85%;
+    }
 
-      .icons{
-        @include flexColumn(7px);
-        width: 10%;
+    .date {
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      gap: 20px;
+
+      .votes {
+        font-weight: 400;
+        font-size: $par-xs;
+        display: flex;
         align-items: center;
-        justify-content: flex-start;
-        z-index: 900;
-        
+        gap: 5px;
 
-        .action{
-          background-color: $color-secondary;
-          border-radius: 50%;
-          width: $subtitle;
-          height: $subtitle;
-          @include flexCenter(0)
+        .star {
+          fill: $color-star;
         }
-        
-        .heart, .plus, .people{
-          font-size: $icons;
-          fill: $color-primary;
-          
-          // &.svg{
-          //   @include flexCenter(0)
-          // }
-        }
-      
-
       }
+
+      .year {
+        font-weight: 400;
+        font-size: $par-sm;
+      }
+    }
+
+    .close_button {
+      .close {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        font-size: $subtitle;
+        width: 200px;
+        height: 30px;
+        border-radius: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  .icons {
+    @include flexColumn(7px);
+    width: 10%;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 900;
+
+    .action {
+      background-color: $color-secondary;
+      border-radius: 50%;
+      width: $subtitle;
+      height: $subtitle;
+      @include flexCenter(0);
+    }
+
+    .heart,
+    .plus,
+    .people {
+      font-size: $icons;
+      fill: $color-primary;
+
+      // &.svg{
+      //   @include flexCenter(0)
+      // }
     }
   }
 }

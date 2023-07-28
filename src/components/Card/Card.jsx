@@ -6,10 +6,8 @@ import { AiFillStar } from "react-icons/Ai";
 import { useState } from "react";
 
 const Card = ({ mock }) => {
-
   const [overlay, setOverlay] = useState(false);
   const onOverlay = () => setOverlay((prev) => !prev);
-
 
   const [heart, setHeart] = useState(false);
   const changedHeart = () => setHeart((prev) => !prev);
@@ -20,17 +18,13 @@ const Card = ({ mock }) => {
   const [people, setPeople] = useState(false);
   const changePeople = () => setPeople((prev) => !prev);
 
-
   const minutesInHours = (data) => {
     const hours = Math.floor(data / 60);
     const minutes = data % 60;
 
     const roundToDecim = (number) => {
-      return Math.round(number * 10) / 10
-    }
-
-
-
+      return Math.round(number * 10) / 10;
+    };
 
     return `${hours}h ${minutes}m`;
   };
@@ -66,17 +60,15 @@ const Card = ({ mock }) => {
                 <h3 className={styles.text_title}>{mock.title}</h3>
               </div>
               <div className={styles.info}>
-
                 <div className={styles.date}>
-                  <p className={styles.year}>
-                    {mock.release_date.slice(0, 4)}
-                    </p>
+                  <p className={styles.year}>{mock.release_date.slice(0, 4)}</p>
 
                   <p className={styles.votes}>
-                  <AiFillStar className={styles.star}/>
-                  {`${Math.round(mock.vote_average * 10)/10} (${mock.vote_count} votes)`}
-                </p>
-
+                    <AiFillStar className={styles.star} />
+                    {`${Math.round(mock.vote_average * 10) / 10} (${
+                      mock.vote_count
+                    } votes)`}
+                  </p>
                 </div>
                 {mock.runtime && (
                   <div className="duration">{minutesInHours(mock.runtime)}</div>
@@ -84,20 +76,16 @@ const Card = ({ mock }) => {
               </div>
               <div className="card_description">
                 <p className={styles.overview}>
-
                   {`${truncateString(mock.overview, 20)} ...`}
-
                 </p>
-               
               </div>
 
               <div className={styles.close_button}>
-                
-                  <SlArrowDown className={styles.close} onClick={() => setOverlay(false)}  />
-               
+                <SlArrowDown
+                  className={styles.close}
+                  onClick={() => setOverlay(false)}
+                />
               </div>
-             
-
             </div>
 
             <div className={styles.icons}>

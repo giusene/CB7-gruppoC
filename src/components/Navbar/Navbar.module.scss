@@ -69,6 +69,8 @@
 
     &:active {
       scale: 0.99;
+      color: $color-primary;
+      background-color: $color-secondary;
     }
   }
 
