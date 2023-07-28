@@ -33,8 +33,6 @@ const Card = ({ mock }) => {
     return string.split(" ").splice(0, wordsNumber).join(" ");
   };
 
-  console.log(mock);
-
   return (
     mock.backdrop_path && (
       <>
