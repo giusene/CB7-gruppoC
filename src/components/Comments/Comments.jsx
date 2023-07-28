@@ -8,12 +8,10 @@ import { MainContext } from "@/store";
 
 import styles from "./Comments.module.scss";
 
-const Comments = ({ data }) => {
+const Comments = ({ id, comments }) => {
   const { state } = useContext(MainContext);
 
   const [comment, setComment] = useState("");
-
-  const [commentsArr, setCommentsArr] = useState([]);
 
   const onChangeValue = (e) => setComment(e.target.value);
 
@@ -21,14 +19,13 @@ const Comments = ({ data }) => {
     e.preventDefault();
 
     if (state.user.isLogged) {
-      // TODO: data.id.toString()
-      const docRef = doc(db, "movies", "530");
+      const docRef = doc(db, "movies", id.toString());
 
       console.log(getDoc(docRef));
 
-      if (docSnap.exists()) {
+      if (comments.length) {
         updateDoc(docRef, {
-          id: 530,
+          id: id,
           comments: arrayUnion({
             id: Date.now(),
             commentText: comment,
@@ -45,7 +42,7 @@ const Comments = ({ data }) => {
         setDoc(
           docRef,
           {
-            id: 530,
+            id: id,
             comments: {
               id: Date.now(),
               commentText: comment,
