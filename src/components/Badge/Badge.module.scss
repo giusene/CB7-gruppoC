@@ -2,6 +2,7 @@
   min-width: fit-content;
   font-size: $par-sm;
   font-weight: 700;
+  border: 2px solid $color-secondary;
   border-radius: $border-radius-4;
   padding: $padding-sm;
   @extend %center-content;

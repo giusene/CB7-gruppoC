@@ -1,9 +1,10 @@
 import { GET } from "@/utils/HTTP";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Badge from "@/components/Badge";
 import Card from "@/components/Card/Card";
-import styles from "@/styles/searchedGenre.module.scss";
 import { genres } from "@/utils/genres";
+import styles from "@/styles/searchedGenre.module.scss";
 
 export default function ({ data }) {
   const router = useRouter();
@@ -17,6 +18,15 @@ export default function ({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <h2 className={styles.subtitle}>All genres</h2>
+      <div className={styles.genreWrapper}>
+        {genres.map((genre) => (
+          <Badge data={genre} key={genre.id} />
+        ))}
+      </div>
+      <div className={styles.lineWrapper}>
+        <hr className={styles.line} />
+      </div>
       <h1 className={styles.title}>Genre: {genreName}</h1>
       <div className={styles.wrapper}>
         {data.results.map((movie) => (
