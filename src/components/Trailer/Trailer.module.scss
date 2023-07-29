@@ -1,0 +1,20 @@
+.Trailer {
+  position: absolute;
+  top: 0;
+  min-width: 100dvw;
+  height: 100dvh;
+  padding: 5% 2%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+
+  @include xs() {
+    padding: 12% 2%;
+  }
+
+  iframe {
+    border: none;
+    border-radius: 10px;
+    min-width: 100%;
+    height: 100%;
+  }
+}

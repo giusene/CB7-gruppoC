@@ -4,12 +4,15 @@ import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/Bs";
 import { SlArrowDown } from "react-icons/Sl";
 import { AiFillStar } from "react-icons/Ai";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Card = ({ mock }) => {
-
   const [overlay, setOverlay] = useState(false);
   const onOverlay = () => setOverlay((prev) => !prev);
 
+  const router = useRouter();
+
+  const onClickMovie = () => router.push(`/movie/${mock.id}`);
 
   const [heart, setHeart] = useState(false);
   const changedHeart = () => setHeart((prev) => !prev);
@@ -20,7 +23,6 @@ const Card = ({ mock }) => {
   const [people, setPeople] = useState(false);
   const changePeople = () => setPeople((prev) => !prev);
 
-
   const minutesInHours = (data) => {
     const hours = Math.floor(data / 60);
     const minutes = data % 60;
@@ -29,18 +31,17 @@ const Card = ({ mock }) => {
   };
 
 
-
   const roundToDecim = (number) => {
     return Math.round(number * 10) / 10
   }
 
-
+  const roundToDecim = (number) => {
+    return Math.round(number * 10) / 10;
+  };
 
   const truncateString = (string, wordsNumber) => {
     return string.split(" ").splice(0, wordsNumber).join(" ");
   };
-
-  console.log(mock);
 
   return (
     mock.backdrop_path && (
@@ -60,24 +61,24 @@ const Card = ({ mock }) => {
               </p>
             </div>
           </div>
-
-          <div className={`${styles.text} ${overlay && styles.overlay}`}>
+          <div
+            className={`${styles.text} ${overlay && styles.overlay}`}
+            onClick={onClickMovie}
+          >
             <div className={styles.left}>
               <div className={styles.card_title}>
                 <h3 className={styles.text_title}>{mock.title}</h3>
               </div>
               <div className={styles.info}>
-
                 <div className={styles.date}>
-                  <p className={styles.year}>
-                    {mock.release_date.slice(0, 4)}
-                    </p>
+                  <p className={styles.year}>{mock.release_date.slice(0, 4)}</p>
 
                   <p className={styles.votes}>
-                  <AiFillStar className={styles.star}/>
-                  {`${Math.round(mock.vote_average * 10)/10} (${mock.vote_count} votes)`}
-                </p>
-
+                    <AiFillStar className={styles.star} />
+                    {`${Math.round(mock.vote_average * 10) / 10} (${
+                      mock.vote_count
+                    } votes)`}
+                  </p>
                 </div>
                 {mock.runtime && (
                   <div className="duration">{minutesInHours(mock.runtime)}</div>
@@ -85,20 +86,16 @@ const Card = ({ mock }) => {
               </div>
               <div className="card_description">
                 <p className={styles.overview}>
-
                   {`${truncateString(mock.overview, 20)} ...`}
-
                 </p>
-               
               </div>
 
               <div className={styles.close_button}>
-                
-                  <SlArrowDown className={styles.close} onClick={() => setOverlay(false)}  />
-               
+                <SlArrowDown
+                  className={styles.close}
+                  onClick={() => setOverlay(false)}
+                />
               </div>
-             
-
             </div>
 
             <div className={styles.icons}>

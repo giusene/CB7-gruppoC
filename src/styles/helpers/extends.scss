@@ -4,10 +4,12 @@
   align-items: center;
 }
 
+%mainTitle {
+  font-size: $mainTitle;
+  padding: $padding-sm;
+}
+
 %title {
   font-size: $title;
   padding: $padding-sm;
-
-  @include xs() {
-  }
 }

@@ -15,13 +15,15 @@ export default function searchResult({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className={styles.searchTitle}>
-        Search results for "{router.query.searchedMovie}"
-      </h1>
-      <div className={styles.searchResult}>
-        {data.results.map((movie, i) => (
-          <Card mock={movie} key={i} />
-        ))}
+      <div className={styles.searchedMovie}>
+        <h1 className={styles.searchTitle}>
+          Search results for "{router.query.searchedMovie}"
+        </h1>
+        <div className={styles.searchResult}>
+          {data.results.map((movie, i) => (
+            <Card mock={movie} key={i} />
+          ))}
+        </div>
       </div>
     </>
   );

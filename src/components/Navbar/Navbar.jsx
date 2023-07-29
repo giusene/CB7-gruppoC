@@ -17,6 +17,8 @@ import { setDoc, doc } from "firebase/firestore";
 // import style
 import styles from "./Navbar.module.scss";
 
+import { BsSearch } from "react-icons/Bs";
+
 const Navbar = () => {
   const { state, dispatch } = useContext(MainContext);
 
@@ -29,9 +31,7 @@ const Navbar = () => {
   const onSubmitRoute = (e) => {
     setUserInput("");
     e.preventDefault();
-    router.pathname.includes("search")
-      ? router.push(userInput)
-      : router.push(`search/${userInput}`);
+    router.push(`/search/${userInput}`);
   };
 
   const signIn = async () => {
@@ -45,10 +45,10 @@ const Navbar = () => {
           doc(db, "users", userData.localId),
           {
             id: userData.localId,
-            firstName: userData?.firstName || "",
-            lastName: userData?.lastName || "",
-            email: userData?.email || "",
-            userImg: userData?.photoUrl || "",
+            firstName: userData.firstName || "",
+            lastName: userData.lastName || "",
+            email: userData.email || "",
+            userImg: userData.photoUrl || "",
           },
           { merge: true }
         );
@@ -57,10 +57,10 @@ const Navbar = () => {
           type: "SET_USER_LOGGED",
           payload: {
             id: userData.localId,
-            firstName: userData?.firstName || "",
-            lastName: userData?.lastName || "",
-            email: userData?.email || "",
-            userImg: userData?.photoUrl || "",
+            firstName: userData.firstName || "",
+            lastName: userData.lastName || "",
+            email: userData.email || "",
+            userImg: userData.photoUrl || "",
           },
         });
       });
@@ -82,6 +82,7 @@ const Navbar = () => {
       />
 
       <form onSubmit={onSubmitRoute}>
+        <BsSearch />
         <input
           onChange={(e) => onChangeValue(e)}
           className={styles.input}
