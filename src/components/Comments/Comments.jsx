@@ -1,7 +1,13 @@
-import { useState, useContext, useEffect, useLayoutEffect } from "react";
+import { useState, useContext } from "react";
 
 // import db
-import { arrayUnion, setDoc, getDoc, updateDoc, doc } from "firebase/firestore";
+import {
+  arrayUnion,
+  setDoc,
+  updateDoc,
+  doc,
+  onSnapshot,
+} from "firebase/firestore";
 import { db } from "@/plugins/firebase";
 
 import { MainContext } from "@/store";
@@ -9,29 +15,25 @@ import { MainContext } from "@/store";
 import styles from "./Comments.module.scss";
 
 const Comments = ({ id, comments }) => {
-  const { state, dispatch } = useContext(MainContext);
-  // console.log(state.comments);
-  // console.log(state);
+  const { state } = useContext(MainContext);
 
-  // useEffect(() => {
-  //   dispatch({
-  //     type: "SET_COMMENTS",
-  //     payload: comments,
-  //   });
-  // }, [comments]);
+  // TODO: controllare se si può togliere console.log
+  const docSnap = onSnapshot(doc(db, "movies", id.toString()), (doc) => {
+    console.log(doc.data());
+  });
 
   const [comment, setComment] = useState("");
+  const [commentsArr, setCommentsArr] = useState(comments);
 
   const onChangeValue = (e) => setComment(e.target.value);
 
   const onHandleSubmit = (e) => {
-    console.log(comments);
     e.preventDefault();
 
     if (state.user.isLogged) {
       const docRef = doc(db, "movies", id.toString());
 
-      if (comments.length) {
+      if (commentsArr.length > 0) {
         updateDoc(docRef, {
           id: id,
           comments: arrayUnion({
@@ -53,17 +55,19 @@ const Comments = ({ id, comments }) => {
           docRef,
           {
             id: id,
-            comments: {
-              id: Date.now(),
-              commentText: comment,
-              date: Date.now(),
-              user: {
-                id: state.user.id,
-                firstName: state.user.firstName,
-                lastName: state.user.lastName,
-                userImg: state.user.userImg,
+            comments: [
+              {
+                id: Date.now(),
+                commentText: comment,
+                date: Date.now(),
+                user: {
+                  id: state.user.id,
+                  firstName: state.user.firstName,
+                  lastName: state.user.lastName,
+                  userImg: state.user.userImg,
+                },
               },
-            },
+            ],
           },
           { merge: true }
         );
@@ -71,26 +75,24 @@ const Comments = ({ id, comments }) => {
         console.log("setDoc");
       }
 
-      // dispatch({
-      //   type: "ADD_NEW_COMMENT",
-      //   payload: {
-      //     id: Date.now(),
-      //     commentText: comment,
-      //     date: Date.now(),
-      //     user: {
-      //       id: state.user.id,
-      //       firstName: state.user.firstName,
-      //       lastName: state.user.lastName,
-      //       userImg: state.user.userImg,
-      //     },
-      //   },
-      // });
-
-      // console.log(state.comments);
+      setCommentsArr([
+        ...commentsArr,
+        {
+          id: Date.now(),
+          commentText: comment,
+          date: Date.now(),
+          user: {
+            id: state.user.id,
+            firstName: state.user.firstName,
+            lastName: state.user.lastName,
+            userImg: state.user.userImg,
+          },
+        },
+      ]);
       setComment("");
     }
     // TODO
-    else alert("not logged");
+    else alert("Please log in to comment");
   };
 
   return (
@@ -111,7 +113,7 @@ const Comments = ({ id, comments }) => {
         />
       </form>
       <ol className={styles.commentSection}>
-        {comments.map((comment) => (
+        {commentsArr.map((comment) => (
           <li>{comment.commentText}</li>
         ))}
       </ol>

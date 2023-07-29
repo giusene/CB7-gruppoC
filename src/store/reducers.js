@@ -14,17 +14,6 @@ export const mainReducer = (state, action) => {
         },
       };
 
-    case "SET_COMMENTS":
-      return {
-        ...state,
-        comments: action.payload,
-      };
-
-    case "ADD_NEW_COMMENT":
-      return {
-        ...state,
-        comments: [...state.comments, action.payload],
-      };
     // ...
     default:
       console.log(state);
