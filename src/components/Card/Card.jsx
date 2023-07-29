@@ -30,6 +30,11 @@ const Card = ({ mock }) => {
     return `${hours}h ${minutes}m`;
   };
 
+
+  const roundToDecim = (number) => {
+    return Math.round(number * 10) / 10
+  }
+
   const roundToDecim = (number) => {
     return Math.round(number * 10) / 10;
   };
