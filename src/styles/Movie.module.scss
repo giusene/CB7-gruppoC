@@ -3,8 +3,13 @@
 }
 
 .container {
+  //general
+  h2 {
+    text-align: center;
+    @extend %title;
+    font-weight: 500;
+  }
   .Movie {
-    //general
     .TrailerContainer {
       position: absolute;
       top: 0;
@@ -28,12 +33,6 @@
           border-radius: 50%;
         }
       }
-    }
-
-    h2 {
-      text-align: center;
-      @extend %title;
-      font-weight: 500;
     }
 
     //hero
@@ -114,7 +113,6 @@
         margin-top: 70px;
       }
     }
-
     //end hero
 
     //movie info
@@ -148,149 +146,93 @@
       }
     }
     //end movie interactions
+  }
+  //movie info
+  .dataContainer {
+    border-radius: 20px;
 
-    //movie info
-    .dataContainer {
-      border-radius: 20px;
-
-      @include xs() {
-        padding: 0;
-        margin: 20px;
-      }
-
-      .movieDescription {
-        @include flexbox-hrz(30%);
-        padding: $padding-md;
-        margin: 20px 0;
-      }
-
-      .overview {
-        padding: $padding-md;
-        text-align: center;
-
-
-        p {
-          margin: 0 20%;
-
-          @include xs() {
-            margin: 0 10px;
-               }
-        }
-      }
+    @include xs() {
+      padding: 0;
+      margin: 20px;
     }
-    //end info
 
-          
+    .movieDescription {
+      @include flexbox-hrz(30%);
+      padding: $padding-md;
+      margin: 20px 0;
+    }
 
-    //people
-    .peopleContainer {
-      @include flexColumn(3px);
-      overflow-x: auto;
+    .overview {
+      padding: $padding-md;
+      text-align: center;
 
-      .people {
-        @include flexbox-hrz(20px);
-        padding: 4%;
+      p {
+        margin: 0 20%;
 
         @include xs() {
-          @include flexbox-hrz(10px);
+          margin: 0 10px;
         }
+      }
+    }
+  }
+  //end info
 
-        .card {
-          @include flexColumn(3px);
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          min-width: 200px;
-          height: 200px;
+  //people
+  .peopleContainer {
+    @include flexColumn(3px);
+    overflow-x: auto;
 
-          .movieImg {
+    .people {
+      @include flexbox-hrz(20px);
+      padding: 4%;
+
+      @include xs() {
+        @include flexbox-hrz(10px);
+      }
+
+      .card {
+        @include flexColumn(3px);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-width: 200px;
+        height: 200px;
+
+        .movieImg {
+          width: 100px;
+          height: 100px;
+          border-radius: 100%;
+
+          img {
             width: 100px;
             height: 100px;
+            object-fit: cover;
+            object-position: 50% 50%;
             border-radius: 100%;
-
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              object-position: 50% 50%;
-              border-radius: 100%;
-            }
           }
+        }
 
-          .cardInfo {
-            height: calc(100% - 80px);
-            @include flexColumn(1px);
-            justify-content: center;
-          }
+        .cardInfo {
+          height: calc(100% - 80px);
+          @include flexColumn(1px);
+          justify-content: center;
         }
       }
     }
+  }
 
-    // end people
+  // end people
 
-    //backdrops
-    .backdropsContainer {
-      margin: 30px 0;
+  //backdrops
+  .backdropsContainer {
+    margin: 30px 0;
 
-      .backdrops {
-        @include flexbox-hrz(20px);
-        overflow-x: scroll;
-        padding: $padding-md;
-        scroll-snap-type: x mandatory;
-        margin-left: 15px;
-
-        &::-webkit-scrollbar {
-          width: 10px;
-          height: 10px;
-        }
-
-        &::-webkit-scrollbar-track {
-          margin: 0px 12px;
-        }
-
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-          background: $color-primary-light;
-          border-radius: 4px;
-          padding: 0px 10px;
-        }
-
-        /* Handle on hover */
-        &::-webkit-scrollbar-thumb:hover {
-          background: $color-primary-light;
-        }
-
-        img {
-          border-radius: 10px;
-          scroll-snap-align: start;
-        }
-      }
-    }
-    // end backdrops
-
-    //similar movies
-    .similarMovies {
-      @include flexbox-hrz(10px);
-      height: 200px;
-      overflow-x: auto;
+    .backdrops {
+      @include flexbox-hrz(20px);
+      overflow-x: scroll;
+      padding: $padding-md;
       scroll-snap-type: x mandatory;
       margin-left: 15px;
-
-      h3 {
-        min-height: 70px;
-      }
-
-      .noTitle {
-        display: none;
-      }
-
-      img {
-        min-width: 100%;
-        max-height: 100%;
-        scroll-snap-align: start;
-        border-radius: 10px;
-        cursor: pointer;
-      }
 
       &::-webkit-scrollbar {
         width: 10px;
@@ -312,6 +254,58 @@
       &::-webkit-scrollbar-thumb:hover {
         background: $color-primary-light;
       }
+
+      img {
+        border-radius: 10px;
+        scroll-snap-align: start;
+      }
+    }
+  }
+  // end backdrops
+
+  //similar movies
+  .similarMovies {
+    @include flexbox-hrz(10px);
+    height: 200px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-left: 15px;
+
+    h3 {
+      min-height: 70px;
+    }
+
+    .noTitle {
+      display: none;
+    }
+
+    img {
+      min-width: 100%;
+      max-height: 100%;
+      scroll-snap-align: start;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      margin: 0px 12px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $color-primary-light;
+      border-radius: 4px;
+      padding: 0px 10px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: $color-primary-light;
     }
   }
 }

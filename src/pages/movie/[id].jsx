@@ -46,7 +46,6 @@ export default function ({ movie, recommended, comments }) {
   };
 
   return (
-
     <>
       <Head>
         <title>{movie.title}</title>
@@ -60,100 +59,87 @@ export default function ({ movie, recommended, comments }) {
             <div className={styles.TrailerContainer}>
               <Trailer movie={movie} />
               <div className={styles.closeBtn} onClick={onClickCloseTrailer}>
-                <IoMdClose size={"2rem"} /> </div>
+                <IoMdClose size={"2rem"} />{" "}
+              </div>
             </div>
           )}
-      <div className={styles.mainContent}>
-        <img
-          src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-        />
-        <h1>{movie.title}</h1>
-        {movie.tagline && <p>"{movie.tagline}"</p>}
-        <div className={styles.watchTrailer} onClick={onClickTrailer}>
-          <span className={styles.heroPlayIcon}>
-            <BsFillPlayFill />
-          </span>
-          <span>Watch trailer</span>
-        </div>
-          </div>
-      </div>
-      <div className={styles.movieInfoContainer}>
-        <div className={styles.movieGeneral}>
-          <p>
-            <span className={styles.movieRatingIcon}>
-              <AiFillStar />
-            </span>
-            {roundToDecimal(movie.vote_average)} |
-          </p>
-          <p>{movie.vote_count} • </p>
-          <p>{movie.release_date.slice(0, 4)} •</p>
-          <p>{minutesInHours(movie.runtime)}</p>
-        </div>
-        <div className={styles.movieInteractions}>
-          <p className={styles.addFilm} onClick={() => setLikeFilm(!likeFilm)}>
-            {likeFilm ? <AiFillHeart /> : <AiOutlineHeart />}
-          </p>
-          <p className={styles.addFilm} onClick={() => setAddFilm(!addFilm)}>
-            {addFilm ? <AiOutlineMinus /> : <AiOutlinePlus />}
-          </p>
-          <p onClick={() => setSuggestFilm(!suggestFilm)}>
-            {suggestFilm ? <BsFillPeopleFill /> : <BsPeople />}
-          </p>
-        </div>
-      </div>
-      <div className={styles.dataContainer}>
-        <div className={styles.overview}>
-          <h2>Overview</h2>
-          <p>{movie.overview}</p>
-        </div>
-        <div className={styles.movieDescription}>
-          <div className={styles.dataInfo}>
-            <h3>Movie info</h3>
-            <p>Original language: {movie.original_language}</p>
-            <p>Budget: {movie.budget}</p>
-            <p>Adult: {movie.adult ? "Yes" : "No"}</p>
-          </div>
-          <div className={styles.productions}>
-            <h3>Production companies</h3>
-            {movie.production_companies.map((movie) => (
-              <div>
-                <p>{movie.name}</p>
-              </div>
-                ))}
-        </div>
-      </div>
-      <h2>Top Cast</h2>
-      <div className={styles.peopleContainer}>
-        <div className={styles.people}>
-          {movie.credits.cast.slice(0, 5).map((data) => (
-            <div key={data.id} className={styles.card}>
-              <div className={styles.movieImg}>
-                <img
-                  src={
-                    data.profile_path
-                      ? `https://image.tmdb.org/t/p/w185${data.profile_path}`
-                      : `https://www.exscribe.com/wp-content/uploads/2021/08/placeholder-image-person-jpg.jpg`
-                  }
-                />
-              </div>
-              <div className={styles.productions}>
-                <h3>Production companies</h3>
-                {movie.production_companies.map((movie) => (
-                  <div>
-                    <p>{movie.name}</p>
-                  </div>
-                ))}
-              </div>
+          <div className={styles.mainContent}>
+            <img
+              src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+            />
+            <h1>{movie.title}</h1>
+            {movie.tagline && <p>"{movie.tagline}"</p>}
+            <div className={styles.watchTrailer} onClick={onClickTrailer}>
+              <span className={styles.heroPlayIcon}>
+                <BsFillPlayFill />
+              </span>
+              <span>Watch trailer</span>
             </div>
           </div>
-          <h2>Cast</h2>
+          <div className={styles.movieInfoContainer}>
+            <div className={styles.movieGeneral}>
+              <p>
+                <span className={styles.movieRatingIcon}>
+                  <AiFillStar />
+                </span>
+                {roundToDecimal(movie.vote_average)} |
+              </p>
+              <p>{movie.vote_count} • </p>
+              <p>{movie.release_date.slice(0, 4)} •</p>
+              <p>{minutesInHours(movie.runtime)}</p>
+            </div>
+            <div className={styles.movieInteractions}>
+              <p
+                className={styles.addFilm}
+                onClick={() => setLikeFilm(!likeFilm)}
+              >
+                {likeFilm ? <AiFillHeart /> : <AiOutlineHeart />}
+              </p>
+              <p
+                className={styles.addFilm}
+                onClick={() => setAddFilm(!addFilm)}
+              >
+                {addFilm ? <AiOutlineMinus /> : <AiOutlinePlus />}
+              </p>
+              <p onClick={() => setSuggestFilm(!suggestFilm)}>
+                {suggestFilm ? <BsFillPeopleFill /> : <BsPeople />}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className={styles.dataContainer}>
+          <div className={styles.overview}>
+            <h2>Overview</h2>
+            <p>{movie.overview}</p>
+          </div>
+          <div className={styles.movieDescription}>
+            <div className={styles.dataInfo}>
+              <h3>Movie info</h3>
+              <p>Original language: {movie.original_language}</p>
+              <p>Budget: {movie.budget}</p>
+              <p>Adult: {movie.adult ? "Yes" : "No"}</p>
+            </div>
+            <div className={styles.productions}>
+              <h3>Production companies</h3>
+              {movie.production_companies.map((movie) => (
+                <div>
+                  <p>{movie.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <h2>Top Cast</h2>
           <div className={styles.peopleContainer}>
             <div className={styles.people}>
               {movie.credits.cast.slice(0, 5).map((data) => (
                 <div key={data.id} className={styles.card}>
                   <div className={styles.movieImg}>
                     <img
-                      src={`https://image.tmdb.org/t/p/w185${data.profile_path}`}
+                      src={
+                        data.profile_path
+                          ? `https://image.tmdb.org/t/p/w185${data.profile_path}`
+                          : `https://www.exscribe.com/wp-content/uploads/2021/08/placeholder-image-person-jpg.jpg`
+                      }
                     />
                   </div>
                   <div className={styles.cardInfo}>
