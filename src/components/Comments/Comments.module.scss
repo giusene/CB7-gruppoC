@@ -1,0 +1,18 @@
+.Comments {
+  .commentsForm {
+    .commentInput {
+      color: $color-primary;
+    }
+
+    .commentSubmit {
+      color: $color-primary;
+    }
+  }
+
+  .commentSection {
+    width: 200px;
+    padding-left: 50px;
+    list-style-type: decimal;
+    @include target(red);
+  }
+}

@@ -16,12 +16,11 @@ import { useState } from "react";
 import SimilarMovies from "@/components/SimilarMovie";
 
 export default function ({ movie, recommended, comments }) {
+  const router = useRouter();
   const [addFilm, setAddFilm] = useState(false);
   const [likeFilm, setLikeFilm] = useState(false);
   const [suggestFilm, setSuggestFilm] = useState(false);
   const [trailer, setTrailer] = useState(false);
-
-  const router = useRouter();
 
   const onClickTrailer = () => {
     setTrailer(!trailer);
