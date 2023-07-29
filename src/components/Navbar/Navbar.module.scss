@@ -81,6 +81,8 @@
 
   .loggedUser {
     color: $color-secondary;
+    border: 1px solid;
+    cursor: pointer ;
 
     @include flexbox-hrz-space-between();
     gap: 10px;
