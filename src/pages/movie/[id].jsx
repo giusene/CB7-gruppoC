@@ -13,11 +13,9 @@ import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/Bs";
 import { useState } from "react";
 import SimilarMovies from "@/components/SimilarMovie";
 
-
-export default function ({ movie, recommended }) {
+export default function ({ movie, recommended, comments }) {
   console.log(movie);
   console.log(recommended);
-
 
   const [addFilm, setAddFilm] = useState(false);
   const [likeFilm, setLikeFilm] = useState(false);
@@ -43,7 +41,7 @@ export default function ({ movie, recommended }) {
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
         />
         <h1>{movie.title}</h1>
-        <p>"{movie.tagline}"</p>
+        {movie.tagline && <p>"{movie.tagline}"</p>}
         <div className={styles.watchTrailer}>
           <span className={styles.heroPlayIcon}>
             <BsFillPlayFill />
@@ -97,14 +95,18 @@ export default function ({ movie, recommended }) {
           </div>
         </div>
       </div>
-      <h2>Cast</h2>
+      <h2>Top Cast</h2>
       <div className={styles.peopleContainer}>
         <div className={styles.people}>
           {movie.credits.cast.slice(0, 5).map((data) => (
             <div key={data.id} className={styles.card}>
               <div className={styles.movieImg}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w185${data.profile_path}`}
+                  src={
+                    data.profile_path
+                      ? `https://image.tmdb.org/t/p/w185${data.profile_path}`
+                      : `https://www.exscribe.com/wp-content/uploads/2021/08/placeholder-image-person-jpg.jpg`
+                  }
                 />
               </div>
               <div className={styles.cardInfo}>
