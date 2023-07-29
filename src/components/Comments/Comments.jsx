@@ -10,7 +10,6 @@ import styles from "./Comments.module.scss";
 
 const Comments = ({ id, comments }) => {
   const { state, dispatch } = useContext(MainContext);
-  // console.log(comments);
   // console.log(state.comments);
   // console.log(state);
 
@@ -26,6 +25,7 @@ const Comments = ({ id, comments }) => {
   const onChangeValue = (e) => setComment(e.target.value);
 
   const onHandleSubmit = (e) => {
+    console.log(comments);
     e.preventDefault();
 
     if (state.user.isLogged) {
