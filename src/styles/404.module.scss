@@ -1,0 +1,18 @@
+.error {
+  margin-top: 80px;
+
+  .noResults {
+    width: 100%;
+    height: 100dvh;
+    @include flexColumn(10px);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .backToHome {
+      @include button(20px, #1e57ff);
+      padding: 20px;
+      margin: 10px 0;
+    }
+  }
+}

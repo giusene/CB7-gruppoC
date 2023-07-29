@@ -31,10 +31,10 @@ const Card = ({ mock }) => {
   };
 
 
-  const roundToDecim = (number) => {
-    return Math.round(number * 10) / 10
-  }
 
+  const roundToDecim = (number) => {
+    return Math.round(number * 10) / 10;
+  };
 
 
   const truncateString = (string, wordsNumber) => {
