@@ -1,193 +1,293 @@
-.Movie {
-  //general
+.noScroll {
+  overflow: hidden;
+}
 
-  h2 {
-    text-align: center;
-    @extend %title;
-    font-weight: 500;
-  }
-
-  //hero
-  .mainContent {
-    position: relative;
-
-    h1 {
-      @extend %title;
+.container {
+  .Movie {
+    //general
+    .TrailerContainer {
       position: absolute;
-      left: 30px;
-      bottom: 100px;
-      z-index: 9;
-    }
-
-    p {
-      position: absolute;
-      left: 40px;
-      bottom: 80px;
-      z-index: 9;
-    }
-
-    img {
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.409);
       width: 100%;
-    }
+      height: 100vh;
+      z-index: 999;
 
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.2) 0%,
-        rgba(27, 35, 48, 0.4) 50%,
-        rgba(27, 35, 48, 0.7) 60%,
-        rgba(27, 35, 48, 1) 95%
-      );
-      z-index: 1;
-    }
-
-    //button watch trailer
-    .watchTrailer {
-      position: absolute;
-      right: 20px;
-      bottom: 100px;
-      @include flexbox-hrz(2px);
-      justify-content: center;
-      align-items: center;
-      width: 20%;
-      height: 50px;
-      background-color: #1e57ff;
-      border-radius: 20px;
-      z-index: 10;
-      border: none;
-      text-align: center;
-      cursor: pointer;
-
-      &:hover {
-        box-shadow: $elevation-medium;
-      }
-
-      @include xs() {
-        left: 40px;
-        bottom: 20px;
-      }
-    }
-  }
-  //end hero
-
-  //movie interactions
-  .movieInfoContainer {
-    @include flexbox-hrz-space-between();
-    padding: $padding-md;
-
-    .movieInteractions,
-    .movieGeneral {
-      @include flexbox-hrz(10px);
-    }
-
-    .movieInteractions svg {
-      margin: 0 10px;
-      width: 20px;
-      height: auto;
-      cursor: pointer;
-
-      &:hover {
-        transform: scale(1.2);
-        border-radius: 2px;
-        padding: 2%;
-        background-color: #4242429c;
-      }
-    }
-  }
-  //end movie interactions
-
-  //movie info
-  .dataContainer {
-    border-radius: 20px;
-
-    @include xs() {
-      padding: 0;
-      margin: 20px;
-    }
-
-    .movieDescription {
-      @include flexbox-hrz(30%);
-      padding: $padding-md;
-      margin: 20px 0;
-    }
-
-    .overview {
-      padding: $padding-md;
-      text-align: center;
-
-      p {
-        margin: 0 20%;
+      .closeBtn {
+        width: 50px;
+        height: 50px;
+        @extend %center-content;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 999;
+        cursor: pointer;
 
         @include xs() {
-          margin: 0 10px;
+          background-color: rgba(0, 0, 0, 0.447);
+          border-radius: 50%;
         }
       }
     }
-  }
-  //end info
 
-  //people
-  .peopleContainer {
-    @include flexColumn(3px);
-    overflow-x: auto;
+    h2 {
+      text-align: center;
+      @extend %title;
+      font-weight: 500;
+    }
 
-    .people {
-      @include flexbox-hrz(20px);
-      padding: 4%;
+    //hero
+    .mainContent {
+      position: relative;
+
+      h1 {
+        @extend %title;
+        position: absolute;
+        left: 30px;
+        bottom: 100px;
+        z-index: 9;
+
+        @include xs() {
+          font-size: $subtitle;
+        }
+      }
+
+      p {
+        position: absolute;
+        left: 40px;
+        bottom: 80px;
+        z-index: 9;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.2) 0%,
+          rgba(27, 35, 48, 0.4) 50%,
+          rgba(27, 35, 48, 0.7) 60%,
+          rgba(27, 35, 48, 1) 95%
+        );
+        z-index: 1;
+      }
+
+      //button watch trailer
+      .watchTrailer {
+        position: absolute;
+        right: 20px;
+        bottom: 100px;
+        @include flexbox-hrz(2px);
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: 50px;
+        background-color: #1e57ff;
+        border-radius: 20px;
+        z-index: 10;
+        border: none;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: $elevation-medium;
+        }
+
+        @include xs() {
+          left: 40px;
+          bottom: 20px;
+          padding: $padding-md;
+          width: fit-content;
+        }
+      }
+      //end button watch trailer
+
+      @include xs() {
+        margin-top: 70px;
+      }
+    }
+
+    //end hero
+
+    //movie info
+    .movieInfoContainer {
+      @include flexbox-hrz-space-between();
+      padding: $padding-md;
 
       @include xs() {
         @include flexbox-hrz(10px);
+        flex-wrap: wrap;
       }
 
-      .card {
-        @include flexColumn(3px);
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        min-width: 200px;
-        height: 200px;
+      .movieInteractions,
+      .movieGeneral {
+        @include flexbox-hrz(10px);
+      }
 
-        .movieImg {
-          width: 100px;
-          height: 100px;
-          border-radius: 100%;
+      //movie interactions
+      .movieInteractions svg {
+        margin: 0 10px;
+        width: 20px;
+        height: auto;
+        cursor: pointer;
 
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: 50% 50%;
-            border-radius: 100%;
-          }
-        }
-
-        .cardInfo {
-          height: calc(100% - 80px);
-          @include flexColumn(1px);
-          justify-content: center;
+        &:hover {
+          transform: scale(1.2);
+          border-radius: 2px;
+          padding: 2%;
+          background-color: #4242429c;
         }
       }
     }
-  }
+    //end movie interactions
 
-  // end people
+    //movie info
+    .dataContainer {
+      border-radius: 20px;
 
-  //backdrops
-  .backdropsContainer {
-    margin: 30px 0;
+      @include xs() {
+        padding: 0;
+        margin: 20px;
+      }
 
-    .backdrops {
-      @include flexbox-hrz(20px);
-      overflow-x: scroll;
-      padding: $padding-md;
+      .movieDescription {
+        @include flexbox-hrz(30%);
+        padding: $padding-md;
+        margin: 20px 0;
+      }
+
+      .overview {
+        padding: $padding-md;
+        text-align: center;
+
+        p {
+          margin: 0 20%;
+
+          @include xs() {
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+    //end info
+
+    //people
+    .peopleContainer {
+      @include flexColumn(3px);
+      overflow-x: auto;
+
+      .people {
+        @include flexbox-hrz(20px);
+        padding: 4%;
+
+        @include xs() {
+          @include flexbox-hrz(10px);
+        }
+
+        .card {
+          @include flexColumn(3px);
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          min-width: 200px;
+          height: 200px;
+
+          .movieImg {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: 50% 50%;
+              border-radius: 100%;
+            }
+          }
+
+          .cardInfo {
+            height: calc(100% - 80px);
+            @include flexColumn(1px);
+            justify-content: center;
+          }
+        }
+      }
+    }
+
+    // end people
+
+    //backdrops
+    .backdropsContainer {
+      margin: 30px 0;
+
+      .backdrops {
+        @include flexbox-hrz(20px);
+        overflow-x: scroll;
+        padding: $padding-md;
+        scroll-snap-type: x mandatory;
+        margin-left: 15px;
+
+        &::-webkit-scrollbar {
+          width: 10px;
+          height: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+          margin: 0px 12px;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+          background: $color-primary-light;
+          border-radius: 4px;
+          padding: 0px 10px;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+          background: $color-primary-light;
+        }
+
+        img {
+          border-radius: 10px;
+          scroll-snap-align: start;
+        }
+      }
+    }
+    // end backdrops
+
+    //similar movies
+    .similarMovies {
+      @include flexbox-hrz(10px);
+      height: 200px;
+      overflow-x: auto;
       scroll-snap-type: x mandatory;
       margin-left: 15px;
+
+      h3 {
+        min-height: 70px;
+      }
+
+      .noTitle {
+        display: none;
+      }
+
+      img {
+        min-width: 100%;
+        max-height: 100%;
+        scroll-snap-align: start;
+        border-radius: 10px;
+        cursor: pointer;
+      }
 
       &::-webkit-scrollbar {
         width: 10px;
@@ -209,58 +309,6 @@
       &::-webkit-scrollbar-thumb:hover {
         background: $color-primary-light;
       }
-
-      img {
-        border-radius: 10px;
-        scroll-snap-align: start;
-      }
-    }
-  }
-  // end backdrops
-
-  //similar movies
-  .similarMovies {
-    @include flexbox-hrz(10px);
-    height: 200px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    margin-left: 15px;
-
-    h3 {
-      min-height: 70px;
-    }
-
-    .noTitle {
-      display: none;
-    }
-
-    img {
-      min-width: 100%;
-      max-height: 100%;
-      scroll-snap-align: start;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    &::-webkit-scrollbar {
-      width: 10px;
-      height: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-      margin: 0px 12px;
-    }
-
-    /* Handle */
-    &::-webkit-scrollbar-thumb {
-      background: $color-primary-light;
-      border-radius: 4px;
-      padding: 0px 10px;
-    }
-
-    /* Handle on hover */
-    &::-webkit-scrollbar-thumb:hover {
-      background: $color-primary-light;
     }
   }
 }
