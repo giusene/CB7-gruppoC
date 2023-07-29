@@ -6,6 +6,7 @@ import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/Md";
+import { genres } from "@/utils/genres";
 
 const Hero = ({ trending }) => {
   const [nextMovie, setNextMovie] = useState(0);
@@ -37,6 +38,9 @@ const Hero = ({ trending }) => {
     return Math.round(number * 10) / 10;
   };
 
+  const genreRender = (genreId) =>
+    genres.map((genre) => genre.id === genreId && genre.name);
+
   return (
     <section className={styles.hero}>
       <button className={styles.nextBtn} onClick={onClickNextMovie}>
@@ -51,6 +55,7 @@ const Hero = ({ trending }) => {
         <h1 className={styles.heroTitle}>
           {trending.results[nextMovie].title}
         </h1>
+
         <div className={styles.heroGeneral}>
           <p className={styles.heroRating}>
             <span className={styles.heroRatingIcon}>
@@ -62,7 +67,10 @@ const Hero = ({ trending }) => {
             </span>
           </p>
           <span className={styles.heroDate}>
-            {trending.results[nextMovie].release_date}
+            {trending.results[nextMovie].release_date.slice(0, 4)}
+          </span>
+          <span className={styles.heroGenre}>
+            {genreRender(trending.results[nextMovie].genre_ids[0])}
           </span>
         </div>
         <p className={styles.heroTrama}>
