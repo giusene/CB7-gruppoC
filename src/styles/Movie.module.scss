@@ -168,16 +168,19 @@
         padding: $padding-md;
         text-align: center;
 
+
         p {
           margin: 0 20%;
 
           @include xs() {
             margin: 0 10px;
-          }
+               }
         }
       }
     }
     //end info
+
+          
 
     //people
     .peopleContainer {
