@@ -80,7 +80,6 @@ const Navbar = () => {
         src="https://img.logoipsum.com/296.svg"
         onClick={onClickHomePage}
       />
-
       <form onSubmit={onSubmitRoute}>
         <BsSearch />
         <input
@@ -91,7 +90,6 @@ const Navbar = () => {
           value={userInput}
         />
       </form>
-
       {state.user.isLogged ? (
         <div className={styles.loggedUser}>
           <img

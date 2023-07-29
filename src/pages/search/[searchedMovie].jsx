@@ -3,9 +3,12 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Card from "@/components/Card/Card";
 import styles from "@/styles/searchedMovieGrid.module.scss";
+import { PiSmileySad } from "react-icons/Pi";
 
 export default function searchResult({ data }) {
   const router = useRouter();
+
+  const backToHome = () => router.push("/");
 
   return (
     <>
@@ -20,9 +23,19 @@ export default function searchResult({ data }) {
           Search results for "{router.query.searchedMovie}"
         </h1>
         <div className={styles.searchResult}>
-          {data.results.map((movie, i) => (
-            <Card mock={movie} key={i} />
-          ))}
+          {data.results.length ? (
+            data.results.map((movie, i) => <Card mock={movie} key={i} />)
+          ) : (
+            <div className={styles.noResults}>
+              <PiSmileySad size="5rem" />
+              <div>
+                Oh darn. We don't have that. Try searching for another movie or
+                <p className={styles.backToHome} onClick={backToHome}>
+                  Back to Home Page
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
