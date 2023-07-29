@@ -58,8 +58,30 @@
         z-index: 9;
       }
 
-      img {
+      .imgFull {
         width: 100%;
+      }
+
+      .imgPoster {
+        position: absolute;
+        right: 5%;
+        top: 45%;
+        width: 185px;
+        z-index: 9;
+        box-shadow: $elevation-medium;
+
+        @include xs() {
+          display: none;
+        }
+
+        @include md() {
+          display: none;
+        }
+
+        @include lg() {
+          top: 20%;
+          right: 3%;
+        }
       }
 
       &::before {
@@ -101,6 +123,13 @@
         }
 
         @include xs() {
+          left: 40px;
+          bottom: 20px;
+          padding: $padding-md;
+          width: fit-content;
+        }
+
+        @include md() {
           left: 40px;
           bottom: 20px;
           padding: $padding-md;
