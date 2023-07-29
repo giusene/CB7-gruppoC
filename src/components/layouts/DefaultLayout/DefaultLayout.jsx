@@ -11,12 +11,9 @@ const DefaultLayout = ({ children }) => {
   return (
     <div className={styles.DefaultLayout}>
      
-     
-    
-      
        <Navbar />
       <div className={`${styles.content} col-12`}>{children}</div>
-      <Footer /> 
+     <Footer />   
     </div> 
   );
 };

@@ -14,9 +14,6 @@ import { genres } from "@/utils/genres";
 
 const Dashboard = ( {data} ) => {
 
-
-    
-
     const minutesInHours = (data) => {
         const hours = Math.floor(data / 60);
         const minutes = data % 60;

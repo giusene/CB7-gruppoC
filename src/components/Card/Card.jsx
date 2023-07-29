@@ -30,9 +30,12 @@ const Card = ({ mock }) => {
     return `${hours}h ${minutes}m`;
   };
 
+
+
   const roundToDecim = (number) => {
     return Math.round(number * 10) / 10;
   };
+
 
   const truncateString = (string, wordsNumber) => {
     return string.split(" ").splice(0, wordsNumber).join(" ");

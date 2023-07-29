@@ -7,7 +7,7 @@ import Hero from "@/components/hero";
 import Badge from "@/components/Badge";
 import styles from "@/styles/Home.module.scss";
 import Dashboard from "@/components/layouts/Dashboard-layout/Dashboard";
-
+import Sidebar from "@/components/Sidebar/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function Home({
@@ -33,8 +33,8 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {console.log(trending)}
-      <Dashboard data={trending}/>
+      
+      
       <Hero trending={trending} />
       <ul className={styles.categoryList}>
         <li>

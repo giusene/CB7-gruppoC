@@ -17,6 +17,9 @@ import { setDoc, doc } from "firebase/firestore";
 // import style
 import styles from "./Navbar.module.scss";
 
+//import components
+import Sidebar from "../Sidebar/Sidebar";
+
 import { BsSearch } from "react-icons/Bs";
 
 const Navbar = () => {
@@ -33,6 +36,10 @@ const Navbar = () => {
     e.preventDefault();
     router.push(`/search/${userInput}`);
   };
+
+  const [sidebar, setSidebar] = useState(false)
+
+  const showSidebar = () => setSidebar(!sidebar)
 
   const signIn = async () => {
     await signInWithPopup(auth, provider)
@@ -69,6 +76,7 @@ const Navbar = () => {
   const onClickHomePage = () => router.push("/");
 
   return (
+    <>
     <ul className={styles.Navbar}>
       <img
         className={styles.logoFull}
@@ -91,7 +99,8 @@ const Navbar = () => {
         />
       </form>
       {state.user.isLogged ? (
-        <div className={styles.loggedUser}>
+        <>
+        <div className={styles.loggedUser} onClick={showSidebar}>
           <img
             className={styles.loggedUser__img}
             src={state.user.userImg}
@@ -99,10 +108,14 @@ const Navbar = () => {
           />
           <p>{state.user.firstName}</p>
         </div>
+        
+        </>
       ) : (
         <button onClick={signIn}>Login</button>
       )}
     </ul>
+     <Sidebar onClick={showSidebar} sidebar={sidebar}/>
+    </>
   );
 };
 
