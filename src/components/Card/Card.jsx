@@ -4,10 +4,15 @@ import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/Bs";
 import { SlArrowDown } from "react-icons/Sl";
 import { AiFillStar } from "react-icons/Ai";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Card = ({ mock }) => {
   const [overlay, setOverlay] = useState(false);
   const onOverlay = () => setOverlay((prev) => !prev);
+
+  const router = useRouter();
+
+  const onClickMovie = () => router.push(`/movie/${mock.id}`);
 
   const [heart, setHeart] = useState(false);
   const changedHeart = () => setHeart((prev) => !prev);
@@ -51,7 +56,10 @@ const Card = ({ mock }) => {
               </p>
             </div>
           </div>
-          <div className={`${styles.text} ${overlay && styles.overlay}`}>
+          <div
+            className={`${styles.text} ${overlay && styles.overlay}`}
+            onClick={onClickMovie}
+          >
             <div className={styles.left}>
               <div className={styles.card_title}>
                 <h3 className={styles.text_title}>{mock.title}</h3>
