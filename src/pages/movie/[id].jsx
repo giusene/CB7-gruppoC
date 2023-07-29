@@ -59,22 +59,29 @@ export default function ({ movie, recommended, comments }) {
             <div className={styles.TrailerContainer}>
               <Trailer movie={movie} />
               <div className={styles.closeBtn} onClick={onClickCloseTrailer}>
-                <IoMdClose size={"2rem"} />{" "}
+                <IoMdClose size={"2rem"} />
               </div>
             </div>
           )}
           <div className={styles.mainContent}>
             <img
+              className={styles.imgFull}
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+            />
+            <img
+              className={styles.imgPoster}
+              src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
             />
             <h1>{movie.title}</h1>
             {movie.tagline && <p>"{movie.tagline}"</p>}
-            <div className={styles.watchTrailer} onClick={onClickTrailer}>
-              <span className={styles.heroPlayIcon}>
-                <BsFillPlayFill />
-              </span>
-              <span>Watch trailer</span>
-            </div>
+            {movie.videos.results.length && (
+              <div className={styles.watchTrailer} onClick={onClickTrailer}>
+                <span className={styles.heroPlayIcon}>
+                  <BsFillPlayFill />
+                </span>
+                <span>Watch trailer</span>
+              </div>
+            )}
           </div>
           <div className={styles.movieInfoContainer}>
             <div className={styles.movieGeneral}>
@@ -122,7 +129,7 @@ export default function ({ movie, recommended, comments }) {
             <div className={styles.productions}>
               <h3>Production companies</h3>
               {movie.production_companies.map((movie) => (
-                <div>
+                <div key={movie.id}>
                   <p>{movie.name}</p>
                 </div>
               ))}
@@ -154,14 +161,17 @@ export default function ({ movie, recommended, comments }) {
             <h2>Gallery</h2>
             <div className={styles.backdrops}>
               {movie.images.backdrops.map((data) => (
-                <img src={`https://image.tmdb.org/t/p/w185${data.file_path}`} />
+                <img
+                  key={data.id}
+                  src={`https://image.tmdb.org/t/p/w185${data.file_path}`}
+                />
               ))}
             </div>
           </div>
           <h2>Similar Movies</h2>
           <div className={styles.similarMovies}>
             {recommended.results.map((movie) => (
-              <SimilarMovies recommended={movie} />
+              <SimilarMovies key={movie.id} recommended={movie} />
             ))}
           </div>
           <Comments id={movie.id} comments={comments} />
