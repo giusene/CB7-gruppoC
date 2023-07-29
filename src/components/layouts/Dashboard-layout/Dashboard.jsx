@@ -8,11 +8,14 @@ import { BsBookmarkHeart } from "react-icons/Bs";
 import { HiOutlineUserGroup } from "react-icons/Hi";
 import { BiLogOut } from "react-icons/Bi";
 
-
+import Cards from "@/components/Cards/Cards";
 import { genres } from "@/utils/genres";
 
 
-const Dashboard = ( ) => {
+const Dashboard = ( {data} ) => {
+
+
+    
 
     const minutesInHours = (data) => {
         const hours = Math.floor(data / 60);
@@ -112,6 +115,9 @@ const Dashboard = ( ) => {
     return(
         <div className={styles.Dashboard}>
             <div className={styles.wrapper}>
+
+            {/******************* SIDEBAR ********************/}
+
                 <div className={styles.sidebar}>
                     <div className={styles.logo}>
                         <img
@@ -176,8 +182,8 @@ const Dashboard = ( ) => {
                         </div>
                     </div>
                 </div>
+            {/******************* END SIDEBAR ********************/}
                 
-
 
 
 
@@ -216,14 +222,14 @@ const Dashboard = ( ) => {
                             </div>
                             <div className={styles.scrolling}>
 
-                                <div className="scrollTitle">
+                                <div className={styles.scrollTitle}>
                                     <h1>Genres</h1>
                                 </div>
 
                                 <div className={styles.genreList}>
                                     {genres.map((genre) => 
                                             
-                                              <Link href="/" className={styles.genreLink}>
+                                              <Link href="/" className={styles.genreLink} key={genre.id}>
                                                  <div className={styles.genre}>
                                                 {genre.name}
                                                 </div>
@@ -233,11 +239,17 @@ const Dashboard = ( ) => {
 
                             </div>
                         </div>
-{/**************************************************  dfgd */}
-                        
+{/************************************************** BOTTOM */}
+                        <div className={styles.bottom}>
+                            <div className={styles.bottomTitle}>
+                                <h1>Title</h1>
+                            </div>
+                            <Cards data={data}/>
+                        </div>
                     
                     </div>
                 </div>
+            {/******************* END MAIN ********************/}
 
 
 
@@ -249,3 +261,4 @@ const Dashboard = ( ) => {
 }
 
 export default Dashboard
+
