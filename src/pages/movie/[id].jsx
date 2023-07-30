@@ -121,8 +121,8 @@ export default function ({ movie, recommended, comments }) {
           <div className={styles.movieDescription}>
             <div className={styles.dataInfo}>
               <h3>Movie info</h3>
-              <p>Original language: {movie.original_language}</p>
-              <p>Budget: {movie.budget}</p>
+              <p>Original language: {movie.original_language.toUpperCase()}</p>
+              <p>Budget: {movie.budget ? movie.budget : "N/A"}</p>
               <p>Adult: {movie.adult ? "Yes" : "No"}</p>
             </div>
             <div className={styles.productions}>
