@@ -14,12 +14,13 @@
     background-color: $color-primary-light;
 
     img {
-      border-radius: 10px;
+      border-radius: 15px;
     }
 
     .cardsInfo {
       @include flexbox-hrz(10px);
       overflow-x: auto;
+      scroll-snap-type: x mandatory;
 
       &::-webkit-scrollbar {
         width: 10px;
