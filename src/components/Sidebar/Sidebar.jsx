@@ -1,3 +1,7 @@
+import { useContext } from "react";
+
+import { MainContext } from "@/store";
+
 import styles from "./Sidebar.module.scss";
 import Link from "next/link";
 import { WiTime3 } from "react-icons/wi";
@@ -11,18 +15,35 @@ import { IoClose } from "react-icons/io5";
 import { RiArrowRightSLine } from "react-icons/Ri";
 
 const Sidebar = ({ onClick, sidebar }) => {
+  const { state, dispatch } = useContext(MainContext);
+
+  const onHandleLogOut = () => {
+    dispatch({
+      type: "SET_USER_LOG_OUT",
+      payload: {
+        id: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        userImg: "",
+        favorites: [],
+        list: [],
+      },
+    });
+  };
+
   return (
     <div className={`${styles.sidebar} ${sidebar && styles.showsidebar}`}>
       <div className={styles.userInfo}>
         <div className={styles.user}>
           <img
             className={styles.userImage}
-            src="https://imgv3.fotor.com/images/blog-cover-image/part-blurry-image.jpg"
-            alt=""
+            src={state.user.userImg}
+            alt={`${state.user.firstName} ${state.user.lastName}`}
           />
         </div>
         <div className={styles.userName}>
-          <p>Name Cogname</p>
+          <p>{`${state.user.firstName} ${state.user.lastName}`}</p>
         </div>
       </div>
       <div className={styles.sections}>
@@ -44,13 +65,13 @@ const Sidebar = ({ onClick, sidebar }) => {
             </Link>
           </li>
         </ul>
-        <div className={styles.logout}>
-          <Link href="/" className={`${styles.logoutLink}`}>
+        <div className={styles.logout} onClick={onHandleLogOut}>
+          <div className={`${styles.logoutLink}`}>
             <p>
               <BiLogOut className={styles.icon} />
             </p>
             <p>LOGOUT</p>
-          </Link>
+          </div>
         </div>
       </div>
       <div className={styles.close} onClick={onClick}>

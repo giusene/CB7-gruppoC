@@ -28,6 +28,12 @@
         border-radius: 50%;
       }
     }
+
+    .userName {
+      p {
+        text-transform: uppercase;
+      }
+    }
   }
 
   .sections {
@@ -41,6 +47,16 @@
         border-radius: 8px;
         margin-bottom: 8px;
         background-color: $color-primary-clair;
+
+        &:hover,
+        &:active {
+          color: $color-primary;
+          background-color: $color-primary-light;
+        }
+
+        &:active {
+          scale: 0.99;
+        }
 
         .item {
           display: flex;
@@ -67,6 +83,16 @@
     bottom: 40px;
     left: 10px;
     padding: 0px 10px;
+
+    &:hover,
+    &:active {
+      color: $color-primary;
+      background-color: $color-primary-light;
+    }
+
+    &:active {
+      scale: 0.99;
+    }
 
     .logoutLink {
       @include flexCenter(0);
