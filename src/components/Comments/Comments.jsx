@@ -7,11 +7,14 @@ import { db } from "@/plugins/firebase";
 
 import { MainContext } from "@/store";
 
+import Warning from "@/components/warning";
+
 import styles from "./Comments.module.scss";
 
 const Comments = ({ id, comments }) => {
   const { state } = useContext(MainContext);
 
+  const [modal, setModal] = useState(false);
   const [comment, setComment] = useState("");
   const [commentsArr, setCommentsArr] = useState([]);
 
@@ -98,11 +101,16 @@ const Comments = ({ id, comments }) => {
     }
 
     // TODO
-    else alert("Please log in to comment");
+    else setModal(true);
   };
 
   return (
     <div className={`${styles.Comments} col-12`}>
+      <Warning
+        content={"You must be logged to post comments."}
+        modal={modal}
+        setModal={setModal}
+      />
       <h2>
         Comments
         {commentsArr.length ? (
