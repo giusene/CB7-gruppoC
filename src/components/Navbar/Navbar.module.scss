@@ -24,6 +24,7 @@
 
   form {
     height: 40px;
+    background-color: $color-primary-transparent;
     border: 2px solid $color-secondary-light;
     border-radius: 16px;
     @include flexbox-hrz(20px);

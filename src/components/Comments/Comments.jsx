@@ -95,19 +95,18 @@ const Comments = ({ id, comments }) => {
         ]);
 
         setComment("");
-      } else {
-        alert("Comment field blank");
-      }
-    }
-
-    // TODO
-    else setModal(true);
+      } else setModal(true);
+    } else setModal(true);
   };
 
   return (
     <div className={`${styles.Comments} col-12`}>
       <Warning
-        content={"You must be logged to post comments."}
+        content={
+          state.user.isLogged
+            ? "Oops! It seems like you forgot to enter any text. Please provide a sentence or a message to post your comment."
+            : "You must be logged to post comments."
+        }
         modal={modal}
         setModal={setModal}
       />
