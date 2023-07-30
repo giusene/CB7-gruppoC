@@ -1,6 +1,10 @@
 .searchedMovie {
   margin-top: 70px;
 
+  @include xs {
+    margin-top: 100px;
+  }
+
   .searchResult {
     @include flexbox-hrz(30px);
     justify-content: center;
@@ -10,12 +14,19 @@
 
   .searchTitle {
     margin: 2% 30%;
-    border-radius: 20px;
+    border-radius: $border-radius-3;
     background-color: $color-secondary;
     color: $color-primary;
     font-size: $title;
     text-align: center;
     box-shadow: $elevation-medium;
+
+    @include xs {
+      width: 80%;
+      margin: 30px auto;
+      font-size: $subtitle;
+      overflow-wrap: break-word;
+    }
   }
 
   .noResults {

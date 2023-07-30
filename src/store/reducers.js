@@ -13,6 +13,7 @@ export const mainReducer = (state, action) => {
           userImg: action.payload.userImg,
         },
       };
+
     // ...
     default:
       console.log(state);

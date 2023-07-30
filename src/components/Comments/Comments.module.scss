@@ -1,0 +1,209 @@
+.Comments {
+  @include flexbox-vrt(10px);
+  margin-top: 30px;
+
+  .commentsForm {
+    @include flexbox-vrt(10px);
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px 50px;
+    position: relative;
+
+    @include md {
+      width: 90%;
+    }
+
+    @include xs {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .commentInput {
+      width: 100%;
+      height: 150px;
+      padding: $padding-md;
+      border-radius: $border-radius-2;
+      border: none;
+      outline: none;
+      color: $color-secondary;
+      background-color: $color-primary-light;
+      resize: none;
+
+      &:focus {
+        box-shadow: 0px 0px 16px $color-primary-light;
+      }
+    }
+
+    .submitWrapper {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      bottom: 50%;
+      transform: translateY(50%);
+      right: -2%;
+
+      .commentSubmit {
+        color: $color-secondary;
+        border-radius: $border-radius-2;
+        background-color: $color-primary-light;
+        border: 1px solid $color-secondary;
+        cursor: pointer;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        visibility: hidden;
+        z-index: 5;
+
+        &:active {
+          color: $color-primary-light;
+          background-color: $color-secondary;
+        }
+      }
+
+      @include xs {
+        bottom: 0;
+        transform: translateY(0);
+        right: 2%;
+      }
+
+      .submitIcon {
+        color: $color-secondary;
+        border-radius: $border-radius-2;
+        background-color: $color-primary-light;
+        cursor: pointer;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        @extend %center-content;
+        position: absolute;
+        bottom: 50%;
+        transform: translateY(50%);
+        right: -2%;
+        z-index: 1;
+
+        &:active {
+          background-color: $color-secondary;
+        }
+
+        &:hover {
+          box-shadow: 0px 0px 10px $color-primary-light;
+        }
+
+        &:active svg {
+          fill: $color-primary-light;
+        }
+
+        svg {
+          width: 27px;
+          height: 27px;
+        }
+      }
+    }
+  }
+
+  .commentSection {
+    margin: 0 auto;
+    width: 80%;
+    max-height: 500px;
+    padding: 20px 50px;
+    @include flexbox-vrt(20px);
+    align-items: flex-start;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      margin: 0px 12px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: $color-primary-light;
+    }
+
+    @include md {
+      width: 90%;
+    }
+
+    @include xs {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .commentContent {
+      padding: $padding-gen;
+      @include flexbox-hrz-space-between();
+      border-radius: $border-radius-2;
+      background: $color-primary-light;
+      width: 100%;
+      transition: all 0.35s ease-in-out;
+
+      &:hover {
+        box-shadow: 0px 0px 10px $color-primary-light;
+        background-color: $color-primary;
+      }
+
+      @include xs {
+        @include flexbox-vrt(20px);
+      }
+
+      .commentText {
+        width: 75%;
+        overflow-wrap: break-word;
+
+        @include md {
+          width: 60%;
+        }
+
+        @include xs {
+          width: 100%;
+          padding: $padding-md;
+        }
+      }
+
+      .commentUserDetails {
+        @include flexbox-hrz(10px);
+        justify-content: flex-start;
+        height: 50px;
+        min-width: fit-content;
+        width: 25%;
+
+        @include md {
+          width: 40%;
+        }
+
+        @include xs {
+          width: 100%;
+        }
+
+        .commentUserImg {
+          @include dimensions(50px, 50px, 0);
+          border-radius: 50%;
+        }
+
+        .commentUserText {
+          @include flexbox-vrt(5px);
+          align-items: flex-start;
+          height: 100%;
+
+          .commentName {
+            font-size: 18px;
+            font-weight: 500;
+          }
+
+          .commentDate {
+            font-size: $par-sm;
+          }
+        }
+      }
+    }
+
+    .placeholder {
+      margin: 0 auto;
+    }
+  }
+}
