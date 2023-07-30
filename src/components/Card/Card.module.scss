@@ -9,6 +9,7 @@
   cursor: pointer;
   z-index: 1;
   position: relative;
+  scroll-snap-align: start;
 
   //DESKTOP
   @include lg {

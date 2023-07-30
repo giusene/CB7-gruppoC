@@ -1,4 +1,5 @@
 import { useState, useContext, useLayoutEffect } from "react";
+import { IoSendSharp } from "react-icons/io5";
 
 // import db
 import { arrayUnion, setDoc, updateDoc, doc } from "firebase/firestore";
@@ -24,10 +25,56 @@ const Comments = ({ id, comments }) => {
     if (state.user.isLogged) {
       const docRef = doc(db, "movies", id.toString());
 
-      if (commentsArr.length > 0) {
-        updateDoc(docRef, {
-          id: id,
-          comments: arrayUnion({
+      if (comment.length) {
+        if (commentsArr.length > 0) {
+          updateDoc(docRef, {
+            id: id,
+            comments: arrayUnion({
+              id: Date.now(),
+              commentText: comment,
+              date: new Date().toLocaleString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }),
+              user: {
+                id: state.user.id,
+                firstName: state.user.firstName,
+                lastName: state.user.lastName,
+                userImg: state.user.userImg,
+              },
+            }),
+          });
+        } else {
+          setDoc(
+            docRef,
+            {
+              id: id,
+              comments: [
+                {
+                  id: Date.now(),
+                  commentText: comment,
+                  date: new Date().toLocaleString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  }),
+                  user: {
+                    id: state.user.id,
+                    firstName: state.user.firstName,
+                    lastName: state.user.lastName,
+                    userImg: state.user.userImg,
+                  },
+                },
+              ],
+            },
+            { merge: true }
+          );
+        }
+
+        setCommentsArr([
+          ...commentsArr,
+          {
             id: Date.now(),
             commentText: comment,
             date: new Date().toLocaleString("en-US", {
@@ -41,66 +88,29 @@ const Comments = ({ id, comments }) => {
               lastName: state.user.lastName,
               userImg: state.user.userImg,
             },
-          }),
-        });
+          },
+        ]);
 
-        alert("updateDoc");
+        setComment("");
       } else {
-        setDoc(
-          docRef,
-          {
-            id: id,
-            comments: [
-              {
-                id: Date.now(),
-                commentText: comment,
-                date: new Date().toLocaleString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                }),
-                user: {
-                  id: state.user.id,
-                  firstName: state.user.firstName,
-                  lastName: state.user.lastName,
-                  userImg: state.user.userImg,
-                },
-              },
-            ],
-          },
-          { merge: true }
-        );
-
-        alert("setDoc");
+        alert("Comment field blank");
       }
-
-      setCommentsArr([
-        ...commentsArr,
-        {
-          id: Date.now(),
-          commentText: comment,
-          date: new Date().toLocaleString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          }),
-          user: {
-            id: state.user.id,
-            firstName: state.user.firstName,
-            lastName: state.user.lastName,
-            userImg: state.user.userImg,
-          },
-        },
-      ]);
-      setComment("");
     }
+
     // TODO
     else alert("Please log in to comment");
   };
 
   return (
     <div className={`${styles.Comments} col-12`}>
-      <h2>Comments</h2>
+      <h2>
+        Comments
+        {commentsArr.length ? (
+          <span> ({commentsArr.length})</span>
+        ) : (
+          <span></span>
+        )}
+      </h2>
       <form onSubmit={onHandleSubmit} className={styles.commentsForm}>
         <textarea
           placeholder="Leave a comment..."
@@ -110,7 +120,16 @@ const Comments = ({ id, comments }) => {
           minLength={1}
           className={styles.commentInput}
         />
-        <input type="submit" value={"Post"} className={styles.commentSubmit} />
+        <div className={styles.submitWrapper}>
+          <input
+            type="submit"
+            value={"Post"}
+            className={styles.commentSubmit}
+          />
+          <div className={styles.submitIcon} onClick={onHandleSubmit}>
+            <IoSendSharp />
+          </div>
+        </div>
       </form>
       <ul className={`${styles.commentSection}`}>
         {commentsArr.length ? (
@@ -130,7 +149,7 @@ const Comments = ({ id, comments }) => {
             </li>
           ))
         ) : (
-          <p>No comments here</p>
+          <p className={styles.placeholder}>No comments yet</p>
         )}
       </ul>
     </div>

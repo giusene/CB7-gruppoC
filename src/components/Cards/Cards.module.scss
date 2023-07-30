@@ -4,6 +4,7 @@
   transition: all 0.35ms ease-in-out;
   overflow-x: scroll;
   height: 220px;
+  scroll-snap-type: x mandatory;
 
   &::-webkit-scrollbar {
     width: 10px;
