@@ -148,7 +148,7 @@
     }
 
     &:active {
-      box-shadow: $elevation-medium;
+      box-shadow: 0px 0px 10px $color-primary-light;
       scale: 0.99;
     }
   }
