@@ -17,10 +17,9 @@ import styles from "./Comments.module.scss";
 const Comments = ({ id, comments }) => {
   const { state } = useContext(MainContext);
 
-  // TODO: controllare se si può togliere console.log
-  const docSnap = onSnapshot(doc(db, "movies", id.toString()), (doc) => {
-    console.log(doc.data());
-  });
+  // const docSnap = onSnapshot(doc(db, "movies", id.toString()), (doc) => {
+  //   console.log(doc.data());
+  // });
 
   const [comment, setComment] = useState("");
   const [commentsArr, setCommentsArr] = useState(comments);
@@ -49,7 +48,7 @@ const Comments = ({ id, comments }) => {
           }),
         });
 
-        console.log("updateDoc");
+        alert("updateDoc");
       } else {
         setDoc(
           docRef,
@@ -72,7 +71,7 @@ const Comments = ({ id, comments }) => {
           { merge: true }
         );
 
-        console.log("setDoc");
+        alert("setDoc");
       }
 
       setCommentsArr([

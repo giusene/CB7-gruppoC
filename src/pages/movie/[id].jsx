@@ -189,14 +189,15 @@ export async function getServerSideProps(router) {
 
   const comments = [];
 
-  // TODO: controllare se serve
   if (docSnap.exists()) {
-    if (docSnap.data().comments.length) {
-      docSnap.data().comments.forEach((comment) => comments.push(comment));
-    } else {
-      comments.push(docSnap.data().comments);
-    }
+    // if (docSnap.data().comments.length) {
+    docSnap.data().comments.forEach((comment) => comments.push(comment));
+    // } else {
+    //   comments.push(docSnap.data().comments);
+    // }
   }
+
+  console.log("docSnap.data()");
 
   return {
     props: {
