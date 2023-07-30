@@ -253,10 +253,7 @@
       &:active {
         fill: $color-secondary;
       }
-
-  
     }
-
 
     .bgCard {
       @include dimensions(100%, 169px, 0);
@@ -294,4 +291,3 @@
     }
   }
 }
-
