@@ -100,6 +100,7 @@ const Comments = ({ id, comments }) => {
 
   return (
     <div className={`${styles.Comments} col-12`}>
+      <h2>Comments</h2>
       <form onSubmit={onHandleSubmit} className={styles.commentsForm}>
         <textarea
           placeholder="Leave a comment..."
@@ -109,11 +110,7 @@ const Comments = ({ id, comments }) => {
           minLength={1}
           className={styles.commentInput}
         />
-        <input
-          type="submit"
-          value={"submit"}
-          className={styles.commentSubmit}
-        />
+        <input type="submit" value={"Post"} className={styles.commentSubmit} />
       </form>
       <ul className={`${styles.commentSection}`}>
         {commentsArr.length ? (

@@ -156,23 +156,34 @@ export default function ({ movie, recommended, comments }) {
               ))}
             </div>
           </div>
-          <div className={styles.backdropsContainer}>
-            <h2>Gallery</h2>
-            <div className={styles.backdrops}>
-              {movie.images.backdrops.map((data) => (
-                <img
-                  key={data.id}
-                  src={`https://image.tmdb.org/t/p/w185${data.file_path}`}
-                />
-              ))}
+          {movie.images.backdrops.length ? (
+            <div className={styles.backdropsContainer}>
+              <h2>Gallery</h2>
+              <div className={styles.backdrops}>
+                {movie.images.backdrops.map((data) => (
+                  <img
+                    key={data.id}
+                    src={`https://image.tmdb.org/t/p/w185${data.file_path}`}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-          <h2>Similar Movies</h2>
-          <div className={styles.similarMovies}>
-            {recommended.results.map((movie) => (
-              <SimilarMovies key={movie.id} recommended={movie} />
-            ))}
-          </div>
+          ) : (
+            <p className={styles.blank}></p>
+          )}
+          {recommended.results.length ? (
+            <>
+              <h2>Similar Movies</h2>
+              <div className={styles.similarMovies}>
+                {recommended.results.map((movie) => (
+                  <SimilarMovies key={movie.id} recommended={movie} />
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className={styles.blank}></p>
+          )}
+
           <Comments id={movie.id} comments={comments} />
         </div>
       </div>
