@@ -99,7 +99,7 @@ const Comments = ({ id, comments }) => {
   };
 
   return (
-    <div className={styles.Comments}>
+    <div className={`${styles.Comments} col-12`}>
       <form onSubmit={onHandleSubmit} className={styles.commentsForm}>
         <textarea
           placeholder="Leave a comment..."
@@ -115,17 +115,19 @@ const Comments = ({ id, comments }) => {
           className={styles.commentSubmit}
         />
       </form>
-      <ul className={styles.commentSection}>
+      <ul className={`${styles.commentSection}`}>
         {commentsArr.length ? (
           commentsArr.toReversed().map((comment) => (
-            <li key={comment.id}>
-              <img
-                className={styles.commentUserImg}
-                src={comment.user.userImg}
-              />
+            <li className={styles.commentContent} key={comment.id}>
               <div className={styles.commentUserDetails}>
-                <p className={styles.commentName}>{comment.user.firstName}</p>
-                <p className={styles.commentDate}>{comment.date}</p>
+                <img
+                  className={styles.commentUserImg}
+                  src={comment.user.userImg}
+                />
+                <div className={styles.commentUserText}>
+                  <p className={styles.commentName}>{comment.user.firstName}</p>
+                  <p className={styles.commentDate}>{comment.date}</p>
+                </div>
               </div>
               <p className={styles.commentText}>{comment.commentText}</p>
             </li>
