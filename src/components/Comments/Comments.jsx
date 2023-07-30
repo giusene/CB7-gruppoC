@@ -1,13 +1,7 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useLayoutEffect } from "react";
 
 // import db
-import {
-  arrayUnion,
-  setDoc,
-  updateDoc,
-  doc,
-  onSnapshot,
-} from "firebase/firestore";
+import { arrayUnion, setDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "@/plugins/firebase";
 
 import { MainContext } from "@/store";
@@ -17,12 +11,10 @@ import styles from "./Comments.module.scss";
 const Comments = ({ id, comments }) => {
   const { state } = useContext(MainContext);
 
-  // const docSnap = onSnapshot(doc(db, "movies", id.toString()), (doc) => {
-  //   console.log(doc.data());
-  // });
-
   const [comment, setComment] = useState("");
-  const [commentsArr, setCommentsArr] = useState(comments);
+  const [commentsArr, setCommentsArr] = useState([]);
+
+  useLayoutEffect(() => setCommentsArr(comments), [comments]);
 
   const onChangeValue = (e) => setComment(e.target.value);
 
@@ -38,7 +30,11 @@ const Comments = ({ id, comments }) => {
           comments: arrayUnion({
             id: Date.now(),
             commentText: comment,
-            date: Date.now(),
+            date: new Date().toLocaleString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            }),
             user: {
               id: state.user.id,
               firstName: state.user.firstName,
@@ -58,7 +54,11 @@ const Comments = ({ id, comments }) => {
               {
                 id: Date.now(),
                 commentText: comment,
-                date: Date.now(),
+                date: new Date().toLocaleString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }),
                 user: {
                   id: state.user.id,
                   firstName: state.user.firstName,
@@ -79,7 +79,11 @@ const Comments = ({ id, comments }) => {
         {
           id: Date.now(),
           commentText: comment,
-          date: Date.now(),
+          date: new Date().toLocaleString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }),
           user: {
             id: state.user.id,
             firstName: state.user.firstName,
@@ -111,11 +115,25 @@ const Comments = ({ id, comments }) => {
           className={styles.commentSubmit}
         />
       </form>
-      <ol className={styles.commentSection}>
-        {commentsArr.map((comment) => (
-          <li>{comment.commentText}</li>
-        ))}
-      </ol>
+      <ul className={styles.commentSection}>
+        {commentsArr.length ? (
+          commentsArr.toReversed().map((comment) => (
+            <li key={comment.id}>
+              <img
+                className={styles.commentUserImg}
+                src={comment.user.userImg}
+              />
+              <div className={styles.commentUserDetails}>
+                <p className={styles.commentName}>{comment.user.firstName}</p>
+                <p className={styles.commentDate}>{comment.date}</p>
+              </div>
+              <p className={styles.commentText}>{comment.commentText}</p>
+            </li>
+          ))
+        ) : (
+          <p>No comments here</p>
+        )}
+      </ul>
     </div>
   );
 };
