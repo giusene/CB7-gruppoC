@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import styles from "./Hero.module.scss";
 import { BsFillPlayFill } from "react-icons/Bs";
 import { AiFillStar } from "react-icons/Ai";
@@ -11,6 +12,9 @@ import { genres } from "@/utils/genres";
 const Hero = ({ trending }) => {
   const [nextMovie, setNextMovie] = useState(0);
   const timerRef = useRef(null);
+  const router = useRouter();
+
+  console.log(trending);
 
   useEffect(() => {
     timerRef.current = setTimeout(onClickNextMovie, 6000);
@@ -21,10 +25,6 @@ const Hero = ({ trending }) => {
       }
     };
   }, [nextMovie]);
-
-  // useEffect(() => {
-  //   setTimeout(onClickNextMovie, 6000);
-  // }, [nextMovie]);
 
   const onClickNextMovie = () => {
     nextMovie === 4 ? setNextMovie(0) : setNextMovie(nextMovie + 1);
@@ -40,6 +40,9 @@ const Hero = ({ trending }) => {
 
   const genreRender = (genreId) =>
     genres.map((genre) => genre.id === genreId && genre.name);
+
+  const onClickMoviePage = () =>
+    router.push(`movie/${trending.results[nextMovie].id}`);
 
   return (
     <section className={styles.hero}>
@@ -76,11 +79,8 @@ const Hero = ({ trending }) => {
         <p className={styles.heroTrama}>
           {trending.results[nextMovie].overview}
         </p>
-        <button className={styles.heroTrailer}>
-          <p className={styles.heroPlayIcon}>
-            <BsFillPlayFill />
-          </p>
-          Watch trailer
+        <button className={styles.heroSeeMore} onClick={onClickMoviePage}>
+          See more
         </button>
       </div>
       <button className={styles.prevBtn} onClick={onClickPrevMovie}>

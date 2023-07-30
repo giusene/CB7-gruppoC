@@ -117,17 +117,7 @@
     scale: 1.2;
   }
 
-  .heroPlayContainer {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-
-    @include xs() {
-      flex-direction: column;
-    }
-  }
-
-  .heroTrailer {
+  .heroSeeMore {
     width: 100%;
     max-width: 200px;
     @include flexbox-hrz(10px);
@@ -153,11 +143,6 @@
     }
   }
 
-  .heroPlayIcon {
-    @extend %center-content;
-    scale: 1.5;
-  }
-
   @media (max-width: 400px) {
     .heroContent {
       .heroTrama,
@@ -178,7 +163,7 @@
         margin-bottom: 0px;
       }
 
-      .heroTrailer {
+      .heroSeeMore {
         padding: 7px 12px;
         font-size: 12px;
       }
@@ -206,7 +191,7 @@
       margin-bottom: 0px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 8px 13px;
       font-size: 12px;
     }
@@ -233,7 +218,7 @@
       font-size: 16px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 8px 12px;
       font-size: 10px;
     }
@@ -260,7 +245,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 10px 15px;
       font-size: 12px;
     }
@@ -283,7 +268,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 10px 15px;
       font-size: 14px;
     }
@@ -310,7 +295,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 10px 15px;
       font-size: 16px;
     }
@@ -337,7 +322,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 12px 16px;
       font-size: 18px;
     }
@@ -364,7 +349,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 12px 16px;
       font-size: 18px;
     }
@@ -391,7 +376,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 12px 16px;
       font-size: 18px;
     }
