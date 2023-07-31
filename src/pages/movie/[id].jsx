@@ -88,9 +88,9 @@ export default function ({ movie, recommended, comments }) {
                 <span className={styles.movieRatingIcon}>
                   <AiFillStar />
                 </span>
-                {roundToDecimal(movie.vote_average)} |
+                <span>{roundToDecimal(movie.vote_average)}</span>
               </p>
-              <p>{movie.vote_count} • </p>
+              <p>({movie.vote_count}) • </p>
               <p>{movie.release_date.slice(0, 4)} •</p>
               <p>{minutesInHours(movie.runtime)}</p>
             </div>
