@@ -30,7 +30,7 @@
 
         @include xs() {
           background-color: rgba(0, 0, 0, 0.447);
-          border-radius: 50%;
+          border-radius: $border-radius-3;
         }
 
         @include md {
@@ -93,7 +93,7 @@
         content: "";
         display: block;
         position: absolute;
-        bottom: 0;
+        bottom: 1;
         width: 100%;
         height: 100%;
         background: linear-gradient(
@@ -117,7 +117,7 @@
         width: 20%;
         height: 50px;
         background-color: #1e57ff;
-        border-radius: 20px;
+        border-radius: $border-radius-3;
         z-index: 10;
         border: none;
         text-align: center;
@@ -141,6 +141,7 @@
           width: fit-content;
         }
       }
+
       //end button watch trailer
 
       @include xs() {
