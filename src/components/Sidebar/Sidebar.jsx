@@ -13,12 +13,17 @@ import { HiOutlineUserGroup } from "react-icons/Hi";
 import { BiLogOut } from "react-icons/Bi";
 import { IoClose } from "react-icons/io5";
 import { RiArrowRightSLine } from "react-icons/Ri";
+import { useRouter, useRouterRouter } from "next/router";
 
 const Sidebar = ({ onClick, sidebar, setSidebar }) => {
   const { state, dispatch } = useContext(MainContext);
 
+  const router = useRouter();
+
   const onHandleLogOut = () => {
     setSidebar(!sidebar);
+
+    router.push("/");
 
     dispatch({
       type: "SET_USER_LOG_OUT",
