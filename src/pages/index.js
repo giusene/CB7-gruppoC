@@ -6,9 +6,6 @@ import Cards from "@/components/Cards/Cards";
 import Hero from "@/components/hero";
 import Badge from "@/components/Badge";
 import styles from "@/styles/Home.module.scss";
-import Dashboard from "@/components/layouts/Dashboard-layout/Dashboard";
-import Sidebar from "@/components/Sidebar/Sidebar";
-import CommunityCards from "@/components/CommunityCards/CommunityCards";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function Home({
