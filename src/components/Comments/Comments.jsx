@@ -105,7 +105,7 @@ const Comments = ({ id, comments }) => {
         content={
           state.user.isLogged
             ? "Oops! It seems like you forgot to enter any text. Please provide a sentence or a message to post your comment."
-            : "You must be logged to post comments."
+            : "You must be logged in to post comments."
         }
         modal={modal}
         setModal={setModal}
