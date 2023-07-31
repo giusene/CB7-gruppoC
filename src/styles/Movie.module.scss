@@ -152,7 +152,22 @@
     //movie info
     .movieInfoContainer {
       @include flexbox-hrz-space-between();
+      justify-content: flex-start;
+      align-items: center;
       padding: $padding-md;
+
+      p {
+        @include flexbox-hrz(10px);
+      }
+
+      .movieRatingIcon {
+        @include flexbox-hrz(0);
+      }
+
+      .movieRatingIcon svg {
+        fill: $color-star;
+        scale: 1.2;
+      }
 
       @include xs() {
         @include flexbox-hrz(10px);
