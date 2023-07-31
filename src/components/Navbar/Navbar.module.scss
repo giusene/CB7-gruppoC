@@ -83,19 +83,6 @@
     }
   }
 
-
-  .loggedUser {
-    color: $color-secondary;
-    border: 1px solid;
-    cursor: pointer;
-
-    @include flexbox-hrz-space-between();
-    gap: 10px;
-    .loggedUser__img {
-      height: 30px;
-      width: 30px;
-      border-radius: 50%;
-
   .welcome {
     @include flexbox-hrz(5px);
     align-items: baseline;
@@ -135,17 +122,15 @@
       }
     }
 
+    @include xs() {
+      .Navbar {
+        max-height: 20px;
+      }
 
-  @include xs() {
-    .Navbar {
-      max-height: 20px;
-    }
-
-    input {
-      max-width: 150px;
-      height: 40px;
-    }
-
+      input {
+        max-width: 150px;
+        height: 40px;
+      }
 
       .logoImg {
         display: flex;
@@ -155,11 +140,10 @@
         display: none;
       }
 
-
-    button {
-      max-width: 80px;
-      height: 40px;
-
+      button {
+        max-width: 80px;
+        height: 40px;
+      }
     }
   }
 }

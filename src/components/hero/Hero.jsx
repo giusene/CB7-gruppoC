@@ -9,8 +9,6 @@ import {
 } from "react-icons/Md";
 import { genres } from "@/utils/genres";
 
-import { genres } from "@/utils/genres";
-
 const Hero = ({ trending }) => {
   const [nextMovie, setNextMovie] = useState(0);
   const timerRef = useRef(null);
@@ -40,9 +38,6 @@ const Hero = ({ trending }) => {
   const roundToDecimal = (number) => {
     return Math.round(number * 10) / 10;
   };
-
-  const genreRender = (genreId) =>
-    genres.map((genre) => genre.id === genreId && genre.name);
 
   const onClickMoviePage = () =>
     router.push(`movie/${trending.results[nextMovie].id}`);
@@ -87,7 +82,6 @@ const Hero = ({ trending }) => {
           {/* <p className={styles.heroPlayIcon}>
             <BsFillPlayFill />
           </p> */}
-
           See more
         </button>
       </div>
