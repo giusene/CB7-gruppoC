@@ -9,6 +9,7 @@
   cursor: pointer;
   z-index: 1;
   position: relative;
+  scroll-snap-align: start;
 
   //DESKTOP
   @include lg {
@@ -160,7 +161,7 @@
   padding: $padding-card;
   display: flex;
   position: absolute;
-  bottom: -100%; // -100%
+  bottom: -100%;
   left: 0;
   transition: all 0.35s ease-in-out;
 
@@ -253,10 +254,7 @@
       &:active {
         fill: $color-secondary;
       }
-
-  
     }
-
 
     .bgCard {
       @include dimensions(100%, 169px, 0);
@@ -294,4 +292,3 @@
     }
   }
 }
-

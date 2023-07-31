@@ -24,8 +24,11 @@
 
   form {
     height: 40px;
+    background-color: $color-primary-transparent;
     border: 2px solid $color-secondary-light;
+
     border-radius: 12px;
+
     @include flexbox-hrz(20px);
 
     svg {
@@ -80,6 +83,7 @@
     }
   }
 
+
   .loggedUser {
     color: $color-secondary;
     border: 1px solid;
@@ -91,8 +95,46 @@
       height: 30px;
       width: 30px;
       border-radius: 50%;
+
+  .welcome {
+    @include flexbox-hrz(5px);
+    align-items: baseline;
+    user-select: none;
+    .loggedUser {
+      color: $color-secondary;
+      cursor: pointer;
+      @include flexbox-hrz-space-between();
+      gap: 15px;
+
+      p {
+        position: relative;
+        font-size: 18px;
+        text-transform: uppercase;
+
+        &::after {
+          content: "";
+          position: absolute;
+          height: 2px;
+          width: 0;
+          background-color: $color-secondary;
+          bottom: -2px;
+          border-radius: 2px;
+          transition: width 0.35s ease-in-out;
+          translate: (-100%);
+        }
+        &:hover::after,
+        &:active::after {
+          width: 100%;
+        }
+      }
+
+      .loggedUser__img {
+        height: 38px;
+        width: 38px;
+        border-radius: 50%;
+      }
     }
-  }
+
 
   @include xs() {
     .Navbar {
@@ -104,17 +146,20 @@
       height: 40px;
     }
 
-    .logoImg {
-      display: flex;
-    }
 
-    .logoFull {
-      display: none;
-    }
+      .logoImg {
+        display: flex;
+      }
+
+      .logoFull {
+        display: none;
+      }
+
 
     button {
       max-width: 80px;
       height: 40px;
+
     }
   }
 }

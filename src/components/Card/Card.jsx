@@ -1,6 +1,6 @@
 import styles from "./Card.module.scss";
-import { AiOutlinePlus } from "react-icons/Ai";
-import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/Bs";
+import { AiOutlinePlus, AiOutlineHeart } from "react-icons/Ai";
+import { BsFillPeopleFill, BsPeople } from "react-icons/Bs";
 import { SlArrowDown } from "react-icons/Sl";
 import { AiFillStar } from "react-icons/Ai";
 import { useState } from "react";
@@ -30,12 +30,9 @@ const Card = ({ mock }) => {
     return `${hours}h ${minutes}m`;
   };
 
-
-
   const roundToDecim = (number) => {
     return Math.round(number * 10) / 10;
   };
-
 
   const truncateString = (string, wordsNumber) => {
     return string.split(" ").splice(0, wordsNumber).join(" ");
@@ -70,7 +67,6 @@ const Card = ({ mock }) => {
               <div className={styles.info}>
                 <div className={styles.date}>
                   <p className={styles.year}>{mock.release_date.slice(0, 4)}</p>
-
                   <p className={styles.votes}>
                     <AiFillStar className={styles.star} />
                     {`${Math.round(mock.vote_average * 10) / 10} (${
@@ -87,7 +83,6 @@ const Card = ({ mock }) => {
                   {`${truncateString(mock.overview, 20)} ...`}
                 </p>
               </div>
-
               <div className={styles.close_button}>
                 <SlArrowDown
                   className={styles.close}
@@ -95,10 +90,9 @@ const Card = ({ mock }) => {
                 />
               </div>
             </div>
-
             <div className={styles.icons}>
               <p className={styles.action}>
-                <BsFillPlayFill className={styles.heart} />
+                <AiOutlineHeart className={styles.heart} />
               </p>
               <p className={styles.action} onClick={() => changePlus()}>
                 <AiOutlinePlus className={styles.plus} />

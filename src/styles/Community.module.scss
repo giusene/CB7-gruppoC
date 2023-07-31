@@ -1,0 +1,65 @@
+.mainContainer {
+  margin-top: 80px;
+
+  h1 {
+    @extend %mainTitle;
+    text-align: center;
+  }
+
+  .cardsContainer {
+    @include flexColumn(20px);
+    margin: 5% 2%;
+    padding: 3%;
+    border-radius: 20px;
+    background-color: $color-primary-light;
+
+    img {
+      border-radius: 15px;
+    }
+
+    .cardsInfo {
+      @include flexbox-hrz(10px);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+        margin: 0px 12px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: $color-primary;
+        border-radius: 4px;
+        padding: 0px 10px;
+      }
+
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: $color-secondary;
+      }
+
+      @include xs() {
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+
+    .userInfo {
+      @include flexbox-hrz(10px);
+      justify-content: flex-start;
+
+      img {
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+      }
+    }
+  }
+}

@@ -1,141 +1,152 @@
+.sidebar {
+  height: 100%;
+  width: 22%;
+  box-shadow: 0px 0px 36px -3px #323844;
+  border-radius: 0 0 8px 0;
+  z-index: 201;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  background-color: $color-primary-transparent;
+  backdrop-filter: blur(10px);
 
+  @include xs() {
+    width: 100%;
+  }
 
-.sidebar{
-    // border: 1px solid;
-    height: 100%;
-    width: 22%;
-    box-shadow: 0px 0px 36px -3px #323844;
-    border-radius: 0 0 8px 0;
-    z-index: 201;
-    position: fixed;
-    top: 0;
-    right: -100%;
-    background-color: $color-primary-transparent;
-    backdrop-filter: blur(10px);
-    
-    
-    
+  .userInfo {
+    @include dimensions(100%, auto, 15px);
+    @include flexbox-vrt(10px);
+    margin-top: 70px;
+    user-select: none;
 
-   
-    .userInfo{
-        @include dimensions(100%, auto, 15px);
-        @include flexbox-vrt(10px);
-        margin-top: 70px;
+    .user {
+      @include dimensions(60px, 60px, 0);
 
-        .user{
-            @include dimensions(60px, 60px, 0);
-            
-            .userImage{
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-            }
-        }
+      .userImage {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
     }
 
-    .sections{
-        @include dimensions(100%, auto, 10px);
-        padding: 20px 10px 0 10px ;
-
-        .sectionList{
-            
-           
-
-            .section{
-                @include dimensions(100%, auto, 0);
-                
-                border-radius: 8px;
-                margin-bottom: 8px;
-                background-color: $color-primary-clair;
-
-                
-
-                .item{
-                    
-                    display: flex;
-                    align-items: center;
-                    text-decoration: none;
-                    padding: 10px 5px;
-
-                    .icon{
-                        font-size: $subtitle;
-                        @include flexCenter(0);
-                        margin-right: 17px;
-                    }
-                }
-            }
-        }
-
-        
+    .userName {
+      p {
+        text-transform: uppercase;
+      }
     }
+  }
 
-    .logout{
-        @include dimensions(calc(100% - 20px), auto, 0px);
+  .sections {
+    @include dimensions(100%, auto, 10px);
+    padding: 20px 10px 0 10px;
+
+    .sectionList {
+      .section {
+        @include dimensions(100%, auto, 0);
+
         border-radius: 8px;
         margin-bottom: 8px;
         background-color: $color-primary-clair;
-        position: absolute;
-        bottom: 40px;
-        left: 10px;
-        padding: 0px 10px ;
 
-        .logoutLink{
-            @include flexCenter(0);
-            text-decoration: none;
-            padding: 10px 5px;
+        &:hover,
+        &:active {
+          color: $color-primary;
+          background-color: $color-primary-light;
         }
 
-        .icon{
+        &:active {
+          scale: 0.99;
+        }
+
+        .item {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          padding: 10px 5px;
+
+          .icon {
             font-size: $subtitle;
             @include flexCenter(0);
             margin-right: 17px;
+          }
         }
+      }
+    }
+  }
 
+  .logout {
+    @include dimensions(calc(100% - 20px), auto, 0px);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background-color: $color-primary-clair;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    padding: 0px 10px;
+    cursor: pointer;
 
+    &:hover,
+    &:active {
+      color: $color-primary;
+      background-color: $color-primary-light;
     }
 
-
-
-    .close{
-        @include flexCenter(6px);
-        position: absolute;
-        top: 20px;
-        right: 10px;
-        cursor: pointer;
-        padding: $padding-sm;
-        
-        border-radius: 8px;
-
-    &:hover{
-        .closebtn{
-            transform: translateX(5px);
-            fill: $color-secondary-light;
-        }
-        span{
-            color: $color-secondary-light;
-        }
+    &:active {
+      scale: 0.99;
     }
 
-        .closebtn{
-            font-size: $icon-l;
-            @include flexCenter(6px);
-            margin-left: -5px ;
-            transition: all 0.35s ease-in-out;
-            fill: $color-secondary;
-        }
-
-        span{
-            font-size: $icons;
-            color: $color-secondary;
-            transition: all 0.35s ease-in-out;
-        }
+    .logoutLink {
+      @include flexCenter(0);
+      text-decoration: none;
+      padding: 10px 5px;
     }
 
-    transition: all 0.5s ease-in-out;
+    .icon {
+      font-size: $subtitle;
+      @include flexCenter(0);
+      margin-right: 17px;
+    }
+  }
 
+  .close {
+    @include flexCenter(6px);
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+    padding: $padding-sm;
+
+    border-radius: 8px;
+
+    &:hover {
+      .closebtn {
+        transform: translateX(5px);
+        fill: $color-secondary-light;
+      }
+      span {
+        color: $color-secondary-light;
+      }
+    }
+
+    .closebtn {
+      font-size: $icon-l;
+      @include flexCenter(6px);
+      margin-left: -5px;
+      transition: all 0.35s ease-in-out;
+      fill: $color-secondary;
+    }
+
+    span {
+      font-size: $icons;
+      color: $color-secondary;
+      transition: all 0.35s ease-in-out;
+    }
+  }
+
+  transition: all 0.5s ease-in-out;
 }
 
-
-.showsidebar{
-    right: 0;
+.showsidebar {
+  right: 0;
 }

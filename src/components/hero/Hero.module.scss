@@ -69,18 +69,8 @@
     max-width: 40%;
     height: auto;
     position: absolute;
-    // bottom: 5%;
-    // left: 5%;
     background-color: transparent;
     z-index: 9;
-
-    // @include xs() {
-    //   transform: translateX(-50%);
-    //   max-width: 100%;
-    //   padding: 5px;
-    //   left: 50%;
-    //   height: 50%;
-    // }
   }
 
   .heroTitle {
@@ -155,6 +145,7 @@
   }
 
   .heroTrailer {
+
     width: 100%;
     max-width: 200px;
     @include flexbox-hrz(10px);
@@ -175,14 +166,9 @@
     }
 
     &:active {
-      box-shadow: $elevation-medium;
+      box-shadow: 0px 0px 10px $color-primary-light;
       scale: 0.99;
     }
-  }
-
-  .heroPlayIcon {
-    @extend %center-content;
-    scale: 1.5;
   }
 
   @media (max-width: 400px) {
@@ -205,7 +191,7 @@
         margin-bottom: 0px;
       }
 
-      .heroTrailer {
+      .heroSeeMore {
         padding: 7px 12px;
         font-size: 12px;
       }
@@ -236,7 +222,7 @@
       margin-bottom: 0px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 8px 13px;
       font-size: 12px;
     }
@@ -263,7 +249,7 @@
       font-size: 16px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 8px 12px;
       font-size: 10px;
     }
@@ -290,7 +276,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 10px 15px;
       font-size: 12px;
     }
@@ -313,7 +299,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 10px 15px;
       font-size: 14px;
     }
@@ -340,7 +326,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 10px 15px;
       font-size: 16px;
     }
@@ -367,7 +353,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 12px 16px;
       font-size: 18px;
     }
@@ -382,7 +368,7 @@
     background-color: transparent;
 
     .heroTrama {
-      font-size: 22px;
+      font-size: 20px;
     }
 
     .heroTitle {
@@ -394,7 +380,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 12px 16px;
       font-size: 18px;
     }
@@ -409,7 +395,7 @@
     background-color: transparent;
 
     .heroTrama {
-      font-size: 24px;
+      font-size: 20px;
     }
 
     .heroTitle {
@@ -421,7 +407,7 @@
       margin-bottom: 10px;
     }
 
-    .heroTrailer {
+    .heroSeeMore {
       padding: 12px 16px;
       font-size: 18px;
     }

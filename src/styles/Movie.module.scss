@@ -32,6 +32,11 @@
           background-color: rgba(0, 0, 0, 0.447);
           border-radius: 50%;
         }
+
+        @include md {
+          top: 10px;
+          right: 10px;
+        }
       }
     }
 
@@ -147,7 +152,22 @@
     //movie info
     .movieInfoContainer {
       @include flexbox-hrz-space-between();
+      justify-content: flex-start;
+      align-items: center;
       padding: $padding-md;
+
+      p {
+        @include flexbox-hrz(10px);
+      }
+
+      .movieRatingIcon {
+        @include flexbox-hrz(0);
+      }
+
+      .movieRatingIcon svg {
+        fill: $color-star;
+        scale: 1.2;
+      }
 
       @include xs() {
         @include flexbox-hrz(10px);
@@ -214,6 +234,7 @@
     .people {
       @include flexbox-hrz(20px);
       padding: 4%;
+      scroll-snap-type: x mandatory;
 
       @include xs() {
         @include flexbox-hrz(10px);
@@ -226,6 +247,7 @@
         text-align: center;
         min-width: 200px;
         height: 200px;
+        scroll-snap-align: start;
 
         .movieImg {
           width: 100px;

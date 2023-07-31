@@ -16,12 +16,11 @@ import { useState } from "react";
 import SimilarMovies from "@/components/SimilarMovie";
 
 export default function ({ movie, recommended, comments }) {
+  const router = useRouter();
   const [addFilm, setAddFilm] = useState(false);
   const [likeFilm, setLikeFilm] = useState(false);
   const [suggestFilm, setSuggestFilm] = useState(false);
   const [trailer, setTrailer] = useState(false);
-
-  const router = useRouter();
 
   const onClickTrailer = () => {
     setTrailer(!trailer);
@@ -89,9 +88,9 @@ export default function ({ movie, recommended, comments }) {
                 <span className={styles.movieRatingIcon}>
                   <AiFillStar />
                 </span>
-                {roundToDecimal(movie.vote_average)} |
+                <span>{roundToDecimal(movie.vote_average)}</span>
               </p>
-              <p>{movie.vote_count} • </p>
+              <p>({movie.vote_count}) • </p>
               <p>{movie.release_date.slice(0, 4)} •</p>
               <p>{minutesInHours(movie.runtime)}</p>
             </div>
@@ -122,8 +121,8 @@ export default function ({ movie, recommended, comments }) {
           <div className={styles.movieDescription}>
             <div className={styles.dataInfo}>
               <h3>Movie info</h3>
-              <p>Original language: {movie.original_language}</p>
-              <p>Budget: {movie.budget}</p>
+              <p>Original language: {movie.original_language.toUpperCase()}</p>
+              <p>Budget: {movie.budget ? movie.budget : "N/A"}</p>
               <p>Adult: {movie.adult ? "Yes" : "No"}</p>
             </div>
             <div className={styles.productions}>
@@ -157,23 +156,34 @@ export default function ({ movie, recommended, comments }) {
               ))}
             </div>
           </div>
-          <div className={styles.backdropsContainer}>
-            <h2>Gallery</h2>
-            <div className={styles.backdrops}>
-              {movie.images.backdrops.map((data) => (
-                <img
-                  key={data.id}
-                  src={`https://image.tmdb.org/t/p/w185${data.file_path}`}
-                />
-              ))}
+          {movie.images.backdrops.length ? (
+            <div className={styles.backdropsContainer}>
+              <h2>Gallery</h2>
+              <div className={styles.backdrops}>
+                {movie.images.backdrops.map((data) => (
+                  <img
+                    key={data.id}
+                    src={`https://image.tmdb.org/t/p/w185${data.file_path}`}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-          <h2>Similar Movies</h2>
-          <div className={styles.similarMovies}>
-            {recommended.results.map((movie) => (
-              <SimilarMovies key={movie.id} recommended={movie} />
-            ))}
-          </div>
+          ) : (
+            <p className={styles.blank}></p>
+          )}
+          {recommended.results.length ? (
+            <>
+              <h2>Similar Movies</h2>
+              <div className={styles.similarMovies}>
+                {recommended.results.map((movie) => (
+                  <SimilarMovies key={movie.id} recommended={movie} />
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className={styles.blank}></p>
+          )}
+
           <Comments id={movie.id} comments={comments} />
         </div>
       </div>
@@ -190,9 +200,8 @@ export async function getServerSideProps(router) {
 
   const comments = [];
 
-  if (docSnap.exists()) {
-    comments.push(docSnap.data().comments);
-  }
+  if (docSnap.exists())
+    docSnap.data().comments.forEach((comment) => comments.push(comment));
 
   return {
     props: {

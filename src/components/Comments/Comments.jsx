@@ -1,17 +1,24 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useLayoutEffect } from "react";
+import { IoSendSharp } from "react-icons/io5";
 
 // import db
-import { arrayUnion, setDoc, getDoc, updateDoc, doc } from "firebase/firestore";
+import { arrayUnion, setDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "@/plugins/firebase";
 
 import { MainContext } from "@/store";
+
+import Warning from "@/components/warning";
 
 import styles from "./Comments.module.scss";
 
 const Comments = ({ id, comments }) => {
   const { state } = useContext(MainContext);
 
+  const [modal, setModal] = useState(false);
   const [comment, setComment] = useState("");
+  const [commentsArr, setCommentsArr] = useState([]);
+
+  useLayoutEffect(() => setCommentsArr(comments), [comments]);
 
   const onChangeValue = (e) => setComment(e.target.value);
 
@@ -21,60 +28,138 @@ const Comments = ({ id, comments }) => {
     if (state.user.isLogged) {
       const docRef = doc(db, "movies", id.toString());
 
-      console.log(getDoc(docRef));
-
-      if (comments.length) {
-        updateDoc(docRef, {
-          id: id,
-          comments: arrayUnion({
-            id: Date.now(),
-            commentText: comment,
-            date: Date.now(),
-            user: {
-              id: state.user.id,
-              firstName: state.user.firstName,
-              lastName: state.user.lastName,
-              userImg: state.user.userImg,
-            },
-          }),
-        });
-      } else {
-        setDoc(
-          docRef,
-          {
+      if (comment.length) {
+        if (commentsArr.length > 0) {
+          updateDoc(docRef, {
             id: id,
-            comments: {
+            comments: arrayUnion({
               id: Date.now(),
               commentText: comment,
-              date: Date.now(),
+              date: new Date().toLocaleString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }),
               user: {
                 id: state.user.id,
                 firstName: state.user.firstName,
                 lastName: state.user.lastName,
                 userImg: state.user.userImg,
               },
+            }),
+          });
+        } else {
+          setDoc(
+            docRef,
+            {
+              id: id,
+              comments: [
+                {
+                  id: Date.now(),
+                  commentText: comment,
+                  date: new Date().toLocaleString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  }),
+                  user: {
+                    id: state.user.id,
+                    firstName: state.user.firstName,
+                    lastName: state.user.lastName,
+                    userImg: state.user.userImg,
+                  },
+                },
+              ],
+            },
+            { merge: true }
+          );
+        }
+
+        setCommentsArr([
+          ...commentsArr,
+          {
+            id: Date.now(),
+            commentText: comment,
+            date: new Date().toLocaleString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            }),
+            user: {
+              id: state.user.id,
+              firstName: state.user.firstName,
+              lastName: state.user.lastName,
+              userImg: state.user.userImg,
             },
           },
-          { merge: true }
-        );
-      }
-    }
-    // TODO
-    else alert("not logged");
+        ]);
+
+        setComment("");
+      } else setModal(true);
+    } else setModal(true);
   };
 
   return (
-    <form onSubmit={onHandleSubmit}>
-      <input
-        type="text"
-        placeholder="Leave a comment..."
-        onChange={onChangeValue}
-        value={comment}
-        required
-        minLength={1}
+    <div className={`${styles.Comments} col-12`}>
+      <Warning
+        content={
+          state.user.isLogged
+            ? "Oops! It seems like you forgot to enter any text. Please provide a sentence or a message to post your comment."
+            : "You must be logged to post comments."
+        }
+        modal={modal}
+        setModal={setModal}
       />
-      <input type="submit" value={"submit"} />
-    </form>
+      <h2>
+        Comments
+        {commentsArr.length ? (
+          <span> ({commentsArr.length})</span>
+        ) : (
+          <span></span>
+        )}
+      </h2>
+      <form onSubmit={onHandleSubmit} className={styles.commentsForm}>
+        <textarea
+          placeholder="Leave a comment..."
+          onChange={onChangeValue}
+          value={comment}
+          required
+          minLength={1}
+          className={styles.commentInput}
+        />
+        <div className={styles.submitWrapper}>
+          <input
+            type="submit"
+            value={"Post"}
+            className={styles.commentSubmit}
+          />
+          <div className={styles.submitIcon} onClick={onHandleSubmit}>
+            <IoSendSharp />
+          </div>
+        </div>
+      </form>
+      <ul className={`${styles.commentSection}`}>
+        {commentsArr.length ? (
+          commentsArr.toReversed().map((comment) => (
+            <li className={styles.commentContent} key={comment.id}>
+              <div className={styles.commentUserDetails}>
+                <img
+                  className={styles.commentUserImg}
+                  src={comment.user.userImg}
+                />
+                <div className={styles.commentUserText}>
+                  <p className={styles.commentName}>{comment.user.firstName}</p>
+                  <p className={styles.commentDate}>{comment.date}</p>
+                </div>
+              </div>
+              <p className={styles.commentText}>{comment.commentText}</p>
+            </li>
+          ))
+        ) : (
+          <p className={styles.placeholder}>No comments yet</p>
+        )}
+      </ul>
+    </div>
   );
 };
 

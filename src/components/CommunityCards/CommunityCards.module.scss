@@ -1,0 +1,10 @@
+.card {
+  transition: all 0.3s ease-in-out;
+  margin: 20px 10px;
+  cursor: pointer;
+  scroll-snap-align: start;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
