@@ -120,6 +120,10 @@
     }
 
     @include xs() {
+      .Navbar {
+        width: 10px;
+      }
+
       input {
         max-width: 120px;
       }
