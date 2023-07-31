@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 import { db } from "@/plugins/firebase";
 import { IoMdClose } from "react-icons/io";
+import Warning from "@/components/warning";
 import Trailer from "@/components/Trailer";
 
 import { AiOutlineHeart, AiFillHeart } from "react-icons/Ai";
@@ -29,6 +30,10 @@ export default function ({ movie, recommended, comments }) {
   const [likeFilm, setLikeFilm] = useState(false);
   const [suggestFilm, setSuggestFilm] = useState(false);
   const [trailer, setTrailer] = useState(false);
+  // modals states
+  const [watchlistModal, setWatchlistModal] = useState(false);
+  const [likeModal, setLikeModal] = useState(false);
+  const [suggestModal, setSuggestModal] = useState(false);
 
   useEffect(() => {
     if (state.user.isLogged) {
@@ -98,8 +103,9 @@ export default function ({ movie, recommended, comments }) {
             }),
           });
       }
+      setWatchlistModal(!watchlistModal);
     } else {
-      alert("You must be logged in to add films to your watchlist");
+      setWatchlistModal(!watchlistModal);
     }
   };
 
@@ -124,8 +130,9 @@ export default function ({ movie, recommended, comments }) {
             }),
           });
       }
+      setLikeModal(!likeModal);
     } else {
-      alert("You must be logged in to add films to your favorites");
+      setLikeModal(!likeModal);
     }
   };
 
@@ -150,8 +157,9 @@ export default function ({ movie, recommended, comments }) {
             }),
           });
       }
+      setSuggestModal(!suggestModal);
     } else {
-      alert("You must be logged in to add films to your community list");
+      setSuggestModal(!suggestModal);
     }
   };
 
@@ -163,6 +171,46 @@ export default function ({ movie, recommended, comments }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Warning
+        type={state.user.isLogged ? "ok" : "ko"}
+        content={
+          state.user.isLogged
+            ? likeFilm
+              ? "Movie added to your favorites!"
+              : "Movie removed from your favorites."
+            : "You must be logged in to add movies to your favorites."
+        }
+        modal={likeModal}
+        setModal={setLikeModal}
+      />
+
+      <Warning
+        type={state.user.isLogged ? "ok" : "ko"}
+        content={
+          state.user.isLogged
+            ? addFilm
+              ? "Movie added to your watchlist!"
+              : "Movie removed from your watchlist."
+            : "You must be logged in to add movies to your watchlist."
+        }
+        modal={watchlistModal}
+        setModal={setWatchlistModal}
+      />
+
+      <Warning
+        type={state.user.isLogged ? "ok" : "ko"}
+        content={
+          state.user.isLogged
+            ? suggestFilm
+              ? "Movie added to your community list!"
+              : "Movie removed from your community list."
+            : "You must be logged in to add movies to your community list."
+        }
+        modal={suggestModal}
+        setModal={setSuggestModal}
+      />
+
       <div className={`${styles.container} ${trailer && styles.noScroll}`}>
         <div className={styles.Movie}>
           {trailer && (

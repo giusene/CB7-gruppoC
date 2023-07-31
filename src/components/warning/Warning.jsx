@@ -7,7 +7,7 @@ import styles from "./Warning.module.scss";
 // import assets
 import { RxCross2 } from "react-icons/rx";
 
-export const Warning = ({ content, modal, setModal }) => {
+export const Warning = ({ type, content, modal, setModal }) => {
   setTimeout(() => {
     if (modal) {
       setModal(!modal);
@@ -16,7 +16,11 @@ export const Warning = ({ content, modal, setModal }) => {
 
   return (
     <>
-      <div className={`${styles.Warning} ${modal && styles.showModal}`}>
+      <div
+        className={`${styles.Warning} ${modal && styles.showModal} ${
+          type === "ok" ? styles.okMessage : styles.koMessage
+        }`}
+      >
         {content}
 
         <span
