@@ -3,12 +3,22 @@ import { AiOutlinePlus, AiOutlineHeart } from "react-icons/Ai";
 import { BsFillPeopleFill, BsPeople } from "react-icons/Bs";
 import { SlArrowDown } from "react-icons/Sl";
 import { AiFillStar } from "react-icons/Ai";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/router";
+import { MainContext } from "@/store";
+import { db } from "@/plugins/firebase";
+import {
+  doc,
+  arrayUnion,
+  setDoc,
+  updateDoc,
+  arrayRemove,
+} from "firebase/firestore";
 
 const Card = ({ mock }) => {
   const [overlay, setOverlay] = useState(false);
   const onOverlay = () => setOverlay((prev) => !prev);
+  const { state, dispatch } = useContext(MainContext);
 
   const router = useRouter();
 
@@ -21,7 +31,25 @@ const Card = ({ mock }) => {
   const changePlus = () => setPlus((prev) => !prev);
 
   const [people, setPeople] = useState(false);
-  const changePeople = () => setPeople((prev) => !prev);
+  const changePeople = (movieId) => {
+    if (state.user.isLogged) {
+      setPeople((prev) => !prev);
+      const userRef = doc(db, "users", state.user.id);
+      if (people) {
+        mock.id === movieId &&
+          updateDoc(userRef, {
+            watchlist: arrayRemove({ id: mock.id, poster: mock.poster_path }),
+          });
+      } else {
+        mock.id === movieId &&
+          updateDoc(userRef, {
+            watchlist: arrayUnion({ id: mock.id, poster: mock.poster_path }),
+          });
+      }
+    } else {
+      alert("loggati");
+    }
+  };
 
   const minutesInHours = (data) => {
     const hours = Math.floor(data / 60);
@@ -48,7 +76,7 @@ const Card = ({ mock }) => {
               src={`https://image.tmdb.org/t/p/w300${mock.backdrop_path}`}
               alt=""
             />
-            <div className={styles.black}>
+            <div className={styles.black} onClick={onClickMovie}>
               <p
                 className={`${styles.black_parag} ${overlay && styles.noTitle}`}
               >
@@ -56,10 +84,7 @@ const Card = ({ mock }) => {
               </p>
             </div>
           </div>
-          <div
-            className={`${styles.text} ${overlay && styles.overlay}`}
-            onClick={onClickMovie}
-          >
+          <div className={`${styles.text} ${overlay && styles.overlay}`}>
             <div className={styles.left}>
               <div className={styles.card_title}>
                 <h3 className={styles.text_title}>{mock.title}</h3>
@@ -94,10 +119,13 @@ const Card = ({ mock }) => {
               <p className={styles.action}>
                 <AiOutlineHeart className={styles.heart} />
               </p>
-              <p className={styles.action} onClick={() => changePlus()}>
+              <p className={styles.action} onClick={changePlus}>
                 <AiOutlinePlus className={styles.plus} />
               </p>
-              <p className={styles.action} onClick={() => changePeople()}>
+              <p
+                className={styles.action}
+                onClick={() => changePeople(mock.id)}
+              >
                 {people ? (
                   <BsFillPeopleFill className={styles.people} />
                 ) : (
