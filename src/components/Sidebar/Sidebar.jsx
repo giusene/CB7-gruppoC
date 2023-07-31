@@ -14,10 +14,12 @@ import { BiLogOut } from "react-icons/Bi";
 import { IoClose } from "react-icons/io5";
 import { RiArrowRightSLine } from "react-icons/Ri";
 
-const Sidebar = ({ onClick, sidebar }) => {
+const Sidebar = ({ onClick, sidebar, setSidebar }) => {
   const { state, dispatch } = useContext(MainContext);
 
   const onHandleLogOut = () => {
+    setSidebar(!sidebar);
+
     dispatch({
       type: "SET_USER_LOG_OUT",
       payload: {

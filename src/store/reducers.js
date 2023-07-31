@@ -17,7 +17,6 @@ export const mainReducer = (state, action) => {
       return {
         ...state,
         user: {
-          ...state.user,
           isLogged: false,
           id: action.payload.id,
           firstName: action.payload.firstName,
