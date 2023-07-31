@@ -14,8 +14,6 @@ const Hero = ({ trending }) => {
   const timerRef = useRef(null);
   const router = useRouter();
 
-  console.log(trending);
-
   useEffect(() => {
     timerRef.current = setTimeout(onClickNextMovie, 6000);
 
