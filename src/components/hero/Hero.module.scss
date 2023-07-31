@@ -95,6 +95,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
     gap: 10px;
   }
 
@@ -107,7 +108,44 @@
     scale: 1.2;
   }
 
-  .heroSeeMore {
+.heroSeeMore {
+    width: 100%;
+    max-width: 200px;
+    @include flexbox-hrz(10px);
+    background-color: #1e57ff;
+    color: #e0e4ed;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+
+    &:hover {
+      opacity: 1;
+      background-color: #063ad5;
+      color: $color-secondary;
+    }
+
+    &:active {
+      box-shadow: 0px 0px 10px $color-primary-light;
+      scale: 0.99;
+    }
+  }
+
+  .heroPlayContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    @include xs() {
+      flex-direction: column;
+    }
+  }
+
+  .heroTrailer {
+
     width: 100%;
     max-width: 200px;
     @include flexbox-hrz(10px);
@@ -174,6 +212,9 @@
 
     .heroGeneral {
       margin-bottom: 10px;
+      .votes{
+        width: 80px;
+      }
     }
 
     .heroTitle {
