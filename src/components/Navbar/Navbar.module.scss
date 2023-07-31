@@ -80,35 +80,62 @@
     }
   }
 
-  .loggedUser {
-    color: $color-secondary;
-    cursor: pointer;
+  .welcome {
+    @include flexbox-hrz(5px);
+    align-items: baseline;
+    user-select: none;
+    .loggedUser {
+      color: $color-secondary;
+      cursor: pointer;
+      @include flexbox-hrz-space-between();
+      gap: 15px;
 
-    @include flexbox-hrz-space-between();
-    gap: 10px;
-    .loggedUser__img {
-      height: 30px;
-      width: 30px;
-      border-radius: 50%;
+      p {
+        position: relative;
+        font-size: 18px;
+        text-transform: uppercase;
+
+        &::after {
+          content: "";
+          position: absolute;
+          height: 2px;
+          width: 0;
+          background-color: $color-secondary;
+          bottom: -2px;
+          border-radius: 2px;
+          transition: width 0.35s ease-in-out;
+          translate: (-100%);
+        }
+        &:hover::after,
+        &:active::after {
+          width: 100%;
+        }
+      }
+
+      .loggedUser__img {
+        height: 38px;
+        width: 38px;
+        border-radius: 50%;
+      }
     }
-  }
 
-  @include xs() {
-    input {
-      max-width: 120px;
-    }
+    @include xs() {
+      input {
+        max-width: 120px;
+      }
 
-    .logoImg {
-      display: flex;
-    }
+      .logoImg {
+        display: flex;
+      }
 
-    .logoFull {
-      display: none;
-    }
+      .logoFull {
+        display: none;
+      }
 
-    button {
-      max-width: 100px;
-      height: 50px;
+      button {
+        max-width: 100px;
+        height: 50px;
+      }
     }
   }
 }
