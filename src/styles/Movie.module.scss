@@ -153,7 +153,6 @@
     //movie info
     .movieInfoContainer {
       @include flexbox-hrz-space-between();
-      justify-content: flex-start;
       align-items: center;
       padding: $padding-md;
 

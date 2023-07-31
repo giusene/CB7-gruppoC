@@ -1,6 +1,7 @@
 .hero {
   position: relative;
   max-height: 720px;
+  
 
   .nextBtn {
     z-index: 9;
@@ -69,18 +70,8 @@
     max-width: 40%;
     height: auto;
     position: absolute;
-    // bottom: 5%;
-    // left: 5%;
     background-color: transparent;
     z-index: 9;
-
-    // @include xs() {
-    //   transform: translateX(-50%);
-    //   max-width: 100%;
-    //   padding: 5px;
-    //   left: 50%;
-    //   height: 50%;
-    // }
   }
 
   .heroTitle {
@@ -105,6 +96,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
     gap: 10px;
     // @include flexbox-hrz(10px);
   }
@@ -118,7 +110,44 @@
     scale: 1.2;
   }
 
-  .heroSeeMore {
+.heroSeeMore {
+    width: 100%;
+    max-width: 200px;
+    @include flexbox-hrz(10px);
+    background-color: #1e57ff;
+    color: #e0e4ed;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+
+    &:hover {
+      opacity: 1;
+      background-color: #063ad5;
+      color: $color-secondary;
+    }
+
+    &:active {
+      box-shadow: 0px 0px 10px $color-primary-light;
+      scale: 0.99;
+    }
+  }
+
+  .heroPlayContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    @include xs() {
+      flex-direction: column;
+    }
+  }
+
+  .heroTrailer {
+
     width: 100%;
     max-width: 200px;
     @include flexbox-hrz(10px);
@@ -145,6 +174,10 @@
   }
 
   @media (max-width: 400px) {
+      .hero{
+      margin-top: 60px;
+     }
+   
     .heroContent {
       .heroTrama,
       .heroDate {
@@ -169,10 +202,14 @@
         font-size: 12px;
       }
     }
-  }
+
+   }
 }
 
 @media (min-width: 401px) and (max-width: 500px) {
+
+  
+
   .heroContent {
     .heroTrama,
     .heroDate {
@@ -185,6 +222,9 @@
 
     .heroGeneral {
       margin-bottom: 10px;
+      .votes{
+        width: 80px;
+      }
     }
 
     .heroTitle {
@@ -200,6 +240,8 @@
 }
 
 @media (min-width: 501px) and (max-width: 580px) {
+   
+
   .heroContent {
     .heroTrama,
     .heroDate {
@@ -227,6 +269,9 @@
 }
 
 @media (min-width: 581px) and (max-width: 800px) {
+     
+
+
   .heroContent {
     .heroTrama,
     .heroDate {
@@ -253,7 +298,9 @@
   }
 }
 
+
 @media (min-width: 801px) and (max-width: 1000px) {
+    
   .heroContent {
     width: 100%;
     bottom: 20px;
@@ -331,6 +378,7 @@
 }
 
 @media (min-width: 1401px) and (max-width: 1600px) {
+
   .heroContent {
     width: 100%;
     bottom: 50px;
@@ -338,7 +386,7 @@
     background-color: transparent;
 
     .heroTrama {
-      font-size: 22px;
+      font-size: 20px;
     }
 
     .heroTitle {
@@ -365,7 +413,7 @@
     background-color: transparent;
 
     .heroTrama {
-      font-size: 24px;
+      font-size: 20px;
     }
 
     .heroTitle {
