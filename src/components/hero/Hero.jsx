@@ -7,9 +7,14 @@ import {
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/Md";
 
+import { genres } from "@/utils/genres";
+
 const Hero = ({ trending }) => {
   const [nextMovie, setNextMovie] = useState(0);
   const timerRef = useRef(null);
+
+  const genreRender = (genreId) =>
+    genres.map((genre) => genre.id === genreId && genre.name);
 
   useEffect(() => {
     timerRef.current = setTimeout(onClickNextMovie, 6000);
@@ -56,23 +61,26 @@ const Hero = ({ trending }) => {
             <span className={styles.heroRatingIcon}>
               <AiFillStar />
             </span>
-            <span>
+            <span className={styles.votes}>
               {roundToDecimal(trending.results[nextMovie].vote_average)} (
               {trending.results[nextMovie].vote_count})
             </span>
           </p>
           <span className={styles.heroDate}>
-            {trending.results[nextMovie].release_date}
+            {trending.results[nextMovie].release_date.slice(0, 4)}
+          </span>
+          <span className={styles.heroGenre}>
+            {genreRender(trending.results[nextMovie].genre_ids[0])}
           </span>
         </div>
         <p className={styles.heroTrama}>
           {trending.results[nextMovie].overview}
         </p>
-        <button className={styles.heroTrailer}>
-          <p className={styles.heroPlayIcon}>
+        <button className={styles.heroSeeMore}>
+          {/* <p className={styles.heroPlayIcon}>
             <BsFillPlayFill />
-          </p>
-          Watch trailer
+          </p> */}
+          See more
         </button>
       </div>
       <button className={styles.prevBtn} onClick={onClickPrevMovie}>
