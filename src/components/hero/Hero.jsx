@@ -7,12 +7,17 @@ import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/Md";
+
+
 import { genres } from "@/utils/genres";
 
 const Hero = ({ trending }) => {
   const [nextMovie, setNextMovie] = useState(0);
   const timerRef = useRef(null);
   const router = useRouter();
+
+  const genreRender = (genreId) =>
+    genres.map((genre) => genre.id === genreId && genre.name);
 
   useEffect(() => {
     timerRef.current = setTimeout(onClickNextMovie, 6000);
@@ -36,8 +41,7 @@ const Hero = ({ trending }) => {
     return Math.round(number * 10) / 10;
   };
 
-  const genreRender = (genreId) =>
-    genres.map((genre) => genre.id === genreId && genre.name);
+
 
   const onClickMoviePage = () =>
     router.push(`movie/${trending.results[nextMovie].id}`);
@@ -62,7 +66,7 @@ const Hero = ({ trending }) => {
             <span className={styles.heroRatingIcon}>
               <AiFillStar />
             </span>
-            <span>
+            <span className={styles.votes}>
               {roundToDecimal(trending.results[nextMovie].vote_average)} (
               {trending.results[nextMovie].vote_count})
             </span>
@@ -77,7 +81,12 @@ const Hero = ({ trending }) => {
         <p className={styles.heroTrama}>
           {trending.results[nextMovie].overview}
         </p>
-        <button className={styles.heroSeeMore} onClick={onClickMoviePage}>
+
+        <button className={styles.heroSeeMore}>
+          {/* <p className={styles.heroPlayIcon}>
+            <BsFillPlayFill />
+          </p> */}
+
           See more
         </button>
       </div>
