@@ -82,22 +82,6 @@
     }
   }
 
-
-  .loggedUser {
-    color: $color-secondary;
-    border: 1px solid;
-    cursor: pointer;
-  }
-
-  @include flexbox-hrz-space-between();
-  gap: 10px;
-  .loggedUser__img {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-  }
-
-
   .welcome {
     @include flexbox-hrz(10px);
     align-items: baseline;
@@ -137,6 +121,11 @@
     }
 
     @include xs() {
+
+      .Navbar {
+        max-height: 20px;
+      }
+
 
       input {
         max-width: 150px;

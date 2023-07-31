@@ -7,8 +7,6 @@ import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/Md";
-
-
 import { genres } from "@/utils/genres";
 
 const Hero = ({ trending }) => {
@@ -40,8 +38,6 @@ const Hero = ({ trending }) => {
   const roundToDecimal = (number) => {
     return Math.round(number * 10) / 10;
   };
-
-
 
   const onClickMoviePage = () =>
     router.push(`movie/${trending.results[nextMovie].id}`);
@@ -86,7 +82,6 @@ const Hero = ({ trending }) => {
           {/* <p className={styles.heroPlayIcon}>
             <BsFillPlayFill />
           </p> */}
-
           See more
         </button>
       </div>
