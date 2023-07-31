@@ -37,9 +37,9 @@ const Navbar = () => {
     router.push(`/search/${userInput}`);
   };
 
-  const [sidebar, setSidebar] = useState(false)
+  const [sidebar, setSidebar] = useState(false);
 
-  const showSidebar = () => setSidebar(!sidebar)
+  const showSidebar = () => setSidebar(!sidebar);
 
   const signIn = async () => {
     await signInWithPopup(auth, provider)
@@ -77,44 +77,47 @@ const Navbar = () => {
 
   return (
     <>
-    <ul className={styles.Navbar}>
-      <img
-        className={styles.logoFull}
-        src="https://img.logoipsum.com/297.svg"
-        onClick={onClickHomePage}
-      />
-      <img
-        className={styles.logoImg}
-        src="https://img.logoipsum.com/296.svg"
-        onClick={onClickHomePage}
-      />
-      <form onSubmit={onSubmitRoute}>
-        <BsSearch />
-        <input
-          onChange={(e) => onChangeValue(e)}
-          className={styles.input}
-          type="text"
-          placeholder="Search..."
-          value={userInput}
+      <ul className={styles.Navbar}>
+        <img
+          className={styles.logoFull}
+          src="https://img.logoipsum.com/297.svg"
+          onClick={onClickHomePage}
         />
-      </form>
-      {state.user.isLogged ? (
-        <>
-        <div className={styles.loggedUser} onClick={showSidebar}>
-          <img
-            className={styles.loggedUser__img}
-            src={state.user.userImg}
-            alt={state.user.firstName}
+        <img
+          className={styles.logoImg}
+          src="https://img.logoipsum.com/296.svg"
+          onClick={onClickHomePage}
+        />
+        <form onSubmit={onSubmitRoute}>
+          <BsSearch />
+          <input
+            onChange={(e) => onChangeValue(e)}
+            className={styles.input}
+            type="text"
+            placeholder="Search..."
+            value={userInput}
           />
-          <p>{state.user.firstName}</p>
-        </div>
-        
-        </>
-      ) : (
-        <button onClick={signIn}>Login</button>
-      )}
-    </ul>
-     <Sidebar onClick={showSidebar} sidebar={sidebar}/>
+        </form>
+        {state.user.isLogged ? (
+          <>
+            <div className={styles.loggedUser} onClick={showSidebar}>
+              <img
+                className={styles.loggedUser__img}
+                src={state.user.userImg}
+                alt={state.user.firstName}
+              />
+              <p>{state.user.firstName}</p>
+            </div>
+          </>
+        ) : (
+          <button onClick={signIn}>Login</button>
+        )}
+      </ul>
+      <Sidebar
+        onClick={showSidebar}
+        sidebar={sidebar}
+        setSidebar={setSidebar}
+      />
     </>
   );
 };
