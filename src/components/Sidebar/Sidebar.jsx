@@ -58,8 +58,8 @@ const Sidebar = ({ onClick, sidebar, setSidebar }) => {
               <p>WATCHLIST</p>
             </Link>
           </li>
-          <li className={styles.section}>
-            <Link href="/" className={styles.item}>
+          <li className={styles.section} onClick={() => setSidebar(!sidebar)}>
+            <Link href="/community" className={styles.item}>
               <p>
                 <HiOutlineUserGroup className={styles.icon} />
               </p>
