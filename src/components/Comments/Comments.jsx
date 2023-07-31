@@ -102,6 +102,7 @@ const Comments = ({ id, comments }) => {
   return (
     <div className={`${styles.Comments} col-12`}>
       <Warning
+        type="ko"
         content={
           state.user.isLogged
             ? "Oops! It seems like you forgot to enter any text. Please provide a sentence or a message to post your comment."
