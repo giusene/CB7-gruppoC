@@ -58,6 +58,9 @@ const Navbar = () => {
               lastName: userData.lastName || "",
               email: userData.email || "",
               userImg: userData.photoUrl || "",
+              watchlist: [],
+              favorites: [],
+              community: [],
             },
             { merge: true }
           );

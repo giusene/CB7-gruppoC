@@ -59,7 +59,7 @@ const Card = ({ mock }) => {
               src={`https://image.tmdb.org/t/p/w300${mock.backdrop_path}`}
               alt=""
             />
-            <div className={styles.black} onClick={onClickMovie}>
+            <div className={styles.black}>
               <p
                 className={`${styles.black_parag} ${overlay && styles.noTitle}`}
               >
@@ -68,7 +68,7 @@ const Card = ({ mock }) => {
             </div>
           </div>
           <div className={`${styles.text} ${overlay && styles.overlay}`}>
-            <div className={styles.left}>
+            <div className={styles.left} onClick={onClickMovie}>
               <div className={styles.card_title}>
                 <h3 className={styles.text_title}>{mock.title}</h3>
               </div>
@@ -86,7 +86,7 @@ const Card = ({ mock }) => {
                   <div className="duration">{minutesInHours(mock.runtime)}</div>
                 )}
               </div>
-              <div className="card_description">
+              <div className="card_description" onClick={onClickMovie}>
                 <p className={styles.overview}>
                   {`${truncateString(mock.overview, 20)} ...`}
                 </p>
@@ -97,21 +97,6 @@ const Card = ({ mock }) => {
                   onClick={() => setOverlay(false)}
                 />
               </div>
-            </div>
-            <div className={styles.icons}>
-              <p className={styles.action}>
-                <AiOutlineHeart className={styles.heart} />
-              </p>
-              <p className={styles.action} onClick={changePlus}>
-                <AiOutlinePlus className={styles.plus} />
-              </p>
-              <p className={styles.action} onClick={changePeople}>
-                {people ? (
-                  <BsFillPeopleFill className={styles.people} />
-                ) : (
-                  <BsPeople className={styles.people} />
-                )}
-              </p>
             </div>
           </div>
         </div>

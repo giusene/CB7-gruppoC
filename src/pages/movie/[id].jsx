@@ -40,6 +40,14 @@ export default function ({ movie, recommended, comments }) {
             .data()
             .watchlist.find((movie) => movie.id == router.query.id);
           setAddFilm(isInWatchlist);
+          const isLiked = !!docSnap
+            .data()
+            .favorites.find((movie) => movie.id == router.query.id);
+          setLikeFilm(isLiked);
+          const isSuggested = !!docSnap
+            .data()
+            .community.find((movie) => movie.id == router.query.id);
+          setSuggestFilm(isSuggested);
         }
       };
 
@@ -91,7 +99,59 @@ export default function ({ movie, recommended, comments }) {
           });
       }
     } else {
-      alert("loggati");
+      alert("You must be logged in to add films to your watchlist");
+    }
+  };
+
+  const addToLike = (movieId) => {
+    if (state.user.isLogged) {
+      setLikeFilm(!likeFilm);
+      const userRef = doc(db, "users", state.user.id);
+      if (likeFilm) {
+        movie.id === movieId &&
+          updateDoc(userRef, {
+            favorites: arrayRemove({
+              id: movie.id,
+              poster: movie.poster_path,
+            }),
+          });
+      } else {
+        movie.id === movieId &&
+          updateDoc(userRef, {
+            favorites: arrayUnion({
+              id: movie.id,
+              poster: movie.poster_path,
+            }),
+          });
+      }
+    } else {
+      alert("You must be logged in to add films to your favorites");
+    }
+  };
+
+  const addToSeggested = (movieId) => {
+    if (state.user.isLogged) {
+      setSuggestFilm(!suggestFilm);
+      const userRef = doc(db, "users", state.user.id);
+      if (suggestFilm) {
+        movie.id === movieId &&
+          updateDoc(userRef, {
+            community: arrayRemove({
+              id: movie.id,
+              poster: movie.poster_path,
+            }),
+          });
+      } else {
+        movie.id === movieId &&
+          updateDoc(userRef, {
+            community: arrayUnion({
+              id: movie.id,
+              poster: movie.poster_path,
+            }),
+          });
+      }
+    } else {
+      alert("You must be logged in to add films to your community list");
     }
   };
 
@@ -146,10 +206,7 @@ export default function ({ movie, recommended, comments }) {
               <p>{minutesInHours(movie.runtime)}</p>
             </div>
             <div className={styles.movieInteractions}>
-              <p
-                className={styles.addFilm}
-                onClick={() => setLikeFilm(!likeFilm)}
-              >
+              <p className={styles.addFilm} onClick={() => addToLike(movie.id)}>
                 {likeFilm ? <AiFillHeart /> : <AiOutlineHeart />}
               </p>
               <p
@@ -158,7 +215,7 @@ export default function ({ movie, recommended, comments }) {
               >
                 {addFilm ? <AiOutlineMinus /> : <AiOutlinePlus />}
               </p>
-              <p onClick={() => setSuggestFilm(!suggestFilm)}>
+              <p onClick={() => addToSeggested(movie.id)}>
                 {suggestFilm ? <BsFillPeopleFill /> : <BsPeople />}
               </p>
             </div>
