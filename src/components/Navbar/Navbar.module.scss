@@ -82,6 +82,7 @@
     }
   }
 
+
   .loggedUser {
     color: $color-secondary;
     border: 1px solid;
@@ -96,35 +97,35 @@
     border-radius: 50%;
   }
 
+
   .welcome {
-    @include flexbox-hrz(5px);
+    @include flexbox-hrz(10px);
     align-items: baseline;
     user-select: none;
     .loggedUser {
       color: $color-secondary;
       cursor: pointer;
       @include flexbox-hrz-space-between();
-      gap: 15px;
+      gap: 10px;
+      &:hover p::before,
+      &:active p::before {
+        width: 100%;
+      }
 
       p {
         position: relative;
         font-size: 18px;
         text-transform: uppercase;
 
-        &::after {
+        &::before {
           content: "";
           position: absolute;
           height: 2px;
           width: 0;
           background-color: $color-secondary;
-          bottom: -2px;
+          bottom: -1px;
           border-radius: 2px;
           transition: width 0.35s ease-in-out;
-          translate: (-100%);
-        }
-        &:hover::after,
-        &:active::after {
-          width: 100%;
         }
       }
 
@@ -136,7 +137,6 @@
     }
 
     @include xs() {
-      padding: 5px 20px;
 
       input {
         max-width: 150px;
