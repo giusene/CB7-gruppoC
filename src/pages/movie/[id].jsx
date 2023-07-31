@@ -4,7 +4,13 @@ import styles from "@/styles/Movie.module.scss";
 import { AiFillStar } from "react-icons/Ai";
 import Comments from "@/components/Comments";
 import Head from "next/head";
-import { getDoc, doc } from "firebase/firestore";
+import {
+  getDoc,
+  doc,
+  updateDoc,
+  arrayRemove,
+  arrayUnion,
+} from "firebase/firestore";
 import { db } from "@/plugins/firebase";
 import { IoMdClose } from "react-icons/io";
 import Trailer from "@/components/Trailer";
@@ -12,15 +18,34 @@ import Trailer from "@/components/Trailer";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/Ai";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/Ai";
 import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/Bs";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SimilarMovies from "@/components/SimilarMovie";
+import { MainContext } from "@/store";
 
 export default function ({ movie, recommended, comments }) {
+  const { state, dispatch } = useContext(MainContext);
   const router = useRouter();
   const [addFilm, setAddFilm] = useState(false);
   const [likeFilm, setLikeFilm] = useState(false);
   const [suggestFilm, setSuggestFilm] = useState(false);
   const [trailer, setTrailer] = useState(false);
+
+  useEffect(() => {
+    if (state.user.isLogged) {
+      const getData = async () => {
+        const docSnap = await getDoc(doc(db, "users", state.user.id));
+
+        if (docSnap.exists()) {
+          const isInWatchlist = !!docSnap
+            .data()
+            .watchlist.find((movie) => movie.id == router.query.id);
+          setAddFilm(isInWatchlist);
+        }
+      };
+
+      getData();
+    }
+  }, [state]);
 
   const onClickTrailer = () => {
     setTrailer(!trailer);
@@ -42,6 +67,32 @@ export default function ({ movie, recommended, comments }) {
 
   const roundToDecimal = (number) => {
     return Math.round(number * 10) / 10;
+  };
+
+  const addToWatchlist = (movieId) => {
+    if (state.user.isLogged) {
+      setAddFilm(!addFilm);
+      const userRef = doc(db, "users", state.user.id);
+      if (addFilm) {
+        movie.id === movieId &&
+          updateDoc(userRef, {
+            watchlist: arrayRemove({
+              id: movie.id,
+              poster: movie.poster_path,
+            }),
+          });
+      } else {
+        movie.id === movieId &&
+          updateDoc(userRef, {
+            watchlist: arrayUnion({
+              id: movie.id,
+              poster: movie.poster_path,
+            }),
+          });
+      }
+    } else {
+      alert("loggati");
+    }
   };
 
   return (
@@ -103,7 +154,7 @@ export default function ({ movie, recommended, comments }) {
               </p>
               <p
                 className={styles.addFilm}
-                onClick={() => setAddFilm(!addFilm)}
+                onClick={() => addToWatchlist(movie.id)}
               >
                 {addFilm ? <AiOutlineMinus /> : <AiOutlinePlus />}
               </p>
@@ -183,7 +234,6 @@ export default function ({ movie, recommended, comments }) {
           ) : (
             <p className={styles.blank}></p>
           )}
-
           <Comments id={movie.id} comments={comments} />
         </div>
       </div>

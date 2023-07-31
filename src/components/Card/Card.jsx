@@ -31,25 +31,8 @@ const Card = ({ mock }) => {
   const changePlus = () => setPlus((prev) => !prev);
 
   const [people, setPeople] = useState(false);
-  const changePeople = (movieId) => {
-    if (state.user.isLogged) {
-      setPeople((prev) => !prev);
-      const userRef = doc(db, "users", state.user.id);
-      if (people) {
-        mock.id === movieId &&
-          updateDoc(userRef, {
-            watchlist: arrayRemove({ id: mock.id, poster: mock.poster_path }),
-          });
-      } else {
-        mock.id === movieId &&
-          updateDoc(userRef, {
-            watchlist: arrayUnion({ id: mock.id, poster: mock.poster_path }),
-          });
-      }
-    } else {
-      alert("loggati");
-    }
-  };
+
+  const changePeople = () => setPeople((prev) => !prev);
 
   const minutesInHours = (data) => {
     const hours = Math.floor(data / 60);
@@ -122,10 +105,7 @@ const Card = ({ mock }) => {
               <p className={styles.action} onClick={changePlus}>
                 <AiOutlinePlus className={styles.plus} />
               </p>
-              <p
-                className={styles.action}
-                onClick={() => changePeople(mock.id)}
-              >
+              <p className={styles.action} onClick={changePeople}>
                 {people ? (
                   <BsFillPeopleFill className={styles.people} />
                 ) : (

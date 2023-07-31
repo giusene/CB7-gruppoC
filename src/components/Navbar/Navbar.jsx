@@ -12,7 +12,7 @@ import { auth, provider, db } from "@/plugins/firebase";
 import { signInWithPopup } from "firebase/auth";
 
 // import db
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 
 // import style
 import styles from "./Navbar.module.scss";
@@ -47,18 +47,21 @@ const Navbar = () => {
         const userData = result._tokenResponse;
         return userData;
       })
-      .then((userData) => {
-        setDoc(
-          doc(db, "users", userData.localId),
-          {
-            id: userData.localId,
-            firstName: userData.firstName || "",
-            lastName: userData.lastName || "",
-            email: userData.email || "",
-            userImg: userData.photoUrl || "",
-          },
-          { merge: true }
-        );
+      .then(async (userData) => {
+        const docSnap = await getDoc(doc(db, "users", userData.localId));
+        if (!docSnap.exists()) {
+          setDoc(
+            doc(db, "users", userData.localId),
+            {
+              id: userData.localId,
+              firstName: userData.firstName || "",
+              lastName: userData.lastName || "",
+              email: userData.email || "",
+              userImg: userData.photoUrl || "",
+            },
+            { merge: true }
+          );
+        }
 
         dispatch({
           type: "SET_USER_LOGGED",
