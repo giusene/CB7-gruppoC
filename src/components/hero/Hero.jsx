@@ -7,7 +7,7 @@ import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/Md";
-import { genres } from "@/utils/genres";
+
 
 import { genres } from "@/utils/genres";
 
@@ -41,8 +41,7 @@ const Hero = ({ trending }) => {
     return Math.round(number * 10) / 10;
   };
 
-  const genreRender = (genreId) =>
-    genres.map((genre) => genre.id === genreId && genre.name);
+
 
   const onClickMoviePage = () =>
     router.push(`movie/${trending.results[nextMovie].id}`);

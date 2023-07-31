@@ -77,7 +77,7 @@ const Navbar = () => {
 
   return (
     <>
-      <ul className={styles.Navbar}>
+      <ul className={styles.Navbar} >
         <img
           className={styles.logoFull}
           src="https://img.logoipsum.com/297.svg"
