@@ -1,12 +1,11 @@
 .Navbar {
   @include flexbox-hrz-space-between();
   width: 100%;
-
   padding: 10px 20px;
   background-color: transparent;
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  position: absolute;
+  position: sticky;
   top: 0;
   z-index: 200;
 
@@ -83,6 +82,22 @@
     }
   }
 
+
+  .loggedUser {
+    color: $color-secondary;
+    border: 1px solid;
+    cursor: pointer;
+  }
+
+  @include flexbox-hrz-space-between();
+  gap: 10px;
+  .loggedUser__img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+  }
+
+
   .welcome {
     @include flexbox-hrz(10px);
     align-items: baseline;
@@ -122,9 +137,6 @@
     }
 
     @include xs() {
-      .Navbar {
-        max-height: 20px;
-      }
 
       input {
         max-width: 150px;
