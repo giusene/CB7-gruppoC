@@ -8,9 +8,10 @@ import { WiTime3 } from "react-icons/wi";
 import { AiOutlinePlus } from "react-icons/Ai";
 import { FiStar } from "react-icons/Fi";
 import { AiFillStar } from "react-icons/Ai";
-import { BsBookmarkHeart } from "react-icons/Bs";
 import { HiOutlineUserGroup } from "react-icons/Hi";
-import { BiLogOut } from "react-icons/Bi";
+import { BiLogOut, BiListPlus } from "react-icons/Bi";
+import { IoClose } from "react-icons/io5";
+
 import { RiArrowRightSLine } from "react-icons/Ri";
 import { useRouter, useRouterRouter } from "next/router";
 
@@ -36,6 +37,8 @@ const Sidebar = ({ onClick, sidebar, setSidebar }) => {
     });
   };
 
+  const onClickLists = () => setSidebar(!sidebar);
+
   return (
     <div className={`${styles.sidebar} ${sidebar && styles.showsidebar}`}>
       <div className={styles.userInfo}>
@@ -52,10 +55,10 @@ const Sidebar = ({ onClick, sidebar, setSidebar }) => {
       </div>
       <div className={styles.sections}>
         <ul className={styles.sectionList}>
-          <li className={styles.section}>
-            <Link href="/" className={styles.item}>
+          <li className={styles.section} onClick={() => setSidebar(!sidebar)}>
+            <Link href="/your-lists" className={styles.item}>
               <p>
-                <BsBookmarkHeart className={styles.icon} />
+                <BiListPlus className={styles.icon} />
               </p>
               <p>WATCHLIST</p>
             </Link>

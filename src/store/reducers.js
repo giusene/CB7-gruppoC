@@ -28,6 +28,16 @@ export const mainReducer = (state, action) => {
           community: [],
         },
       };
+    case "SET_LISTS":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          watchlist: action.payload.watchlist,
+          community: action.payload.community,
+          favorites: action.payload.favorites,
+        },
+      };
     // ...
     default:
       console.log(state);
