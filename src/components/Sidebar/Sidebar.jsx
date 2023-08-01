@@ -4,16 +4,11 @@ import { MainContext } from "@/store";
 
 import styles from "./Sidebar.module.scss";
 import Link from "next/link";
-import { WiTime3 } from "react-icons/wi";
-import { AiOutlinePlus } from "react-icons/Ai";
-import { FiStar } from "react-icons/Fi";
-import { AiFillStar } from "react-icons/Ai";
-import { HiOutlineUserGroup } from "react-icons/Hi";
-import { BiLogOut, BiListPlus } from "react-icons/Bi";
-import { IoClose } from "react-icons/io5";
+import { HiOutlineUserGroup } from "react-icons/hi";
+import { BiLogOut, BiListPlus } from "react-icons/bi";
 
-import { RiArrowRightSLine } from "react-icons/Ri";
-import { useRouter, useRouterRouter } from "next/router";
+import { RiArrowRightSLine } from "react-icons/ri";
+import { useRouter } from "next/router";
 
 const Sidebar = ({ onClick, sidebar, setSidebar }) => {
   const { state, dispatch } = useContext(MainContext);

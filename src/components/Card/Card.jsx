@@ -1,38 +1,16 @@
 import styles from "./Card.module.scss";
-import { AiOutlinePlus, AiOutlineHeart } from "react-icons/Ai";
-import { BsFillPeopleFill, BsPeople } from "react-icons/Bs";
-import { SlArrowDown } from "react-icons/Sl";
-import { AiFillStar } from "react-icons/Ai";
-import { useContext, useState } from "react";
+import { SlArrowDown } from "react-icons/sl";
+import { AiFillStar } from "react-icons/ai";
+import { useState } from "react";
 import { useRouter } from "next/router";
-import { MainContext } from "@/store";
-import { db } from "@/plugins/firebase";
-import {
-  doc,
-  arrayUnion,
-  setDoc,
-  updateDoc,
-  arrayRemove,
-} from "firebase/firestore";
 
 const Card = ({ mock }) => {
   const [overlay, setOverlay] = useState(false);
   const onOverlay = () => setOverlay((prev) => !prev);
-  const { state, dispatch } = useContext(MainContext);
 
   const router = useRouter();
 
   const onClickMovie = () => router.push(`/movie/${mock.id}`);
-
-  const [heart, setHeart] = useState(false);
-  const changedHeart = () => setHeart((prev) => !prev);
-
-  const [plus, setPlus] = useState(false);
-  const changePlus = () => setPlus((prev) => !prev);
-
-  const [people, setPeople] = useState(false);
-
-  const changePeople = () => setPeople((prev) => !prev);
 
   const minutesInHours = (data) => {
     const hours = Math.floor(data / 60);

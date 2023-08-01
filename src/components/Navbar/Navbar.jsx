@@ -20,7 +20,7 @@ import styles from "./Navbar.module.scss";
 //import components
 import Sidebar from "../Sidebar/Sidebar";
 
-import { BsSearch } from "react-icons/Bs";
+import { BsSearch } from "react-icons/bs";
 
 const Navbar = () => {
   const { state, dispatch } = useContext(MainContext);
@@ -83,7 +83,7 @@ const Navbar = () => {
 
   return (
     <>
-      <ul className={styles.Navbar} >
+      <ul className={styles.Navbar}>
         <img
           className={styles.logoFull}
           src="https://img.logoipsum.com/297.svg"

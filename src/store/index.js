@@ -10,8 +10,6 @@ export const initialState = {
     lastName: "",
     email: "",
     userImg: "",
-    favorites: [],
-    list: [],
   },
   comments: [],
 };

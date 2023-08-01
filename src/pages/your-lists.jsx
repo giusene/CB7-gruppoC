@@ -7,7 +7,7 @@ import styles from "@/styles/yourLists.module.scss";
 import CommunityCards from "@/components/CommunityCards";
 
 export default function () {
-  const { state, dispatch } = useContext(MainContext);
+  const { state } = useContext(MainContext);
   const [community, setCommunity] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [watchlist, setWatchlist] = useState([]);

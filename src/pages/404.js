@@ -1,5 +1,5 @@
 import styles from "@/styles/404.module.scss";
-import { PiSmileySad } from "react-icons/Pi";
+import { PiSmileySad } from "react-icons/pi";
 import { useRouter } from "next/router";
 
 const error = () => {
