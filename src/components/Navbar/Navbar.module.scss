@@ -78,6 +78,7 @@
 
  .button{
   @include flexAlignCenter(15px);
+  cursor: pointer;
   p{
     font-size: $subtitle;
 
@@ -169,6 +170,12 @@
    
     background-color: #1b2330c0;
     backdrop-filter: blur(5px);
+
+    .welcome{
+      p{
+        display: none;
+      }
+    }
     
     
 
