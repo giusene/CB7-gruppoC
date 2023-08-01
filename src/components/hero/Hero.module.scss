@@ -158,250 +158,251 @@
     cursor: pointer;
     text-transform: uppercase;
     transition: background-color 0.3s;
-    
-  @media (max-width: 400px) {
-    .hero {
-      margin-top: 60px;
-    }
 
+    @media (max-width: 400px) {
+      .hero {
+        margin-top: 60px;
+      }
+
+      .heroContent {
+        .heroTrama,
+        .heroDate {
+          display: none;
+        }
+        max-width: 60%;
+        bottom: 5%;
+        left: 15%;
+        background-color: transparent;
+
+        .heroGeneral {
+          margin-bottom: 10px;
+        }
+
+        .heroTitle {
+          font-size: 1em;
+          margin-bottom: 0px;
+        }
+
+        .heroSeeMore {
+          padding: 7px 12px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 401px) and (max-width: 500px) {
     .heroContent {
       .heroTrama,
       .heroDate {
         display: none;
       }
-      max-width: 60%;
+      width: 100%;
       bottom: 5%;
-      left: 15%;
+      left: 12%;
       background-color: transparent;
+
+      .heroGeneral {
+        margin-bottom: 10px;
+        .votes {
+          width: 80px;
+        }
+      }
+
+      .heroTitle {
+        font-size: 1.2em;
+        margin-bottom: 0px;
+      }
+
+      .heroSeeMore {
+        padding: 8px 13px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  @media (min-width: 501px) and (max-width: 580px) {
+    .heroContent {
+      .heroTrama,
+      .heroDate {
+        display: none;
+      }
+      width: 100%;
+      bottom: 8%;
+      left: 12%;
+      background-color: transparent;
+
+      .heroTitle {
+        font-size: 1.2em;
+        margin-bottom: 0px;
+      }
+
+      .heroGeneral {
+        font-size: 16px;
+      }
+
+      .heroSeeMore {
+        padding: 8px 12px;
+        font-size: 10px;
+      }
+    }
+  }
+
+  @media (min-width: 581px) and (max-width: 800px) {
+    .heroContent {
+      .heroTrama,
+      .heroDate {
+        display: none;
+      }
+      width: 100%;
+      bottom: 20px;
+      left: 10%;
+      background-color: transparent;
+
+      .heroTitle {
+        font-size: 1.5em;
+        margin-bottom: 0px;
+      }
 
       .heroGeneral {
         margin-bottom: 10px;
       }
 
-      .heroTitle {
-        font-size: 1em;
-        margin-bottom: 0px;
-      }
-
       .heroSeeMore {
-        padding: 7px 12px;
+        padding: 10px 15px;
         font-size: 12px;
       }
     }
   }
-}
 
-@media (min-width: 401px) and (max-width: 500px) {
-  .heroContent {
-    .heroTrama,
-    .heroDate {
-      display: none;
-    }
-    width: 100%;
-    bottom: 5%;
-    left: 12%;
-    background-color: transparent;
+  @media (min-width: 801px) and (max-width: 1000px) {
+    .heroContent {
+      width: 100%;
+      bottom: 20px;
+      left: 10%;
+      background-color: transparent;
 
-    .heroGeneral {
-      margin-bottom: 10px;
-      .votes {
-        width: 80px;
+      .heroTitle {
+        font-size: 1.6em;
+        margin-bottom: 0px;
+      }
+
+      .heroGeneral {
+        margin-bottom: 10px;
+      }
+
+      .heroSeeMore {
+        padding: 10px 15px;
+        font-size: 14px;
       }
     }
+  }
 
-    .heroTitle {
-      font-size: 1.2em;
-      margin-bottom: 0px;
-    }
+  @media (min-width: 1001px) and (max-width: 1200px) {
+    .heroContent {
+      width: 100%;
+      bottom: 40px;
+      left: 10%;
+      background-color: transparent;
 
-    .heroSeeMore {
-      padding: 8px 13px;
-      font-size: 12px;
+      .heroTrama {
+        font-size: 18px;
+      }
+
+      .heroTitle {
+        font-size: 1.8em;
+        margin-bottom: 0px;
+      }
+
+      .heroGeneral {
+        margin-bottom: 10px;
+      }
+
+      .heroSeeMore {
+        padding: 10px 15px;
+        font-size: 16px;
+      }
     }
   }
-}
 
-@media (min-width: 501px) and (max-width: 580px) {
-  .heroContent {
-    .heroTrama,
-    .heroDate {
-      display: none;
-    }
-    width: 100%;
-    bottom: 8%;
-    left: 12%;
-    background-color: transparent;
+  @media (min-width: 1201px) and (max-width: 1400px) {
+    .heroContent {
+      width: 100%;
+      bottom: 50px;
+      left: 8%;
+      background-color: transparent;
 
-    .heroTitle {
-      font-size: 1.2em;
-      margin-bottom: 0px;
-    }
+      .heroTrama {
+        font-size: 20px;
+      }
 
-    .heroGeneral {
-      font-size: 16px;
-    }
+      .heroTitle {
+        font-size: 2.2em;
+        margin-bottom: 0px;
+      }
 
-    .heroSeeMore {
-      padding: 8px 12px;
-      font-size: 10px;
-    }
-  }
-}
+      .heroGeneral {
+        margin-bottom: 10px;
+      }
 
-@media (min-width: 581px) and (max-width: 800px) {
-  .heroContent {
-    .heroTrama,
-    .heroDate {
-      display: none;
-    }
-    width: 100%;
-    bottom: 20px;
-    left: 10%;
-    background-color: transparent;
-
-    .heroTitle {
-      font-size: 1.5em;
-      margin-bottom: 0px;
-    }
-
-    .heroGeneral {
-      margin-bottom: 10px;
-    }
-
-    .heroSeeMore {
-      padding: 10px 15px;
-      font-size: 12px;
+      .heroSeeMore {
+        padding: 12px 16px;
+        font-size: 18px;
+      }
     }
   }
-}
 
-@media (min-width: 801px) and (max-width: 1000px) {
-  .heroContent {
-    width: 100%;
-    bottom: 20px;
-    left: 10%;
-    background-color: transparent;
+  @media (min-width: 1401px) and (max-width: 1600px) {
+    .heroContent {
+      width: 100%;
+      bottom: 50px;
+      left: 8%;
+      background-color: transparent;
 
-    .heroTitle {
-      font-size: 1.6em;
-      margin-bottom: 0px;
-    }
+      .heroTrama {
+        font-size: 20px;
+      }
 
-    .heroGeneral {
-      margin-bottom: 10px;
-    }
+      .heroTitle {
+        font-size: 2.4em;
+        margin-bottom: 0px;
+      }
 
-    .heroSeeMore {
-      padding: 10px 15px;
-      font-size: 14px;
-    }
-  }
-}
+      .heroGeneral {
+        margin-bottom: 10px;
+      }
 
-@media (min-width: 1001px) and (max-width: 1200px) {
-  .heroContent {
-    width: 100%;
-    bottom: 40px;
-    left: 10%;
-    background-color: transparent;
-
-    .heroTrama {
-      font-size: 18px;
-    }
-
-    .heroTitle {
-      font-size: 1.8em;
-      margin-bottom: 0px;
-    }
-
-    .heroGeneral {
-      margin-bottom: 10px;
-    }
-
-    .heroSeeMore {
-      padding: 10px 15px;
-      font-size: 16px;
+      .heroSeeMore {
+        padding: 12px 16px;
+        font-size: 18px;
+      }
     }
   }
-}
 
-@media (min-width: 1201px) and (max-width: 1400px) {
-  .heroContent {
-    width: 100%;
-    bottom: 50px;
-    left: 8%;
-    background-color: transparent;
+  @media (min-width: 1601px) {
+    .heroContent {
+      width: 100%;
+      bottom: 60px;
+      left: 8%;
+      background-color: transparent;
 
-    .heroTrama {
-      font-size: 20px;
-    }
+      .heroTrama {
+        font-size: 20px;
+      }
 
-    .heroTitle {
-      font-size: 2.2em;
-      margin-bottom: 0px;
-    }
+      .heroTitle {
+        font-size: 2.6em;
+        margin-bottom: 0px;
+      }
 
-    .heroGeneral {
-      margin-bottom: 10px;
-    }
+      .heroGeneral {
+        margin-bottom: 10px;
+      }
 
-    .heroSeeMore {
-      padding: 12px 16px;
-      font-size: 18px;
-    }
-  }
-}
-
-@media (min-width: 1401px) and (max-width: 1600px) {
-  .heroContent {
-    width: 100%;
-    bottom: 50px;
-    left: 8%;
-    background-color: transparent;
-
-    .heroTrama {
-      font-size: 20px;
-    }
-
-    .heroTitle {
-      font-size: 2.4em;
-      margin-bottom: 0px;
-    }
-
-    .heroGeneral {
-      margin-bottom: 10px;
-    }
-
-    .heroSeeMore {
-      padding: 12px 16px;
-      font-size: 18px;
-    }
-  }
-}
-
-@media (min-width: 1601px) {
-  .heroContent {
-    width: 100%;
-    bottom: 60px;
-    left: 8%;
-    background-color: transparent;
-
-    .heroTrama {
-      font-size: 20px;
-    }
-
-    .heroTitle {
-      font-size: 2.6em;
-      margin-bottom: 0px;
-    }
-
-    .heroGeneral {
-      margin-bottom: 10px;
-    }
-
-    .heroSeeMore {
-      padding: 12px 16px;
-      font-size: 18px;
+      .heroSeeMore {
+        padding: 12px 16px;
+        font-size: 18px;
+      }
     }
   }
 }
