@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import styles from "./Hero.module.scss";
-import { BsFillPlayFill } from "react-icons/Bs";
-import { AiFillStar } from "react-icons/Ai";
+import { AiFillStar } from "react-icons/ai";
 import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowLeft,
@@ -78,7 +77,9 @@ const Hero = ({ trending }) => {
           {trending.results[nextMovie].overview}
         </p>
 
-        <button className={styles.heroSeeMore}>See more</button>
+        <button className={styles.heroSeeMore} onClick={onClickMoviePage}>
+          See more
+        </button>
       </div>
       <button className={styles.prevBtn} onClick={onClickPrevMovie}>
         <MdOutlineKeyboardArrowLeft />

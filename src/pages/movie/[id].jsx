@@ -1,7 +1,7 @@
 import { GET } from "@/utils/HTTP";
 import { useRouter } from "next/router";
 import styles from "@/styles/Movie.module.scss";
-import { AiFillStar } from "react-icons/Ai";
+import { AiFillStar } from "react-icons/ai";
 import Comments from "@/components/Comments";
 import Head from "next/head";
 import {
@@ -16,9 +16,9 @@ import { IoMdClose } from "react-icons/io";
 import Warning from "@/components/warning";
 import Trailer from "@/components/Trailer";
 
-import { AiOutlineHeart, AiFillHeart } from "react-icons/Ai";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/Ai";
-import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/Bs";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/bs";
 import { useContext, useEffect, useState } from "react";
 import SimilarMovies from "@/components/SimilarMovie";
 import { MainContext } from "@/store";
