@@ -233,12 +233,12 @@ export default function ({ key, movie, recommended, comments }) {
             <h1>{movie.title}</h1>
             {movie.tagline && <p>"{movie.tagline}"</p>}
             {movie.videos.results.length && (
-              <div className={styles.watchTrailer} onClick={onClickTrailer}>
-                <span className={styles.heroPlayIcon}>
+              <button className={styles.watchTrailer} onClick={onClickTrailer}>
+                <span className={styles.playIcon}>
                   <BsFillPlayFill />
                 </span>
-                <span>Watch trailer</span>
-              </div>
+                Watch trailer
+              </button>
             )}
           </div>
           <div className={styles.movieInfoContainer}>

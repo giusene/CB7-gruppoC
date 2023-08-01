@@ -11,7 +11,6 @@ import { AiFillStar } from "react-icons/Ai";
 import { BsBookmarkHeart } from "react-icons/Bs";
 import { HiOutlineUserGroup } from "react-icons/Hi";
 import { BiLogOut } from "react-icons/Bi";
-import { IoClose } from "react-icons/io5";
 import { RiArrowRightSLine } from "react-icons/Ri";
 import { useRouter, useRouterRouter } from "next/router";
 
