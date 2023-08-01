@@ -29,7 +29,6 @@ export default function () {
     }
   }, [state]);
 
-  console.log(community);
   return (
     <div>
       <Head>
