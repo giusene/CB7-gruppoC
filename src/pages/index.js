@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { GET } from "@/utils/HTTP";
 import { genres } from "@/utils/genres";
 import Cards from "@/components/Cards/Cards";
-import Hero from "@/components/hero";
+import Hero from "@/components/Hero";
 import Badge from "@/components/Badge";
 import styles from "@/styles/Home.module.scss";
 
