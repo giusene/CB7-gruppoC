@@ -12,6 +12,11 @@
 body {
   background-color: $color-primary;
   scroll-behavior: smooth;
+
+  @include xxl() {
+    max-width: 2160px;
+    margin: 0 auto;
+  }
 }
 
 li {
