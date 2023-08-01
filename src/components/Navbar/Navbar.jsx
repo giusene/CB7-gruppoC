@@ -22,8 +22,8 @@ import Sidebar from "../Sidebar/Sidebar";
 import Round from "@/Svg/Round";
 
 //import icons
-import { BiUserCircle } from "react-icons/Bi";
-import { BsSearch } from "react-icons/Bs";
+import { BiUserCircle } from "react-icons/bi";
+import { BsSearch } from "react-icons/bs";
 
 const Navbar = () => {
   const { state, dispatch } = useContext(MainContext);
