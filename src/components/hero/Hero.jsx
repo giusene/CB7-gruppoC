@@ -78,12 +78,7 @@ const Hero = ({ trending }) => {
           {trending.results[nextMovie].overview}
         </p>
 
-        <button className={styles.heroSeeMore}>
-          {/* <p className={styles.heroPlayIcon}>
-            <BsFillPlayFill />
-          </p> */}
-          See more
-        </button>
+        <button className={styles.heroSeeMore}>See more</button>
       </div>
       <button className={styles.prevBtn} onClick={onClickPrevMovie}>
         <MdOutlineKeyboardArrowLeft />
