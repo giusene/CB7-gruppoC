@@ -1,7 +1,36 @@
 .Footer {
-  @include flexbox-hrz(10px);
+  @include flexbox-hrz(20px);
   background-color: $color-primary;
-  padding: 20px;
+  width: 100%;
+  height: 60px;
+  
+  
+
+  .full_logo {
+    @include flexCenter(10px);
+    justify-content: end;
+    cursor: pointer;
+
+    span {
+      color: $color-action;
+      font-size: $logo;
+      font-weight: 700;
+      display: flex;
+    }
+
+    .logo {
+      width: $logo;
+      height: $logo;
+      @include flexCenter(0);
+    }
+  }
+
+  .line{
+    background-color: $color-secondary-light;
+    height: $logo;
+    width: 3px;
+    border-radius: 50%;
+  }
 
   a {
     text-decoration-line: none;
@@ -12,5 +41,12 @@
   img {
     border-right: solid $color-secondary 2px;
     padding: 10px;
+  }
+
+  @include xs(){
+    .full_logo {
+    @include flexAlignCenter(10px);
+    justify-content: start;
+    }
   }
 }
