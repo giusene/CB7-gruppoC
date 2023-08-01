@@ -60,7 +60,7 @@ const Sidebar = ({ onClick, sidebar, setSidebar }) => {
               <p>
                 <BiListPlus className={styles.icon} />
               </p>
-              <p>WATCHLIST</p>
+              <p>YOUR LISTS</p>
             </Link>
           </li>
           <li className={styles.section} onClick={() => setSidebar(!sidebar)}>
