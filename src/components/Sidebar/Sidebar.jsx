@@ -8,10 +8,10 @@ import { WiTime3 } from "react-icons/wi";
 import { AiOutlinePlus } from "react-icons/Ai";
 import { FiStar } from "react-icons/Fi";
 import { AiFillStar } from "react-icons/Ai";
-import { BsBookmarkHeart } from "react-icons/Bs";
 import { HiOutlineUserGroup } from "react-icons/Hi";
 import { BiLogOut, BiListPlus } from "react-icons/Bi";
 import { IoClose } from "react-icons/io5";
+
 import { RiArrowRightSLine } from "react-icons/Ri";
 import { useRouter, useRouterRouter } from "next/router";
 
@@ -33,8 +33,6 @@ const Sidebar = ({ onClick, sidebar, setSidebar }) => {
         lastName: "",
         email: "",
         userImg: "",
-        favorites: [],
-        list: [],
       },
     });
   };
