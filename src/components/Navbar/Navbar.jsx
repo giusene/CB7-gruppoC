@@ -21,12 +21,9 @@ import styles from "./Navbar.module.scss";
 import Sidebar from "../Sidebar/Sidebar";
 import Round from "@/Svg/Round";
 
-
-
 //import icons
 import { BiUserCircle } from "react-icons/Bi";
 import { BsSearch } from "react-icons/Bs";
-
 
 const Navbar = () => {
   const { state, dispatch } = useContext(MainContext);
@@ -90,7 +87,6 @@ const Navbar = () => {
   return (
     <>
       <ul className={styles.Navbar}>
-
         <div className={styles.full_logo} onClick={onClickHomePage}>
           <Round className={styles.logo} />
           <span>YouMovie</span>
@@ -123,7 +119,6 @@ const Navbar = () => {
         ) : (
           <div className={styles.button}>
             <BiUserCircle className={styles.user} onClick={signIn} />
-            {/* <p>Login</p> */}
           </div>
         )}
       </ul>

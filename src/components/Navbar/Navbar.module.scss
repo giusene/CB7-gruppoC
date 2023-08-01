@@ -33,11 +33,10 @@
   }
 
   form {
-    
     height: 40px;
     background-color: $color-primary-transparent;
     border: 2px solid $color-secondary-light;
-    
+
     border-radius: 4px;
 
     @include flexbox-hrz(20px);
@@ -50,7 +49,7 @@
 
     input {
       display: flex;
-    align-items: center;
+      align-items: center;
       width: 300px;
       height: 100%;
       background-color: transparent;
@@ -75,25 +74,22 @@
     }
   }
 
-
- .button{
-  @include flexAlignCenter(15px);
-  cursor: pointer;
-  p{
-    font-size: $subtitle;
-
-    text-transform: uppercase;
-    font-weight: 500;
+  .button {
+    @include flexAlignCenter(15px);
+    cursor: pointer;
+    p {
+      font-size: $subtitle;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .user {
+      scale: 2.7;
+      @include flexCenter(0);
+      margin-right: 10px;
+      background-color: $color-primary-clair;
+      border-radius: 50%;
+    }
   }
-   .user {
-    scale: 2.7;
-    @include flexCenter(0);
-    margin-right: 10px;
-    background-color: $color-primary-clair;
-    border-radius: 50%;
-    
-  }
- }
 
   .welcome {
     @include flexbox-hrz(10px);
@@ -134,19 +130,15 @@
     }
   }
 
-
   @mixin md() {
     padding: 10px;
     justify-content: space-around;
     background-color: $color-primary;
     backdrop-filter: blur(5px);
-   
-
 
     .welcome_p {
       display: none;
     }
-
 
     .full_logo {
       span {
@@ -157,27 +149,19 @@
         }
       }
     }
-
   }
-
-
-
-
-
 
   @include xs() {
     padding: 10px 20px;
-   
+
     background-color: #1b2330c0;
     backdrop-filter: blur(5px);
 
-    .welcome{
-      p{
+    .welcome {
+      p {
         display: none;
       }
     }
-    
-    
 
     .welcome_p {
       display: none;
@@ -188,20 +172,16 @@
         display: none;
       }
 
-        .logo {
-          scale: 0.9;
-          @include flexCenter(0);
-        }
-    }
-
-  
-    form{
-      input{
-        width: 160px;
+      .logo {
+        scale: 0.9;
+        @include flexCenter(0);
       }
     }
 
- 
-
+    form {
+      input {
+        width: 160px;
+      }
+    }
   }
 }
