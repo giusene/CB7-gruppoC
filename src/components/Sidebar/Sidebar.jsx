@@ -33,8 +33,6 @@ const Sidebar = ({ onClick, sidebar, setSidebar }) => {
         lastName: "",
         email: "",
         userImg: "",
-        favorites: [],
-        list: [],
       },
     });
   };

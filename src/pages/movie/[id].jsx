@@ -23,7 +23,7 @@ import { useContext, useEffect, useState } from "react";
 import SimilarMovies from "@/components/SimilarMovie";
 import { MainContext } from "@/store";
 
-export default function ({ movie, recommended, comments }) {
+export default function ({ key, movie, recommended, comments }) {
   const { state, dispatch } = useContext(MainContext);
   const router = useRouter();
   const [addFilm, setAddFilm] = useState(false);
@@ -360,9 +360,14 @@ export async function getServerSideProps(router) {
 
   return {
     props: {
+      key: router.query.id,
       movie,
       recommended,
       comments,
     },
   };
 }
+
+// Movie.getInitialProps = (router) => ({
+//   key: router.query.id,
+// });

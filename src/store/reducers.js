@@ -23,8 +23,9 @@ export const mainReducer = (state, action) => {
           lastName: action.payload.lastName,
           email: action.payload.email,
           userImg: action.payload.userImg,
-          favorites: action.payload.favorites,
-          list: action.payload.list,
+          favorites: [],
+          watchlist: [],
+          community: [],
         },
       };
     // ...
