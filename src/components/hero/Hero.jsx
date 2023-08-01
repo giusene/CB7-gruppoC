@@ -5,7 +5,7 @@ import { AiFillStar } from "react-icons/ai";
 import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowLeft,
-} from "react-icons/Md";
+} from "react-icons/md";
 import { genres } from "@/utils/genres";
 
 const Hero = ({ trending }) => {
