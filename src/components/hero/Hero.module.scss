@@ -145,19 +145,31 @@
     }
   }
 
+  .heroTrailer {
+    width: 100%;
+    max-width: 200px;
+    @include flexbox-hrz(10px);
+    background-color: #1e57ff;
+    color: #e0e4ed;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    
   @media (max-width: 400px) {
-
     .hero {
       margin-top: 60px;
     }
-
 
     .heroContent {
       .heroTrama,
       .heroDate {
         display: none;
       }
-      width: 100%;
+      max-width: 60%;
       bottom: 5%;
       left: 15%;
       background-color: transparent;

@@ -7,15 +7,21 @@
   font-size: $base-text;
   font-family: "Inter", sans-serif;
   color: $color-secondary;
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: $color-primary;
   scroll-behavior: smooth;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 500;
+  }
 }
 
 li {
   list-style-type: none;
 }
-
-
