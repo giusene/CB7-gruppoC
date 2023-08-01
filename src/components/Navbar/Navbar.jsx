@@ -19,7 +19,10 @@ import styles from "./Navbar.module.scss";
 
 //import components
 import Sidebar from "../Sidebar/Sidebar";
+import Round from "@/Svg/Round";
 
+//import icons
+import { BiUserCircle } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 
 const Navbar = () => {
@@ -84,16 +87,11 @@ const Navbar = () => {
   return (
     <>
       <ul className={styles.Navbar}>
-        <img
-          className={styles.logoFull}
-          src="https://img.logoipsum.com/297.svg"
-          onClick={onClickHomePage}
-        />
-        <img
-          className={styles.logoImg}
-          src="https://img.logoipsum.com/296.svg"
-          onClick={onClickHomePage}
-        />
+        <div className={styles.full_logo} onClick={onClickHomePage}>
+          <Round className={styles.logo} />
+          <span>YouMovie</span>
+        </div>
+
         <form onSubmit={onSubmitRoute}>
           <BsSearch />
           <input
@@ -107,9 +105,9 @@ const Navbar = () => {
         {state.user.isLogged ? (
           <>
             <div className={styles.welcome}>
-              <p>Welcome, </p>
+              <p>Welcome </p>
               <div className={styles.loggedUser} onClick={showSidebar}>
-                <p>{state.user.firstName}</p>
+                <p className={styles.welcome_p}>{state.user.firstName}</p>
                 <img
                   className={styles.loggedUser__img}
                   src={state.user.userImg}
@@ -119,7 +117,9 @@ const Navbar = () => {
             </div>
           </>
         ) : (
-          <button onClick={signIn}>Login</button>
+          <div className={styles.button}>
+            <BiUserCircle className={styles.user} onClick={signIn} />
+          </div>
         )}
       </ul>
       <Sidebar

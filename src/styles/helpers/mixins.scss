@@ -65,3 +65,9 @@
   gap: $gap;
 }
 
+@mixin flexAlignCenter($gap){
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
