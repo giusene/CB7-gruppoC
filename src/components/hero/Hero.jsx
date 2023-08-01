@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import styles from "./Hero.module.scss";
-import { BsFillPlayFill } from "react-icons/Bs";
-import { AiFillStar } from "react-icons/Ai";
+import { AiFillStar } from "react-icons/ai";
 import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowLeft,
-} from "react-icons/Md";
+} from "react-icons/md";
 import { genres } from "@/utils/genres";
 
 const Hero = ({ trending }) => {
@@ -78,10 +77,7 @@ const Hero = ({ trending }) => {
           {trending.results[nextMovie].overview}
         </p>
 
-        <button className={styles.heroSeeMore}>
-          {/* <p className={styles.heroPlayIcon}>
-            <BsFillPlayFill />
-          </p> */}
+        <button className={styles.heroSeeMore} onClick={onClickMoviePage}>
           See more
         </button>
       </div>

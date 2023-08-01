@@ -37,7 +37,9 @@
     height: 40px;
     background-color: $color-primary-transparent;
     border: 2px solid $color-secondary-light;
-    border-radius: 12px;
+    
+    border-radius: 4px;
+
     @include flexbox-hrz(20px);
 
     svg {
@@ -73,10 +75,12 @@
     }
   }
 
+
  .button{
   @include flexAlignCenter(15px);
   p{
     font-size: $subtitle;
+
     text-transform: uppercase;
     font-weight: 500;
   }
@@ -141,6 +145,7 @@
     .welcome_p {
       display: none;
     }
+
 
     .full_logo {
       span {

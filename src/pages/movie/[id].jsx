@@ -1,7 +1,7 @@
 import { GET } from "@/utils/HTTP";
 import { useRouter } from "next/router";
 import styles from "@/styles/Movie.module.scss";
-import { AiFillStar } from "react-icons/Ai";
+import { AiFillStar } from "react-icons/ai";
 import Comments from "@/components/Comments";
 import Head from "next/head";
 import {
@@ -13,22 +13,27 @@ import {
 } from "firebase/firestore";
 import { db } from "@/plugins/firebase";
 import { IoMdClose } from "react-icons/io";
+import Warning from "@/components/warning";
 import Trailer from "@/components/Trailer";
 
-import { AiOutlineHeart, AiFillHeart } from "react-icons/Ai";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/Ai";
-import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/Bs";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/bs";
 import { useContext, useEffect, useState } from "react";
 import SimilarMovies from "@/components/SimilarMovie";
 import { MainContext } from "@/store";
 
-export default function ({ movie, recommended, comments }) {
+export default function ({ key, movie, recommended, comments }) {
   const { state, dispatch } = useContext(MainContext);
   const router = useRouter();
   const [addFilm, setAddFilm] = useState(false);
   const [likeFilm, setLikeFilm] = useState(false);
   const [suggestFilm, setSuggestFilm] = useState(false);
   const [trailer, setTrailer] = useState(false);
+  // modals states
+  const [watchlistModal, setWatchlistModal] = useState(false);
+  const [likeModal, setLikeModal] = useState(false);
+  const [suggestModal, setSuggestModal] = useState(false);
 
   useEffect(() => {
     if (state.user.isLogged) {
@@ -98,8 +103,9 @@ export default function ({ movie, recommended, comments }) {
             }),
           });
       }
+      setWatchlistModal(!watchlistModal);
     } else {
-      alert("You must be logged in to add films to your watchlist");
+      setWatchlistModal(!watchlistModal);
     }
   };
 
@@ -124,8 +130,9 @@ export default function ({ movie, recommended, comments }) {
             }),
           });
       }
+      setLikeModal(!likeModal);
     } else {
-      alert("You must be logged in to add films to your favorites");
+      setLikeModal(!likeModal);
     }
   };
 
@@ -150,8 +157,9 @@ export default function ({ movie, recommended, comments }) {
             }),
           });
       }
+      setSuggestModal(!suggestModal);
     } else {
-      alert("You must be logged in to add films to your community list");
+      setSuggestModal(!suggestModal);
     }
   };
 
@@ -163,6 +171,46 @@ export default function ({ movie, recommended, comments }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Warning
+        type={state.user.isLogged ? "ok" : "ko"}
+        content={
+          state.user.isLogged
+            ? likeFilm
+              ? "Movie added to your favorites!"
+              : "Movie removed from your favorites."
+            : "You must be logged in to add movies to your favorites."
+        }
+        modal={likeModal}
+        setModal={setLikeModal}
+      />
+
+      <Warning
+        type={state.user.isLogged ? "ok" : "ko"}
+        content={
+          state.user.isLogged
+            ? addFilm
+              ? "Movie added to your watchlist!"
+              : "Movie removed from your watchlist."
+            : "You must be logged in to add movies to your watchlist."
+        }
+        modal={watchlistModal}
+        setModal={setWatchlistModal}
+      />
+
+      <Warning
+        type={state.user.isLogged ? "ok" : "ko"}
+        content={
+          state.user.isLogged
+            ? suggestFilm
+              ? "Movie added to your community list!"
+              : "Movie removed from your community list."
+            : "You must be logged in to add movies to your community list."
+        }
+        modal={suggestModal}
+        setModal={setSuggestModal}
+      />
+
       <div className={`${styles.container} ${trailer && styles.noScroll}`}>
         <div className={styles.Movie}>
           {trailer && (
@@ -185,12 +233,12 @@ export default function ({ movie, recommended, comments }) {
             <h1>{movie.title}</h1>
             {movie.tagline && <p>"{movie.tagline}"</p>}
             {movie.videos.results.length && (
-              <div className={styles.watchTrailer} onClick={onClickTrailer}>
-                <span className={styles.heroPlayIcon}>
+              <button className={styles.watchTrailer} onClick={onClickTrailer}>
+                <span className={styles.playIcon}>
                   <BsFillPlayFill />
                 </span>
-                <span>Watch trailer</span>
-              </div>
+                Watch trailer
+              </button>
             )}
           </div>
           <div className={styles.movieInfoContainer}>
@@ -312,9 +360,14 @@ export async function getServerSideProps(router) {
 
   return {
     props: {
+      key: router.query.id,
       movie,
       recommended,
       comments,
     },
   };
 }
+
+// Movie.getInitialProps = (router) => ({
+//   key: router.query.id,
+// });
