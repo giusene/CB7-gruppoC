@@ -129,3 +129,15 @@
     }
   }
 }
+
+.credits {
+  width: 100%;
+  @include flexbox-hrz(10px);
+  padding: $par-sm;
+
+  .logo {
+    svg {
+      height: $base-text;
+    }
+  }
+}

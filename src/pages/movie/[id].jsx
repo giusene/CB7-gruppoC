@@ -136,7 +136,7 @@ export default function ({ key, movie, recommended, comments }) {
     }
   };
 
-  const addToSeggested = (movieId) => {
+  const addToSuggested = (movieId) => {
     if (state.user.isLogged) {
       setSuggestFilm(!suggestFilm);
       const userRef = doc(db, "users", state.user.id);
@@ -257,16 +257,36 @@ export default function ({ key, movie, recommended, comments }) {
               <p>{minutesInHours(movie.runtime)}</p>
             </div>
             <div className={styles.movieInteractions}>
-              <p className={styles.addFilm} onClick={() => addToLike(movie.id)}>
+              <p
+                className={styles.addFilm}
+                onClick={() => addToLike(movie.id)}
+                title={
+                  likeFilm
+                    ? "Remove from your favorites"
+                    : "Add to your favorites"
+                }
+              >
                 {likeFilm ? <AiFillHeart /> : <AiOutlineHeart />}
               </p>
               <p
                 className={styles.addFilm}
                 onClick={() => addToWatchlist(movie.id)}
+                title={
+                  addFilm
+                    ? "Remove from your watchlist"
+                    : "Add to your watchlist"
+                }
               >
                 {addFilm ? <AiOutlineMinus /> : <AiOutlinePlus />}
               </p>
-              <p onClick={() => addToSeggested(movie.id)}>
+              <p
+                onClick={() => addToSuggested(movie.id)}
+                title={
+                  suggestFilm
+                    ? "Remove from your community list"
+                    : "Add to your community list"
+                }
+              >
                 {suggestFilm ? <BsFillPeopleFill /> : <BsPeople />}
               </p>
             </div>

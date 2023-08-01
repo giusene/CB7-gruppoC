@@ -3,6 +3,7 @@ import { db } from "@/plugins/firebase";
 import { getDocs, collection } from "firebase/firestore";
 import { arrayShuffle } from "@/utils/fn.js";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
+import TMDB from "@/Svg/TMDB";
 import Head from "next/head";
 import CommunityCards from "@/components/CommunityCards/CommunityCards";
 import styles from "@/styles/about-us.module.scss";
@@ -57,6 +58,17 @@ export default function ({ lists }) {
               </div>
             </div>
           ))}
+      </div>
+      <div className={styles.credits}>
+        <span>
+          API credits:{" "}
+          <a href="https://www.themoviedb.org/" target="_blank">
+            The Movie Database (TMDB)
+          </a>{" "}
+        </span>
+        <span className={styles.logo}>
+          <TMDB />
+        </span>
       </div>
     </>
   );

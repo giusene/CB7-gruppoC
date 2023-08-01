@@ -2,12 +2,12 @@ import Link from "next/link";
 import styles from "./Footer.module.scss";
 import Round from "@/Svg/Round";
 
-const goOnTop = () => document.documentElement.scrollTop = 0;
+const goOnTop = () => (document.documentElement.scrollTop = 0);
 
 const Footer = () => {
   return (
-    <div className={styles.Footer} onClick={goOnTop}>
-      <div className={styles.full_logo}>
+    <div className={styles.Footer}>
+      <div className={styles.full_logo} onClick={goOnTop}>
         <Round className={styles.logo} />
         <span>YouMovie</span>
       </div>
