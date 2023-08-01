@@ -4,21 +4,21 @@ import { MainContext } from "@/store";
 
 import styles from "./Sidebar.module.scss";
 import Link from "next/link";
-import { WiTime3 } from "react-icons/wi";
-import { AiOutlinePlus } from "react-icons/Ai";
-import { FiStar } from "react-icons/Fi";
-import { AiFillStar } from "react-icons/Ai";
-import { BsBookmarkHeart } from "react-icons/Bs";
-import { HiOutlineUserGroup } from "react-icons/Hi";
-import { BiLogOut } from "react-icons/Bi";
-import { IoClose } from "react-icons/io5";
-import { RiArrowRightSLine } from "react-icons/Ri";
+import { HiOutlineUserGroup } from "react-icons/hi";
+import { BiLogOut, BiListPlus } from "react-icons/bi";
+
+import { RiArrowRightSLine } from "react-icons/ri";
+import { useRouter } from "next/router";
 
 const Sidebar = ({ onClick, sidebar, setSidebar }) => {
   const { state, dispatch } = useContext(MainContext);
 
+  const router = useRouter();
+
   const onHandleLogOut = () => {
     setSidebar(!sidebar);
+
+    router.push("/");
 
     dispatch({
       type: "SET_USER_LOG_OUT",
@@ -28,11 +28,11 @@ const Sidebar = ({ onClick, sidebar, setSidebar }) => {
         lastName: "",
         email: "",
         userImg: "",
-        favorites: [],
-        list: [],
       },
     });
   };
+
+  const onClickLists = () => setSidebar(!sidebar);
 
   return (
     <div className={`${styles.sidebar} ${sidebar && styles.showsidebar}`}>
@@ -50,16 +50,16 @@ const Sidebar = ({ onClick, sidebar, setSidebar }) => {
       </div>
       <div className={styles.sections}>
         <ul className={styles.sectionList}>
-          <li className={styles.section}>
-            <Link href="/" className={styles.item}>
+          <li className={styles.section} onClick={() => setSidebar(!sidebar)}>
+            <Link href="/your-lists" className={styles.item}>
               <p>
-                <BsBookmarkHeart className={styles.icon} />
+                <BiListPlus className={styles.icon} />
               </p>
-              <p>WATCHLIST</p>
+              <p>YOUR LISTS</p>
             </Link>
           </li>
-          <li className={styles.section}>
-            <Link href="/" className={styles.item}>
+          <li className={styles.section} onClick={() => setSidebar(!sidebar)}>
+            <Link href="/community" className={styles.item}>
               <p>
                 <HiOutlineUserGroup className={styles.icon} />
               </p>

@@ -1,20 +1,31 @@
 .Navbar {
   @include flexbox-hrz-space-between();
   width: 100%;
-  padding: 10px 20px;
+  padding: 5px 15px;
   background-color: transparent;
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
+  left: 0;
   z-index: 200;
 
-  .logoFull {
+  .full_logo {
+    @include flexCenter(10px);
     cursor: pointer;
-  }
 
-  .logoImg {
-    display: none;
+    span {
+      color: $color-action;
+      font-size: $logo;
+      font-weight: 700;
+      display: flex;
+    }
+
+    .logo {
+      width: $logo;
+      height: $logo;
+      @include flexCenter(0);
+    }
   }
 
   li {
@@ -26,7 +37,7 @@
     background-color: $color-primary-transparent;
     border: 2px solid $color-secondary-light;
 
-    border-radius: 12px;
+    border-radius: 4px;
 
     @include flexbox-hrz(20px);
 
@@ -37,8 +48,10 @@
     }
 
     input {
+      display: flex;
+      align-items: center;
       width: 300px;
-      height: 30px;
+      height: 100%;
       background-color: transparent;
       border: none;
       color: $color-secondary;
@@ -61,24 +74,20 @@
     }
   }
 
-  button {
-    @include button(10px, $color-primary);
-    @include flexCenter(0);
-    padding: 10px;
-    height: 40px;
-    width: 100px;
-    border-radius: 12px;
-    text-transform: uppercase;
-    border: 1px solid $color-secondary;
-
-    &:hover {
-      box-shadow: $elevation-small;
+  .button {
+    @include flexAlignCenter(15px);
+    cursor: pointer;
+    p {
+      font-size: $subtitle;
+      text-transform: uppercase;
+      font-weight: 500;
     }
-
-    &:active {
-      scale: 0.99;
-      color: $color-primary;
-      background-color: $color-secondary;
+    .user {
+      scale: 2.7;
+      @include flexCenter(0);
+      margin-right: 10px;
+      background-color: $color-primary-clair;
+      border-radius: 50%;
     }
   }
 
@@ -119,24 +128,59 @@
         border-radius: 50%;
       }
     }
+  }
 
-    @include xs() {
-      input {
-        max-width: 150px;
-        height: 40px;
+  @mixin md() {
+    padding: 10px;
+    justify-content: space-around;
+    background-color: $color-primary;
+    backdrop-filter: blur(5px);
+
+    .welcome_p {
+      display: none;
+    }
+
+    .full_logo {
+      span {
+        display: none;
+        .logo {
+          scale: 0.9;
+          @include flexCenter(0);
+        }
       }
+    }
+  }
 
-      .logoImg {
-        display: flex;
+  @include xs() {
+    padding: 10px 20px;
+
+    background-color: #1b2330c0;
+    backdrop-filter: blur(5px);
+
+    .welcome {
+      p {
+        display: none;
       }
+    }
 
-      .logoFull {
+    .welcome_p {
+      display: none;
+    }
+
+    .full_logo {
+      span {
         display: none;
       }
 
-      button {
-        max-width: 80px;
-        height: 40px;
+      .logo {
+        scale: 0.9;
+        @include flexCenter(0);
+      }
+    }
+
+    form {
+      input {
+        width: 160px;
       }
     }
   }

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Card from "@/components/Card/Card";
 import styles from "@/styles/searchedMovieGrid.module.scss";
-import { PiSmileySad } from "react-icons/Pi";
+import { PiSmileySad } from "react-icons/pi";
 
 export default function searchResult({ data }) {
   const router = useRouter();

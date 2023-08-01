@@ -4,7 +4,7 @@ const Trailer = ({ movie }) => {
   return (
     <div className={styles.Trailer}>
       <iframe
-        src={`http://www.youtube.com/embed/${movie.videos.results[0].key}`}
+        src={`https://www.youtube.com/embed/${movie.videos.results[0].key}`}
       />
     </div>
   );
