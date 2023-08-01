@@ -1,10 +1,17 @@
-import Head from "next/head";
+import { useLayoutEffect, useState } from "react";
 import { db } from "@/plugins/firebase";
 import { getDocs, collection } from "firebase/firestore";
+import { arrayShuffle } from "@/utils/fn.js";
+import Head from "next/head";
 import CommunityCards from "@/components/CommunityCards/CommunityCards";
 import styles from "@/styles/Community.module.scss";
 
 export default function ({ lists }) {
+  const [shuffledLists, setShuffledLists] = useState([]);
+  useLayoutEffect(() => {
+    setShuffledLists(arrayShuffle(lists));
+  }, []);
+
   return (
     <>
       <Head>
@@ -15,7 +22,7 @@ export default function ({ lists }) {
       </Head>
       <div className={styles.mainContainer}>
         <h1>Community</h1>
-        {lists.map((user) => (
+        {shuffledLists.map((user) => (
           <div key={user.id} className={styles.cardsContainer}>
             <div className={styles.userInfo}>
               <span>Suggested by </span>
