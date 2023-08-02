@@ -11,7 +11,7 @@
   position: relative;
   scroll-snap-align: start;
 
-  //DESKTOP
+  //LAPTOP
   @include lg {
     &:hover {
       transform: scale(1.1);
@@ -31,9 +31,9 @@
       display: none;
     }
   }
-  // END DESKTOP
+  // END LAPTOP
 
-  //LAPTOP
+  //DESKTOP
   @include xl {
     &:hover {
       transform: scale(1.1);
@@ -53,7 +53,29 @@
       display: none;
     }
   }
-  //END LAPTOP
+  //END DESKTOP
+
+  //ULTRAWIDE
+  @include xxl {
+    &:hover {
+      transform: scale(1.1);
+      z-index: 100;
+      position: relative;
+
+      .text {
+        bottom: 0;
+      }
+
+      .black_parag {
+        transform: translateX(100%);
+      }
+    }
+
+    .close {
+      display: none;
+    }
+  }
+  //END ULTRAWIDE
 
   // -----   TABLET  ----------
 

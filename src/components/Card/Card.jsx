@@ -46,7 +46,7 @@ const Card = ({ mock }) => {
             </div>
           </div>
           <div className={`${styles.text} ${overlay && styles.overlay}`}>
-            <div className={styles.left} onClick={onClickMovie}>
+            <div className={styles.left}>
               <div className={styles.card_title}>
                 <h3 className={styles.text_title}>{mock.title}</h3>
               </div>
