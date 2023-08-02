@@ -35,7 +35,7 @@ const Card = ({ mock }) => {
             <img
               className={styles.bgImage}
               src={`https://image.tmdb.org/t/p/w300${mock.backdrop_path}`}
-              alt=""
+              alt={mock.title}
             />
             <div className={styles.black}>
               <p

@@ -234,10 +234,12 @@ export default function ({ key, movie, recommended, comments }) {
             <img
               className={styles.imgFull}
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+              alt={movie.title}
             />
             <img
               className={styles.imgPoster}
               src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+              alt={`${movie.title} poster`}
             />
             <h1>{movie.title}</h1>
             {movie.tagline && <p>"{movie.tagline}"</p>}
@@ -331,6 +333,7 @@ export default function ({ key, movie, recommended, comments }) {
                           ? `https://image.tmdb.org/t/p/w185${data.profile_path}`
                           : `https://www.exscribe.com/wp-content/uploads/2021/08/placeholder-image-person-jpg.jpg`
                       }
+                      alt={data.name}
                     />
                   </div>
                   <div className={styles.cardInfo}>
@@ -345,10 +348,11 @@ export default function ({ key, movie, recommended, comments }) {
             <div className={styles.backdropsContainer}>
               <h2>Gallery</h2>
               <div className={styles.backdrops}>
-                {movie.images.backdrops.map((data) => (
+                {movie.images.backdrops.map((data, i) => (
                   <img
                     key={data.id}
                     src={`https://image.tmdb.org/t/p/w185${data.file_path}`}
+                    alt={`gallery image ${++i}`}
                   />
                 ))}
               </div>
