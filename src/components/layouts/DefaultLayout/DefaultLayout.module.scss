@@ -2,4 +2,8 @@
   .content {
     min-height: calc(100dvh - 70px);
   }
+
+  svg {
+    fill: $color-secondary;
+  }
 }
