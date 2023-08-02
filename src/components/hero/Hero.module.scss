@@ -105,6 +105,7 @@
       max-width: 300px;
       font-size: $par-md;
       left: 50%;
+      top: 40%;
       transform: translateX(-50%);
       @include flexbox-vrt(0);
 
