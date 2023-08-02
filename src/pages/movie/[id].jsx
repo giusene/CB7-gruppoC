@@ -357,7 +357,7 @@ export default function ({ movie, recommended, comments }) {
                 {movie.images.backdrops.map((data, i) => (
                   <img
                     key={data.id}
-                    src={`https://image.tmdb.org/t/p/w185${data.file_path}`}
+                    src={`https://image.tmdb.org/t/p/original${data.file_path}`}
                     alt={`gallery image ${++i}`}
                   />
                 ))}

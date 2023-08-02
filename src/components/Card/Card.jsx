@@ -34,7 +34,7 @@ const Card = ({ mock }) => {
           <div className={styles.bgCard} onClick={onOverlay}>
             <img
               className={styles.bgImage}
-              src={`https://image.tmdb.org/t/p/w300${mock.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/w780${mock.backdrop_path}`}
               alt={mock.title}
             />
             <div className={styles.black}>
