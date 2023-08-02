@@ -147,6 +147,7 @@ const Comments = ({ id, comments }) => {
                 <img
                   className={styles.commentUserImg}
                   src={comment.user.userImg}
+                  alt={`${comment.user.firstName} ${comment.user.lastName}`}
                 />
                 <div className={styles.commentUserText}>
                   <p className={styles.commentName}>{comment.user.firstName}</p>

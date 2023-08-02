@@ -111,7 +111,7 @@ const Navbar = () => {
                 <img
                   className={styles.loggedUser__img}
                   src={state.user.userImg}
-                  alt={state.user.firstName}
+                  alt={`${state.user.firstName} ${state.user.lastName}`}
                 />
               </div>
             </div>

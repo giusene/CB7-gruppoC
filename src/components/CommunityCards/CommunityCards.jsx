@@ -11,6 +11,7 @@ const CommunityCards = ({ data }) => {
       <img
         className={styles.movieImg}
         src={`https://image.tmdb.org/t/p/w185${data.poster}`}
+        alt={data.id}
       />
     </div>
   );
