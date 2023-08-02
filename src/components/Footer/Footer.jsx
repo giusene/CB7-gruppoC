@@ -7,7 +7,7 @@ const goOnTop = () => (document.documentElement.scrollTop = 0);
 const Footer = () => {
   return (
     <div className={styles.Footer}>
-      <div className={styles.full_logo} onClick={goOnTop}>
+      <div className={styles.full_logo} onClick={goOnTop} title="Back to top">
         <Round className={styles.logo} />
         <span>YouMovie</span>
       </div>
@@ -15,7 +15,9 @@ const Footer = () => {
       <div className={styles.line}></div>
 
       <h2>
-        <Link href="/about-us">About us</Link>
+        <Link href="/about-us" title="About us">
+          About us
+        </Link>
       </h2>
     </div>
   );

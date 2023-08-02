@@ -133,8 +133,13 @@ const Comments = ({ id, comments }) => {
               type="submit"
               value={"Post"}
               className={styles.commentSubmit}
+              title="Post"
             />
-            <div className={styles.submitIcon} onClick={onHandleSubmit}>
+            <div 
+              className={styles.submitIcon} 
+              onClick={onHandleSubmit}
+              title="Post"
+            >
               <IoSendSharp />
             </div>
           </div>

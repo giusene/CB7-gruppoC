@@ -10,3 +10,6 @@ export const arrayShuffle = (array) => {
 
   return array;
 };
+
+export const genreRender = (genres, genreId) =>
+  genres.map((genre) => genre.id === genreId && genre.name);

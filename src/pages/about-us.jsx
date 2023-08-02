@@ -42,10 +42,18 @@ export default function ({ lists }) {
                   </span>
                 </span>
                 <div className={styles.profiles}>
-                  <a href={user.github} target="_blank">
+                  <a
+                    href={user.github}
+                    target="_blank"
+                    title={`${user.firstName} ${user.lastName} - GitHub`}
+                  >
                     <BsGithub />
                   </a>
-                  <a href={user.linkedin} target="_blank">
+                  <a
+                    href={user.linkedin}
+                    target="_blank"
+                    title={`${user.firstName} ${user.lastName} - LinkedIn`}
+                  >
                     <BsLinkedin />
                   </a>
                 </div>
@@ -62,7 +70,11 @@ export default function ({ lists }) {
       <div className={styles.credits}>
         <span>
           API credits:{" "}
-          <a href="https://www.themoviedb.org/" target="_blank">
+          <a
+            href="https://www.themoviedb.org/"
+            target="_blank"
+            title="The Movie Database (TMDB)"
+          >
             The Movie Database (TMDB)
           </a>{" "}
         </span>
@@ -79,9 +91,7 @@ export async function getServerSideProps() {
 
   const querySnapshot = await getDocs(collection(db, "users"));
   querySnapshot.forEach((doc) => {
-    if (doc.data().community.length) {
-      lists.push(doc.data());
-    }
+    lists.push(doc.data());
   });
 
   return {
