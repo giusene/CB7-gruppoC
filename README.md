@@ -40,9 +40,9 @@ Per entrare a far parte della **Community** è sufficiente loggarsi con il propr
 ## Il nostro TEAM
 
 - Martina Piras [Github](https://github.com/martinapiras) | [Linkedin](https://www.linkedin.com/in/martinapiras/)
-- Matteo Norrito [Github](https://github.com/MatteoNorr) | [Linkedin](www.linkedin.com/in/matteo-norrito)
+- Matteo Norrito [Github](https://github.com/MatteoNorr) | [Linkedin](https://www.linkedin.com/in/matteo-norrito)
 - Giuseppe Lentini [Github](https://github.com/JosepherLentini) | [Linkedin](https://www.linkedin.com/in/giuseppericcardolentini//)
-- Andrea Coda [Github](https://github.com/AndreaCodone) | [Linkedin](www.linkedin.com/in/andrea-coda)
+- Andrea Coda [Github](https://github.com/AndreaCodone) | [Linkedin](https://www.linkedin.com/in/andrea-coda)
 - Federico Borrometi [Github](https://github.com/federico-init) | [Linkedin](https://www.linkedin.com/in/federico-borrometi/)
 
 ## Come avviare il progetto
