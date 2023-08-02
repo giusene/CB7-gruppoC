@@ -2,7 +2,7 @@
 
 > Interactive movie database powered by community
 
-[![youmovie-preview.png](https://i.postimg.cc/MZsSz1LM/youmovie-preview.png)](https://postimg.cc/0rJ3fKPP)
+![youmovie-preview.png](https://i.postimg.cc/MZsSz1LM/youmovie-preview.png)
 
 ## Il progetto
 
