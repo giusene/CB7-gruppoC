@@ -1,8 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# YouMovie
 
-## Getting Started
+> Interactive movie database powered by community
 
-First, run the development server:
+[![desktop_home.png](https://i.postimg.cc/1XKhhQwq/desktop-home.png)](https://i.postimg.cc/1XKhhQwq/desktop-home.png) [![mobile_home.png](https://i.postimg.cc/CLmTcwFy/mobile-home.png)](https://i.postimg.cc/CLmTcwFy/mobile-home.png)  
+<br>
+<br>
+[![community.png](https://i.postimg.cc/NMH2xNTV/community.png)](https://postimg.cc/47X3fQWb) [![movie_details.png](https://i.postimg.cc/ZKTzPWzF/movie-details.png)](https://i.postimg.cc/ZKTzPWzF/movie-details.png)
+
+## Il progetto
+
+\>> [Visita YouMovie](https://cb-7-gruppo-c.vercel.app/) <<
+
+YouMovie è dedicato agli appassionati di film che vogliono sentirsi parte di una comunità.
+
+Su YouMovie potrai scoprire i film più popolari del momento, ricercarli per genere o titolo, o ancora scoprire nuovi film simili a quelli che già conosci grazie alla sezione **Similar Movies** e ai suggerimenti della Community.
+
+Per entrare a far parte della **Community** è sufficiente loggarsi con il proprio account Google; in questo modo potrai accedere alle seguenti funzionalità esclusive:
+
+- la tua lista <ins>**Preferiti**</ins>, per i film che già ami 🤍
+- la tua <ins>**Watchlist**</ins>, per i film che devi ancora vedere 👀
+- la tua lista <ins>**Community**</ins>, per i film che vuoi condividere 👥
+- interagire con la community attraverso i <ins>**Commenti**</ins> 💬
+
+## Funzionalità
+
+- Autenticazione utente tramite Google authentication
+- Ricerca tra un'ampia selezione di film per titolo e genere
+- Visualizzazione dei dettagli dei film, tra cui trailer, descrizione, cast e film correlati
+- Interazione con la community tramite commenti
+- Creazione di liste personali
+- Design responsive
+- Made with 🤍
+
+## Stack
+
+[![Stack](https://skillicons.dev/icons?i=react,nextjs,sass,firebase,git,vercel)](https://skillicons.dev)
+
+## API
+
+[The Movie Database (TMDB)](https://www.themoviedb.org/)
+
+## Il nostro TEAM
+
+- Martina Piras [Github](https://github.com/martinapiras) | [Linkedin](https://www.linkedin.com/in/martinapiras/)
+- Matteo Norrito [Github](https://github.com/MatteoNorr) | [Linkedin](www.linkedin.com/in/matteo-norrito)
+- Giuseppe Lentini [Github](https://github.com/JosepherLentini) | [Linkedin](https://www.linkedin.com/in/giuseppericcardolentini//)
+- Andrea Coda [Github](https://github.com/AndreaCodone) | [Linkedin](www.linkedin.com/in/andrea-coda)
+- Federico Borrometi [Github](https://github.com/federico-init) | [Linkedin](https://www.linkedin.com/in/federico-borrometi/)
+
+## Come avviare il progetto
+
+Da terminale avviare i seguenti comandi:
 
 ```bash
 npm run dev
@@ -12,27 +60,4 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Aprire il link [http://localhost:3000](http://localhost:3000).
