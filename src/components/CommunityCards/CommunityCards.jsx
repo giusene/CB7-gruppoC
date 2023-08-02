@@ -7,10 +7,11 @@ const CommunityCards = ({ data }) => {
   const onClickMoviePage = () => router.push(`movie/${data.id}`);
 
   return (
-    <div className={styles.card} onClick={onClickMoviePage}>
+    <div className={styles.card} onClick={onClickMoviePage} title={data.title}>
       <img
         className={styles.movieImg}
         src={`https://image.tmdb.org/t/p/w185${data.poster}`}
+        alt={data.title}
       />
     </div>
   );
