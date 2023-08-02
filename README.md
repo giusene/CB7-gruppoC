@@ -2,10 +2,7 @@
 
 > Interactive movie database powered by community
 
-[![desktop_home.png](https://i.postimg.cc/1XKhhQwq/desktop-home.png)](https://i.postimg.cc/1XKhhQwq/desktop-home.png) [![mobile_home.png](https://i.postimg.cc/CLmTcwFy/mobile-home.png)](https://i.postimg.cc/CLmTcwFy/mobile-home.png)  
-<br>
-<br>
-[![community.png](https://i.postimg.cc/NMH2xNTV/community.png)](https://postimg.cc/47X3fQWb) [![movie_details.png](https://i.postimg.cc/ZKTzPWzF/movie-details.png)](https://i.postimg.cc/ZKTzPWzF/movie-details.png)
+[![youmovie-preview.png](https://i.postimg.cc/MZsSz1LM/youmovie-preview.png)](https://postimg.cc/0rJ3fKPP)
 
 ## Il progetto
 
@@ -30,7 +27,7 @@ Per entrare a far parte della **Community** è sufficiente loggarsi con il propr
 - Interazione con la community tramite commenti
 - Creazione di liste personali
 - Design responsive
-- Made with 🤍
+- Made with ❤
 
 ## Stack
 
