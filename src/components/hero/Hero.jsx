@@ -49,6 +49,7 @@ const Hero = ({ trending }) => {
       <div className={`${styles.heroBackground} ${styles.next}`}>
         <img
           src={`https://image.tmdb.org/t/p/original${trending.results[nextMovie].backdrop_path}`}
+          alt={trending.results[nextMovie].title}
         />
       </div>
       <div className={styles.heroContent}>
