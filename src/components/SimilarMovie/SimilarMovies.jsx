@@ -18,7 +18,7 @@ const SimilarMovies = ({ recommended }) => {
             <div className={styles.similarMovieImg}>
               <img
                 className={styles.overlay}
-                src={`https://image.tmdb.org/t/p/w185${recommended.backdrop_path}`}
+                src={`https://image.tmdb.org/t/p/w780${recommended.backdrop_path}`}
                 alt={recommended.title}
               />
               <h3>{recommended.title}</h3>
