@@ -104,9 +104,8 @@ const Comments = ({ id, comments }) => {
       <Warning
         type="ko"
         content={
-          state.user.isLogged
-            ? "Oops! It seems like you forgot to enter any text. Please provide a sentence or a message to post your comment."
-            : "You must be logged in to post comments."
+          state.user.isLogged &&
+          "Oops! It seems like you forgot to enter any text. Please provide a sentence or a message to post your comment."
         }
         modal={modal}
         setModal={setModal}
@@ -119,31 +118,35 @@ const Comments = ({ id, comments }) => {
           <span></span>
         )}
       </h2>
-      <form onSubmit={onHandleSubmit} className={styles.commentsForm}>
-        <textarea
-          placeholder="Leave a comment..."
-          onChange={onChangeValue}
-          value={comment}
-          required
-          minLength={1}
-          className={styles.commentInput}
-        />
-        <div className={styles.submitWrapper}>
-          <input
-            type="submit"
-            value={"Post"}
-            className={styles.commentSubmit}
-            title="Post"
+      {state.user.isLogged ? (
+        <form onSubmit={onHandleSubmit} className={styles.commentsForm}>
+          <textarea
+            placeholder="Leave a comment..."
+            onChange={onChangeValue}
+            value={comment}
+            required
+            minLength={1}
+            className={styles.commentInput}
           />
-          <div
-            className={styles.submitIcon}
-            onClick={onHandleSubmit}
-            title="Post"
-          >
-            <IoSendSharp />
+          <div className={styles.submitWrapper}>
+            <input
+              type="submit"
+              value={"Post"}
+              className={styles.commentSubmit}
+              title="Post"
+            />
+            <div 
+              className={styles.submitIcon} 
+              onClick={onHandleSubmit}
+              title="Post"
+            >
+              <IoSendSharp />
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      ) : (
+        <p>You must be logged in to post comments.</p>
+      )}
       <ul className={`${styles.commentSection}`}>
         {commentsArr.length ? (
           commentsArr.toReversed().map((comment) => (
