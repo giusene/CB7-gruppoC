@@ -97,6 +97,7 @@ export default function ({ movie, recommended, comments }) {
             watchlist: arrayRemove({
               id: movie.id,
               poster: movie.poster_path,
+              title: movie.title,
             }),
           });
       } else {
@@ -105,6 +106,7 @@ export default function ({ movie, recommended, comments }) {
             watchlist: arrayUnion({
               id: movie.id,
               poster: movie.poster_path,
+              title: movie.title,
             }),
           });
       }
@@ -124,6 +126,7 @@ export default function ({ movie, recommended, comments }) {
             favorites: arrayRemove({
               id: movie.id,
               poster: movie.poster_path,
+              title: movie.title,
             }),
           });
       } else {
@@ -132,6 +135,7 @@ export default function ({ movie, recommended, comments }) {
             favorites: arrayUnion({
               id: movie.id,
               poster: movie.poster_path,
+              title: movie.title,
             }),
           });
       }
@@ -151,6 +155,7 @@ export default function ({ movie, recommended, comments }) {
             community: arrayRemove({
               id: movie.id,
               poster: movie.poster_path,
+              title: movie.title,
             }),
           });
       } else {
@@ -159,6 +164,7 @@ export default function ({ movie, recommended, comments }) {
             community: arrayUnion({
               id: movie.id,
               poster: movie.poster_path,
+              title: movie.title,
             }),
           });
       }

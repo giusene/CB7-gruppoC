@@ -30,7 +30,7 @@ const Card = ({ mock }) => {
   return (
     mock.backdrop_path && (
       <>
-        <div className={styles.Card}>
+        <div className={styles.Card} title={mock.title}>
           <div className={styles.bgCard} onClick={onOverlay}>
             <img
               className={styles.bgImage}
