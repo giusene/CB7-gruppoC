@@ -16,11 +16,18 @@
     cursor: pointer;
     width: 25%;
 
+    svg {
+      fill: $color-secondary;
+      filter: drop-shadow(2px 2px 2px black);
+    }
+
     span {
       color: $color-action;
       font-size: $logo;
       font-weight: 700;
       display: flex;
+      color: $color-secondary;
+      text-shadow: 2px 2px 2px black;
     }
 
     .logo {

@@ -5,7 +5,6 @@ const Round = (props) => (
     xmlSpace="preserve"
     width={800}
     height={800}
-    fill="#1e57ff"
     viewBox="0 0 330.008 330.008"
     {...props}
   >
