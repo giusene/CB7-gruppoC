@@ -87,7 +87,11 @@ const Navbar = () => {
   return (
     <>
       <ul className={styles.Navbar}>
-        <div className={styles.full_logo} onClick={onClickHomePage}>
+        <div
+          className={styles.full_logo}
+          onClick={onClickHomePage}
+          title="Home - YouMovie"
+        >
           <Round className={styles.logo} />
           <span>YouMovie</span>
         </div>
@@ -104,7 +108,7 @@ const Navbar = () => {
         </form>
         {state.user.isLogged ? (
           <>
-            <div className={styles.welcome}>
+            <div className={styles.welcome} title="Account">
               <p>Welcome </p>
               <div className={styles.loggedUser} onClick={showSidebar}>
                 <p className={styles.welcome_p}>{state.user.firstName}</p>
@@ -118,7 +122,11 @@ const Navbar = () => {
           </>
         ) : (
           <div className={styles.button}>
-            <BiUserCircle className={styles.user} onClick={signIn} />
+            <BiUserCircle
+              className={styles.user}
+              onClick={signIn}
+              title="Sign in"
+            />
           </div>
         )}
       </ul>

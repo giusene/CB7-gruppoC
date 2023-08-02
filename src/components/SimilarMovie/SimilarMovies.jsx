@@ -8,7 +8,11 @@ const SimilarMovies = ({ recommended }) => {
 
   return (
     <>
-      <div className={styles.similarMovies} onClick={onClickMoviePage}>
+      <div
+        className={styles.similarMovies}
+        onClick={onClickMoviePage}
+        title={recommended.title}
+      >
         {recommended.backdrop_path !== null && (
           <div className={styles.similarMovie}>
             <div className={styles.similarMovieImg}>

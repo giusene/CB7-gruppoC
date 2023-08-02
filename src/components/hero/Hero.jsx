@@ -43,7 +43,11 @@ const Hero = ({ trending }) => {
 
   return (
     <section className={styles.hero}>
-      <button className={styles.nextBtn} onClick={onClickNextMovie}>
+      <button
+        className={styles.nextBtn}
+        onClick={onClickNextMovie}
+        title="Next movie"
+      >
         <MdOutlineKeyboardArrowRight />
       </button>
       <div className={`${styles.heroBackground} ${styles.next}`}>
@@ -77,11 +81,19 @@ const Hero = ({ trending }) => {
           {trending.results[nextMovie].overview}
         </p>
 
-        <button className={styles.heroSeeMore} onClick={onClickMoviePage}>
+        <button
+          className={styles.heroSeeMore}
+          onClick={onClickMoviePage}
+          title="See more"
+        >
           See more
         </button>
       </div>
-      <button className={styles.prevBtn} onClick={onClickPrevMovie}>
+      <button
+        className={styles.prevBtn}
+        onClick={onClickPrevMovie}
+        title="Previous movie"
+      >
         <MdOutlineKeyboardArrowLeft />
       </button>
     </section>

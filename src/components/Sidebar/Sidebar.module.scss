@@ -41,40 +41,40 @@
     }
   }
 
-  .sections {
-    @include dimensions(100%, auto, 10px);
-    padding: 20px 10px 0 10px;
+  .sectionList {
+    padding: 30px $padding-gen;
+    width: 100%;
+    @include flexbox-vrt(20px);
 
-    .sectionList {
-      .section {
-        @include dimensions(100%, auto, 0);
+    .section {
+      width: 100%;
+      border-radius: 8px;
+      background-color: $color-primary-clair;
 
-        border-radius: 8px;
-        margin-bottom: 8px;
-        background-color: $color-primary-clair;
+      @include xxl {
         width: 60%;
+      }
 
-        &:hover,
-        &:active {
-          color: $color-primary;
-          background-color: $color-primary-light;
-        }
+      &:hover,
+      &:active {
+        color: $color-primary;
+        background-color: $color-primary-light;
+      }
 
-        &:active {
-          scale: 0.99;
-        }
+      &:active {
+        scale: 0.99;
+      }
 
-        .item {
-          display: flex;
-          align-items: center;
-          text-decoration: none;
-          padding: 10px 5px;
+      .item {
+        width: 100%;
+        @include flexbox-hrz(10px);
+        text-decoration: none;
+        padding: 10px 5px;
 
-          .icon {
-            font-size: $subtitle;
-            @include flexCenter(0);
-            margin-right: 17px;
-          }
+        .icon {
+          font-size: $subtitle;
+          @include flexCenter(0);
+          margin-right: 17px;
         }
       }
     }
@@ -111,6 +111,12 @@
       font-size: $subtitle;
       @include flexCenter(0);
       margin-right: 17px;
+    }
+
+    @include xxl {
+      width: 60%;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 
