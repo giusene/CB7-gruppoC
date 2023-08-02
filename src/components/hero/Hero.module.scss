@@ -84,7 +84,7 @@
     max-width: 40%;
     height: auto;
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 10%;
     z-index: 9;
 
@@ -146,10 +146,12 @@
 
   .heroTitle {
     @include flexbox-hrz(0);
+    justify-content: flex-start;
     min-height: 4rem;
     font-size: 3em;
     font-weight: 500;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 3px black;
 
     @include md() {
       font-size: 2.2em;
