@@ -48,32 +48,30 @@ const Sidebar = ({ onClick, sidebar, setSidebar }) => {
           <p>{`${state.user.firstName} ${state.user.lastName}`}</p>
         </div>
       </div>
-      <div className={styles.sections}>
-        <ul className={styles.sectionList}>
-          <li className={styles.section} onClick={() => setSidebar(!sidebar)}>
-            <Link href="/your-lists" className={styles.item}>
-              <p>
-                <BiListPlus className={styles.icon} />
-              </p>
-              <p>YOUR LISTS</p>
-            </Link>
-          </li>
-          <li className={styles.section} onClick={() => setSidebar(!sidebar)}>
-            <Link href="/community" className={styles.item}>
-              <p>
-                <HiOutlineUserGroup className={styles.icon} />
-              </p>
-              <p>COMMUNITY</p>
-            </Link>
-          </li>
-        </ul>
-        <div className={styles.logout} onClick={onHandleLogOut}>
-          <div className={`${styles.logoutLink}`}>
+      <ul className={styles.sectionList}>
+        <li className={styles.section} onClick={() => setSidebar(!sidebar)}>
+          <Link href="/your-lists" className={styles.item} title="Your lists">
             <p>
-              <BiLogOut className={styles.icon} />
+              <BiListPlus className={styles.icon} />
             </p>
-            <p>LOGOUT</p>
-          </div>
+            <p>YOUR LISTS</p>
+          </Link>
+        </li>
+        <li className={styles.section} onClick={() => setSidebar(!sidebar)}>
+          <Link href="/community" className={styles.item} title="Community">
+            <p>
+              <HiOutlineUserGroup className={styles.icon} />
+            </p>
+            <p>COMMUNITY</p>
+          </Link>
+        </li>
+      </ul>
+      <div className={styles.logout} onClick={onHandleLogOut} title="Logout">
+        <div className={`${styles.logoutLink}`}>
+          <p>
+            <BiLogOut className={styles.icon} />
+          </p>
+          <p>LOGOUT</p>
         </div>
       </div>
       <div className={styles.close} onClick={onClick}>

@@ -8,6 +8,7 @@ const Badge = ({ data }) => {
     <div
       className={styles.Badge}
       onClick={() => router.push(`/genre/${data.id}`)}
+      title={data.name}
     >
       {data.name}
     </div>
