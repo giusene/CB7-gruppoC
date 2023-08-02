@@ -243,7 +243,7 @@ export default function ({ movie, recommended, comments }) {
             />
             <img
               className={styles.imgPoster}
-              src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
               alt={`${movie.title} poster`}
             />
             <h1>{movie.title}</h1>
@@ -357,7 +357,7 @@ export default function ({ movie, recommended, comments }) {
                 {movie.images.backdrops.map((data, i) => (
                   <img
                     key={data.id}
-                    src={`https://image.tmdb.org/t/p/original${data.file_path}`}
+                    src={`https://image.tmdb.org/t/p/w780${data.file_path}`}
                     alt={`gallery image ${++i}`}
                   />
                 ))}
