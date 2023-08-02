@@ -91,9 +91,7 @@ export async function getServerSideProps() {
 
   const querySnapshot = await getDocs(collection(db, "users"));
   querySnapshot.forEach((doc) => {
-    if (doc.data().community.length) {
-      lists.push(doc.data());
-    }
+    lists.push(doc.data());
   });
 
   return {
