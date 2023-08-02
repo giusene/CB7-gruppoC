@@ -47,10 +47,10 @@ const Card = ({ mock }) => {
           </div>
           <div className={`${styles.text} ${overlay && styles.overlay}`}>
             <div className={styles.left}>
-              <div className={styles.card_title}>
+              <div className={styles.card_title} onClick={onClickMovie}>
                 <h3 className={styles.text_title}>{mock.title}</h3>
               </div>
-              <div className={styles.info}>
+              <div className={styles.info} onClick={onClickMovie}>
                 <div className={styles.date}>
                   <p className={styles.year}>{mock.release_date.slice(0, 4)}</p>
                   <p className={styles.votes}>
