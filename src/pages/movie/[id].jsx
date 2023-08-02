@@ -1,9 +1,6 @@
-import { GET } from "@/utils/HTTP";
+//states
 import { useRouter } from "next/router";
-import styles from "@/styles/Movie.module.scss";
-import { AiFillStar } from "react-icons/ai";
-import Comments from "@/components/Comments";
-import Head from "next/head";
+//firebase
 import {
   getDoc,
   doc,
@@ -12,18 +9,26 @@ import {
   arrayUnion,
 } from "firebase/firestore";
 import { db } from "@/plugins/firebase";
+//icons
+import { AiFillStar } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
-import Warning from "@/components/warning";
-import Trailer from "@/components/Trailer";
-
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { BsFillPeopleFill, BsPeople, BsFillPlayFill } from "react-icons/bs";
 import { useContext, useEffect, useState } from "react";
-import SimilarMovies from "@/components/SimilarMovie";
 import { MainContext } from "@/store";
+//components
+import Comments from "@/components/Comments";
+import Head from "next/head";
+import Warning from "@/components/warning";
+import Trailer from "@/components/Trailer";
+import SimilarMovies from "@/components/SimilarMovie";
+//functions
+import { GET } from "@/utils/HTTP";
+//style
+import styles from "@/styles/Movie.module.scss";
 
-export default function ({ key, movie, recommended, comments }) {
+export default function ({ movie, recommended, comments }) {
   const { state, dispatch } = useContext(MainContext);
   const router = useRouter();
   const [addFilm, setAddFilm] = useState(false);
@@ -262,7 +267,8 @@ export default function ({ key, movie, recommended, comments }) {
               </p>
               <p>({movie.vote_count}) • </p>
               <p>{movie.release_date.slice(0, 4)} •</p>
-              <p>{minutesInHours(movie.runtime)}</p>
+              <p>{minutesInHours(movie.runtime)} •</p>
+              <p>{movie.genres[0].name}</p>
             </div>
             <div className={styles.movieInteractions}>
               <p

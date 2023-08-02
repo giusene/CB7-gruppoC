@@ -7,14 +7,12 @@ import {
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/md";
 import { genres } from "@/utils/genres";
+import { genreRender } from "@/utils/fn";
 
 const Hero = ({ trending }) => {
   const [nextMovie, setNextMovie] = useState(0);
   const timerRef = useRef(null);
   const router = useRouter();
-
-  const genreRender = (genreId) =>
-    genres.map((genre) => genre.id === genreId && genre.name);
 
   useEffect(() => {
     timerRef.current = setTimeout(onClickNextMovie, 6000);
@@ -75,18 +73,20 @@ const Hero = ({ trending }) => {
             {trending.results[nextMovie].release_date.slice(0, 4)}
           </span>
           <span className={styles.heroGenre}>
-            {genreRender(trending.results[nextMovie].genre_ids[0])}
+            {genreRender(genres, trending.results[nextMovie].genre_ids[0])}
           </span>
         </div>
         <p className={styles.heroTrama}>
           {trending.results[nextMovie].overview}
         </p>
 
+
         <button
           className={styles.heroSeeMore}
           onClick={onClickMoviePage}
           title="See more"
         >
+
           See more
         </button>
       </div>
