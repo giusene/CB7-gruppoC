@@ -10,7 +10,7 @@ const CommunityCards = ({ data }) => {
     <div className={styles.card} onClick={onClickMoviePage} title={data.title}>
       <img
         className={styles.movieImg}
-        src={`https://image.tmdb.org/t/p/w185${data.poster}`}
+        src={`https://image.tmdb.org/t/p/w342${data.poster}`}
         alt={data.title}
       />
     </div>

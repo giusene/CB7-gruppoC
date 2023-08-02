@@ -104,6 +104,9 @@
       min-width: 300px;
       max-width: 300px;
       font-size: $par-md;
+      left: 50%;
+      transform: translateX(-50%);
+      @include flexbox-vrt(0);
 
       .heroGeneral {
         margin-bottom: 10px;
@@ -117,6 +120,8 @@
       .heroTitle {
         font-size: 1.5em;
         text-shadow: 2px 2px 3px black;
+        text-align: center;
+        margin: 0;
       }
 
       .heroSeeMore {
@@ -140,6 +145,8 @@
   }
 
   .heroTitle {
+    @include flexbox-hrz(0);
+    min-height: 4rem;
     font-size: 3em;
     font-weight: 500;
     margin-bottom: 20px;
